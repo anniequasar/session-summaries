@@ -2,7 +2,7 @@ During the one hour session we discussed the aims of the group, everyone's pytho
 
 The aim of this python support group is to provide Python support on a weekly basis to encourage members to practice python on a regular basis in a supportive and encouraging environment. 
 
-Key resources where beginner's with no python knowledge can begin learning at some of the following links:
+Beginners with no python knowledge can begin learning at some of the following resources:
 
 online courses:
 
