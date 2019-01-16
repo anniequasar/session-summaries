@@ -1,9 +1,9 @@
 # session-summaries
 This is a repository for all the session summaries from the Beginners' Python Support Sessions held in Brisbane.
 
-1st Session (15.12.2018)
+1st Session
 
-During the one hour session we discussed the aims of the group, everyone's python experience level and discussed potential projects to work on over the coming weeks. 
+During the one hour session we discussed the aims of the group, everyone's python experience level and potential projects to work on over the coming weeks. 
 
 The aim of this python support group is to provide Python support on a weekly basis to encourage members to practice python on a regular basis in a supportive and encouraging environment. 
 
