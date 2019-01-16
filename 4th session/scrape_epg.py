@@ -1,9 +1,10 @@
+# Author: Tim
+
 from bs4 import BeautifulSoup
 
 import re
 
 import datetime
-
 
 
 # Needs the following in requirements.txt
