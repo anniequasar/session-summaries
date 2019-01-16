@@ -1,4 +1,4 @@
-During this session everybody enrolled in the FREE (do not pay when prompted to subscribe, simply click next module in course outline) datacamp course Introduction to Python by Filip Schouwenaars
+During this session everybody enrolled in the FREE (do not pay when prompted to subscribe, simply click next module in course outline) datacamp course Introduction to Python by Filip Schouwenaars. 
 
 https://www.datacamp.com/courses/intro-to-python-for-data-science
 
@@ -31,7 +31,6 @@ Create your first variables and acquaint yourself with Python's basic data types
 Learn to store, access and manipulate data in lists: the first step towards efficiently working with huge amounts of data.
 
     Lists, what are they?
-
     Create a list
     Create list with different types
     Select the valid list
