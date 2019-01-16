@@ -1,3 +1,5 @@
+# Author: Tim
+
 # See https://data.brisbane.qld.gov.au for other data sets
 
 # Register at https://developer.jcdecaux.com/ to get an api_key
