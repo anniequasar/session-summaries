@@ -11,5 +11,5 @@ In these folders you will encournter three different types of files.
     + readme.ipynp  is an ipython notebook file that you can either read on github or download to run.
                     To run the file you will need a notebook interpreter such as Jupyter notebooks or 
                     you can install jupyter using pip in a python virtual environment in your python console 
-                    so you don’t have the full anaconda install but can still run jupyter notebooks from you 
+                    so you don’t have the full anaconda install but can still run jupyter notebooks from your 
                     local server. If you are a beginner, this is not recommended.
