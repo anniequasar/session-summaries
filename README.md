@@ -1,7 +1,7 @@
 # session-summaries
 This is a repository for all the session summaries from the Beginners' Python Support Sessions held in Brisbane.
 
-In these folders you will encournter three different types of files.
+In these folders you will encounter three different types of files.
 
     + readme.md     is a markdown file. You do not need to do anything except read these files.
 
