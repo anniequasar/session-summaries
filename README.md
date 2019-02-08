@@ -22,7 +22,7 @@ In these folders you will encounter three different types of files.
         1. Contact the Administrator with your e-mail to get an invite sent to join the slack space:
             https://beginnerspython.slack.com/
             There are 3 channels in this slack space - #general, #random and #learning-to-code
-            If you have not signed into your slack account within 14 days your account becomes inactive 
+            If you do not sign into your slack account every 14 days your account becomes inactive 
             You will then recieve an email from me requesting a response within 7 days or it becomes deactivated
         
         2. Sign up to the DataCamp free course: 
