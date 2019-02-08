@@ -28,7 +28,7 @@ If you have not signed into your slack account within 14 days your account becom
 <br>
 You will then recieve an email from me requesting a response within 7 days or it becomes deactivated
 
-
+<br>
 2. Sign up to the DataCamp free course: 
 <br>
 https://www.datacamp.com/courses/intro-to-python-for-data-science
@@ -36,7 +36,7 @@ https://www.datacamp.com/courses/intro-to-python-for-data-science
 (Part of 1st & 2nd Session)
 <br>   
 
-
+<br>
 3. Install PyCharm Edu onto your computer following the instructions in:
 <br>
 anniequasar/session-summaries/3rd_session/Installing_python_onto_your_computer.ipynb
@@ -52,7 +52,7 @@ Ask questions in slack space, #general channel for help if required.
 We are here to help. Reach out to Tim, Annie & Arun. 
 <br>
 
-
+<br>
 6. Have fun!
 <br>
 
