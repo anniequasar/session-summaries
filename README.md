@@ -54,11 +54,11 @@ We are here to help. Reach out to Tim, Annie & Arun.
 <br>
 
 
-**Thank you note & acknowledgements: 
+**  Thank you note & acknowledgements: 
 <br>
 I wish to thank the Mentors: Tim and Arun for their specious time to volunteer and offer assistance at these sessions
 <br>
 Nikki and Red Hat Brisbane for providing meeting space in February 2019
 <br>
-Peta Ellis (CEO) and the entire team at River City Labs** 
+Peta Ellis (CEO) and the entire team at River City Labs  ** 
 <br>
