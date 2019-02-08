@@ -20,10 +20,13 @@ In these folders you will encounter three different types of files.
 **Instructions for new learners**
 
 1. Contact the Administrator with your e-mail to get an invite sent to join the slack space:
+<br>
     https://beginnerspython.slack.com/
     
     There are 3 channels in this slack space - #general, #random and #learning-to-code
+<br>
     If you have not signed into your slack account within 14 days your account becomes inactive 
+<br>
     You will then recieve an email from me requesting a response within 7 days or it becomes deactivated
 
 2. Sign up to the DataCamp free course: 
