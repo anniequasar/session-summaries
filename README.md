@@ -43,7 +43,7 @@ In these folders you will encounter three different types of files.
 
 **  Thank you note & acknowledgements: 
 <br>
-I wish to thank the Mentors: Tim and Arun for their specious time to volunteer and offer assistance at these sessions
+I wish to thank the Mentors: Tim and Arun for using their precious time to volunteer and offer assistance at these sessions
 <br>
 Nikki and Red Hat Brisbane for providing meeting space in February 2019
 <br>
