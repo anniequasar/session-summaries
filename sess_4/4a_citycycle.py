@@ -1,4 +1,4 @@
-# Author: Tim
+# Author: Tim Cummings
 
 # See https://data.brisbane.qld.gov.au for other data sets
 
