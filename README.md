@@ -30,7 +30,7 @@ In these folders you will encounter three different types of files.
             (Part of 1st & 2nd Session)
         
         3. Install PyCharm Edu onto your computer following the instructions in:
-            anniequasar/session-summaries/3rd_session/Installing_python_onto_your_computer.ipynb
+            anniequasar/session-summaries/sess_3/Installing_python_onto_your_computer.ipynb
 
         4. Read 2nd_session/python_basics_summary.py carefully ensuring that you understand everything
 
