@@ -6,8 +6,9 @@ The first six sessions were held at the State Library of Queensland (SLQ) [sess_
 
 The next four sessions were held at Red Hat in Brisbane [sess_7 to sess_10]
 
-Current sessions held at River City Labs (RCL) at called meetup000.py
-
+Sessions held at River City Labs (RCL) are called meetup###.py
+<br>
+<br>
 
 In these folders you will encounter three different types of files.
 
