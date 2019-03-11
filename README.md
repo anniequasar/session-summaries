@@ -2,6 +2,13 @@
 
 ## This is a repository for all the session summaries from the Beginners' Python Support Sessions held in Brisbane.
 
+The first six sessions were held at the State Library of Queensland (SLQ) [sess_1 to sess_6]
+
+The next four sessions were held at Red Hat in Brisbane [sess_7 to sess_10]
+
+Current sessions held at River City Labs (RCL) at called meetup000.py
+
+
 In these folders you will encounter three different types of files.
 
     + readme.md     is a markdown file. You do not need to do anything except read these files.
