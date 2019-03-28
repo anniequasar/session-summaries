@@ -19,9 +19,10 @@ In these folders you will encounter three different types of files.
 
     + readme.ipynb  is an ipython notebook file that you can either read on github or download to run.
                     To run the file you will need a notebook interpreter such as Jupyter notebooks or 
-                    you can install jupyter using pip in a python virtual environment in your python console 
-                    so you don’t have the full anaconda install but can still run jupyter notebooks from your 
-                    local server. If you are a beginner, this is not recommended.
+                    you can install jupyter using pip in a python virtual environment in your python console. 
+                    Alternatively, you can use Google Colaboratory. Colaboratory is a free Jupyter notebook 
+                    environment that requires no setup and runs entirely from your web browser.
+
 
 
 
@@ -40,7 +41,7 @@ In these folders you will encounter three different types of files.
         3. Install PyCharm Edu onto your computer following the instructions in:
             anniequasar/session-summaries/sess_3/Installing_python_onto_your_computer.ipynb
 
-        4. Read sess_2/python_basics_summary.py carefully ensuring that you understand everything
+        4. Read SQL/sess_2/python_basics_summary.py carefully ensuring that you understand everything
 
         5. Try to solve the weekly challenges without peeking at the solutions  
             Ask questions in slack space, #general channel for help if required. 
