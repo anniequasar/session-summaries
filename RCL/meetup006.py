@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
 """
 Created on Wed Apr 10 17:38:43 2019
-RCL 6 
 
 Meetup006
 """
@@ -18,19 +16,23 @@ my_dict = {'a':100, 'b':200, 'c':300, 'd':400}
 # for item in object:  
 #   execute commands
 
-# if only one variable is defined in a for loop to iterate through a dictionary, only keys will be operated on
+# if only one variable is defined in a for loop to iterate through in a dictionary, by default only keys will be operated on
 
-for v in my_dict:
-    print(v)
+for i in my_dict:
+    print(i)
 
+# but you can define the for loop to operate on the keys or the values by using .keys() or .values() function
 
-# to operate on both the keys and its associated values use two variables when defining the for loop
+for val in my_dict.values():
+    print(val)
 
-for v,w in my_dict.items():
-    print(v,w)
+# to operate on both the keys and its associated values use two variables and the function .items() when defining the for loop
+
+for k,v in my_dict.items():
+    print(k,v)
     
 
-# another form of for loop is the built-in function called range()
+# for loops using the built-in function called range() are often quite useful
 # range() is always start inclusive, but stop exclusive, by default range starts at 0 if starting point is not defined
 
 for number in range(5):
@@ -62,6 +64,6 @@ set_x = [0.0, 0.2, 0.4, 0.6]
  
 set_x = [i/5 for i in range(11)]
 
-print(set_x)
+print("set_x =", set_x)
 
 # note that when the print() function is indented, it is part of the for loop, otherwise it is a a stand-alone function command 
