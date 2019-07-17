@@ -87,6 +87,15 @@ for sheet_name, df in dct_accounts.items():
         if 'liability' in sheet_name:
             df.Amount *= -1
             df.Balance *= -1
+balance = 0
+for sheet_name, df in dct_accounts.items():
+    print(sheet_name)
+    print(df.head())
+    if df.shape[0] > 0:
+        balance += df.at[0, 'Balance']
+        balance -= df.at[0, 'Amount']
+    df['Account'] = sheet_name
+    df['Amount'] = df['Amount'].round(2)
 df_combined = pd.concat(dct_accounts.values(), ignore_index=True).sort_values(by="Date")
 dct_balance = {}
 for index, row in df_combined.iterrows():
