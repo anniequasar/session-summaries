@@ -72,9 +72,19 @@ print(df_combined)
 
 
 plt.figure(figsize=(10, 10))
-plt.plot(dct_balance.keys(), dct_balance.values(), drawstyle="steps-post")
-# plt.plot(dct_balance.keys(), dct_balance.values())
-# plt.plot(df_combined["Date"], df_combined["Balance"], drawstyle="steps-post")
+
+# plt.title("Challenge 10 solution")
+# plt.plot(df_combined["Date"], df_combined["Balance"])  # Ch. 10 solution
+
+# plt.title("Challenge 10A solution")
+# plt.plot(df_combined["Date"], df_combined["Balance"], drawstyle="steps-post")  # Ch 10A solution
+
+# plt.title("Challenge 10B solution")
+# plt.plot(list(dct_balance.keys()), list(dct_balance.values()))  # Ch 10B solution
+
+plt.title("Challenge 10A and 10B solution")
+plt.plot(list(dct_balance.keys()), list(dct_balance.values()), drawstyle="steps-post")  # Ch 10A and 10B solution
+
 plt.xticks(rotation='vertical')
 plt.show()
 
@@ -105,6 +115,7 @@ for index, row in df_combined.iterrows():
 print(df_combined)
 
 plt.figure(figsize=(10, 10))
-plt.plot(dct_balance.keys(), dct_balance.values(), drawstyle="steps-post")
+plt.title("Challenge 11 solution")
+plt.plot(list(dct_balance.keys()), list(dct_balance.values()), drawstyle="steps-post")
 plt.xticks(rotation='vertical')
 plt.show()
