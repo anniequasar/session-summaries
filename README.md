@@ -30,9 +30,10 @@ In these folders you will encounter three different types of files.
 
         1. Contact the Administrator with your e-mail to get an invite sent to join the slack space:
             https://beginnerspython.slack.com/
-            There are 3 channels in this slack space - #general, #random and #learning-to-code
+            There are 3 channels in this slack space - #general, #learning-to-code and #sas-select
             If you do not sign into your slack account every 14 days your account becomes inactive 
-            You will then recieve an email from me requesting a response within 7 days or it becomes deactivated
+            You will then receive an email from me requesting a response within 7 days or it becomes deactivated
+            To reactivate your account, please send an email to skypyproject [@] gmail.com
         
         2. Sign up to the DataCamp free course: 
             https://www.datacamp.com/courses/intro-to-python-for-data-science
@@ -41,7 +42,7 @@ In these folders you will encounter three different types of files.
         3. Install PyCharm Edu onto your computer following the instructions in:
             anniequasar/session-summaries/resources/Installing_python.ipynb
 
-        4. Read SQL/sess_2/python_basics_summary.py carefully ensuring that you understand everything
+        4. Read SQL/sess_2/python_basics_summary.py  carefully ensuring that you understand everything
 
         5. Try to solve the weekly challenges without peeking at the solutions  
             Ask questions in slack space, #general channel for help if required. 
