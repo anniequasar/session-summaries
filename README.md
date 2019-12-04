@@ -32,7 +32,7 @@ In these folders you will encounter three different types of files.
             https://beginnerspython.slack.com/
             There are 3 channels in this slack space - #general, #learning-to-code and #sas-select
             If you do not sign into your slack account every 14 days your account becomes inactive 
-            You will then receive an email from me requesting a response within 7 days or it becomes deactivated
+            You will then receive an email requesting a response within 7 days or it becomes deactivated
             To reactivate your account, please send an email to skypyproject [@] gmail.com
         
         2. Sign up to the DataCamp free course: 
