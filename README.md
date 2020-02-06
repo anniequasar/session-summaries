@@ -6,7 +6,9 @@ The first six sessions were held at the State Library of Queensland (SLQ) [sess_
 
 The next four sessions were held at Red Hat in Brisbane [sess_7 to sess_10]
 
-Sessions held at River City Labs (RCL) are called meetup###.py
+Sessions held at River City Labs (RCL) (March 2019 - January 2020) are called meetup###.py
+
+Sessions held at Pepper Studio in the T.C. Beirne Building (TCB) (February 2020 - present) are called meetup###.py
 <br>
 <br>
 
@@ -39,7 +41,7 @@ In these folders you will encounter three different types of files.
             https://www.datacamp.com/courses/intro-to-python-for-data-science
             (Part of 1st & 2nd Session)
         
-        3. Install PyCharm Edu onto your computer following the instructions in:
+        3. Install and IDE such as PyCharm Edu onto your computer following the instructions in:
             anniequasar/session-summaries/resources/Installing_python.ipynb
 
         4. Read SQL/sess_2/python_basics_summary.py  carefully ensuring that you understand everything
@@ -53,9 +55,12 @@ In these folders you will encounter three different types of files.
 
 **  Thank you note & acknowledgements: 
 <br>
+<br>
 I wish to thank the Mentors: Tim and Arun for using their precious time to volunteer and offer assistance at these sessions
 <br>
 Nikki and Red Hat Brisbane for providing meeting space in February 2019
 <br>
-Peta Ellis (CEO) and the entire team at River City Labs  ** 
+Peta Ellis (CEO) and the entire team at River City Labs for their generosity and support in 2019
+<br>
+Brad Cuthbert and Pepper Studio in the T.C. Beirne building in 2020 ** 
 <br>
