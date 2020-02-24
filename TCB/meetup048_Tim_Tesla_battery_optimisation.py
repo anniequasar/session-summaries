@@ -75,16 +75,18 @@ import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 import math
 import random
+import logging
 
 
-challenge = 1
+logging.getLogger().setLevel(logging.DEBUG)
+challenge = 0  # number between 0 and 4 indicating which challenge to run
 
 
-def plot_by_hour(df_for_plot):
+def plot_by_hour(df_for_plot, title):
     ax = plt.gca()  # get current axis so that both plots are on same chart
     plt.xlabel('hour of day')
     plt.suptitle('Profile')
-    plt.title(url)
+    plt.title(title)
     df_for_plot.plot(kind='line', y='SCADAVALUE', ax=ax, color='yellow')
     plt.ylabel('Average MW generation during hour')
     df_for_plot.plot(kind='line', y='RRP', ax=ax, secondary_y=True, color='red')
@@ -146,18 +148,21 @@ def plot_price_for_day():
 # Group by animal and find the mean of columns 'Max m/s' and 'Colours'
 def mps_from_kmph(row):
     """Returns speed in m/s given speed in km/h"""
+    logging.info(f"row passed to mps_from_kmph \n{row}")
+    logging.info(f"row.name = {row.name}")
     return row['Max km/h'] * 1000 / 3600
 
 
-df_demo = pd.DataFrame({'Animal': ['Falcon', 'Falcon', 'Parrot', 'Parrot'],
-                        'Max km/h': [380., 370., 24., 26.],
-                        'Colours': [3, 4, 20, 30],
-                        'Name': ['Fred', 'Finn', 'Percy', 'Peter']})
-print(df_demo)
-df_demo['Max m/s'] = df_demo.apply(mps_from_kmph, axis='columns')
-df_demo_mean = df_demo.groupby(['Animal']).mean()
-df_demo_2col = df_demo_mean[['Max m/s', 'Colours']]
-print(df_demo_2col)
+if challenge == 0:
+    df_demo = pd.DataFrame({'Animal': ['Falcon', 'Falcon', 'Parrot', 'Parrot'],
+                            'Max km/h': [380., 370., 24., 26.],
+                            'Colours': [3, 4, 20, 30],
+                            'Name': ['Fred', 'Finn', 'Percy', 'Peter']})
+    print(df_demo)
+    df_demo['Max m/s'] = df_demo.apply(mps_from_kmph, axis='columns')
+    df_demo_mean = df_demo.groupby(['Animal']).mean()
+    df_demo_2col = df_demo_mean[['Max m/s', 'Colours']]
+    print(df_demo_2col)
 
 # Challenge 1: Read electricity production (MW) from a solar farm for a month and find the average for each hour of the
 # day plotting the results on a chart
@@ -166,14 +171,13 @@ print(df_demo_2col)
 # Steps:
 #     Read CSV file into dataframe or url using pandas.read_csv()
 #     Convert SETTLEMENTDATE to datetime and set as index column
-#     Add another column to dataframe storing the hour of the day
+#     Add another column to dataframe storing the hour of the day (use .hour property of datetime objects)
 #     Group results by hour and find the average of SCADAVALUE and RRP
 #     Plot results using provided function plot_by_hour(df)
 # url = "http://nemlog.com.au/api/unit/EMERASF1/20200101/20200131/csv"
 url = "unit_emerasf1_20200101_20200131.csv"
 df = pd.read_csv(url, parse_dates=['SETTLEMENTDATE'], index_col='SETTLEMENTDATE')
-df['hour'] = df.apply(lambda row: pd.to_datetime(row.name).hour, axis=1)
-# average = sum / num of rows
+df['hour'] = df.apply(lambda row: row.name.hour, axis=1)
 if challenge == 1:
     df_by_hour = df.groupby('hour')[['SCADAVALUE', 'RRP']].mean()
     plot_by_hour(df_by_hour)
@@ -185,7 +189,7 @@ if challenge == 1:
 #         Car will need instance variables to track fuel stored (litre_level) and cost of buying fuel (aud_cost).
 #         Car will need a method which decides how much fuel to buy given the current price and how far travelled since last decision (litre_decision(price, km))
 #         Method litre_decision(price, km) will check that fuel level does not reduce below 0 otherwise need fuel delivered to car at $50 per 10L
-#         Calling litre_decision(rrp) will update litre_level and aud_cost and return the volume (litre) bought
+#         Calling litre_decision(price, km) will update litre_level and aud_cost and return the volume (litre) bought
 #     Write a Python function to calculate fuel cost given the decision break price
 #         Create an instance of type Car
 #         Loop through dataframe (using idx as loop variable)
@@ -207,18 +211,20 @@ class Car:
         while self.litre_level < 0:
             litre_delivered += 10
             self.litre_level += 10
-            self.aud_cost += 50  # Cost $30 per 10L if run out and need to have it delivered
+            self.aud_cost += 50  # Cost $50 per 10L if run out and need to have it delivered
         if price <= self.price_break:
-            litre = self.litre_capacity - self.litre_level
+            litre_self_serve = self.litre_capacity - self.litre_level
             self.litre_level = self.litre_capacity
-            self.aud_cost += litre * price
+            self.aud_cost += litre_self_serve * price
         else:
-            litre = 0
-        return litre + litre_delivered
+            litre_self_serve = 0
+        return litre_self_serve + litre_delivered
 
 
 # check price_for_day() function
-# plot_price_for_day()
+if challenge == 1:
+    plot_price_for_day()
+    pass
 # Create dataframe
 lst_km_to_fuel = [random.randrange(20, 200) for i in range(100)]
 df_demo_car = pd.DataFrame({'km to fuel': lst_km_to_fuel})
@@ -276,7 +282,10 @@ class Battery:
     def mw_decision(self, rrp):
         if rrp < self.rrp_break * self.efficiency:
             # buy
-            mw = min(self.mw_limit, (self.mwh_capacity - self.mwh_level) * 12 / self.efficiency)  # +ve means buy
+            if challenge < 4:
+                mw = min(self.mw_limit, (self.mwh_capacity - self.mwh_level) * 12 / self.efficiency)  # +ve means buy
+            else:
+                mw = min(self.mw_limit, (self.mwh_capacity - self.mwh_level) * 12 / self.efficiency, -(rrp - self.rrp_break * self.efficiency) / self.rrp_break * self.rrp_factor)  # +ve means buy  # Challenge 4
             self.mwh_level += mw * self.efficiency / 12
         elif rrp > self.rrp_break:
             # sell
