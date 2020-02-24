@@ -72,7 +72,7 @@ Challenge 11: Print out the names of all numbers up to 29 using the same list
 # Challenge 3: Using Python console to work with numbers and operators
 #     Enter simple sums (eg 5+5) and press <enter> to see answer
 #     Determine what each of the following operators do: + - * / // ** %
-#     Advanced: Determine what these bitwise operators do: | & << >>
+#     Advanced: Determine what these bitwise operators do: | & << >> ^ ~
 
 27 + 5   # 32  : addition
 27 - 5   # 22  : subtraction

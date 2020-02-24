@@ -44,7 +44,7 @@ In these folders you will encounter three different types of files.
         3. Install and IDE such as PyCharm Edu onto your computer following the instructions in:
             anniequasar/session-summaries/resources/Installing_python.ipynb
 
-        4. Read SQL/sess_2/python_basics_summary.py  carefully ensuring that you understand everything
+        4. Read SLQ/sess_2/python_basics_summary.py  carefully ensuring that you understand everything
 
         5. Try to solve the weekly challenges without peeking at the solutions  
             Ask questions in slack space, #general channel for help if required. 
