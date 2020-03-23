@@ -62,5 +62,7 @@ Nikki and Red Hat Brisbane for providing meeting space in February 2019
 <br>
 Peta Ellis (CEO) and the entire team at River City Labs for their generosity and support in 2019
 <br>
-Brad Cuthbert and Pepper Studio in the T.C. Beirne building in 2020 ** 
+Brad Cuthbert and Pepper Studio in the T.C. Beirne building in 2020
+<br>
+Kai Willadsen, Jake Owen and the team at Superloop in 2020 ** 
 <br>
