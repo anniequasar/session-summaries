@@ -107,15 +107,13 @@ def plot_price_for_day():
 #     Group results by hour and find the average of SCADAVALUE and RRP
 #     Plot results using provided function plot_by_hour(df)
 
-# this won't work because we haven't downloaded file
-
 
 filename = 'unit_emerasf1_20200101_20200131.csv'
 url = "http://nemlog.com.au/api/unit/EMERASF1/20200101/20200131/csv"
-df = pd.read_csv(filename, parse_dates=['SETTLEMENTDATE'], index_col='SETTLEMENTDATE')
+# Following line won't work because we haven't downloaded file. It will throw a FileNotFoundError (Uncomment to test)
+# df = pd.read_csv(filename, parse_dates=['SETTLEMENTDATE'], index_col='SETTLEMENTDATE')
 
 # so we surround with try except and then cache as a file for next time
-filename = 'unit_emerasf1_20200101_20200131.csv'
 try:
     df = pd.read_csv(filename, parse_dates=['SETTLEMENTDATE'], index_col='SETTLEMENTDATE')
 except FileNotFoundError:
