@@ -52,7 +52,7 @@ fig = {
     "layout": {"title": {"text": "Sigmoid function constructed as a dict"}}
 }
 # plotly.io.show(fig)
-plotly.io.write_html(fig, "challenge1.html")
+plotly.io.write_html(fig, "challenge1.html", auto_open=True)
 
 # At a higher level we can use plotly graph_objects which have a built-in validation 
 fig = go.Figure(
@@ -62,7 +62,7 @@ fig = go.Figure(
     )
 )
 # Figure has a "write_html()" method for those not using interactive python
-fig.write_html("demo2.html")
+fig.write_html("demo2.html", auto_open=True)
 # In Google colab we can call "show()" method
 # fig.show()
 
@@ -86,7 +86,7 @@ fig = go.Figure(
 # see the created dict. Notice what happens with marker_line_width
 print(fig)
 # fig.show()
-fig.write_html("challenge2.html")
+fig.write_html("challenge2.html", auto_open=True)
 
 # How to see all markers available
 # https://plotly.com/python/marker-style/
@@ -108,7 +108,7 @@ fig.update_layout(title="Mouse over symbols for name & number!",
                   xaxis_range=[-1, 4], yaxis_range=[len(set(namestems)), -1],
                   margin=dict(b=0, r=0), xaxis_side="top", height=1200, width=400)
 # fig.show()
-fig.write_html("demo3.html")
+fig.write_html("demo3.html", auto_open=True)
 
 # plotly express is higher level api designed for data exploration
 df1 = pd.DataFrame(data={"id": [1, 2, 3], "score": [1, 3, 2], "group": ["up-down"] * 3})
@@ -126,13 +126,13 @@ print(f"Challenge 3 df.head()\n{df.head()}")
 # px.line and px.scatter use dataframe index on x axis by default
 fig = px.line(df, y="sigmoid", title="Sigmoid function constructed from plotly express", color='fn')
 # fig  # same as fig.show() for colab and jupyter notebooks
-fig.write_html("challenge3.html")
+fig.write_html("challenge3.html", auto_open=True)
 
 # plotly express comes with some default dataframes if you want to practise
 df = px.data.gapminder().query("continent=='Oceania'")
 fig = px.line(df, x="year", y="lifeExp", color='country')
 # fig.show()  # colab and jupyter notebook
-fig.write_html("demo4.html")
+fig.write_html("demo4.html", auto_open=True)
 
 # Load data from the covid-19 data set. NB URL has been changed on Github. Now ends in "_global"
 df_confirmed = pd.read_csv(
@@ -184,7 +184,6 @@ print("Challenge 5")
 print(df_for_location(df_confirmed, country="Australia"))
 
 df_confirmed_by_location = df_for_location(df_confirmed, country="Australia")
-df_confirmed_by_location
 
 # Sum the rows in the dataframe and return a series
 total = df_confirmed_by_location.sum(axis="index")
@@ -274,7 +273,7 @@ print(df_plot)
 # Solution to challenge 9:
 def plot_for_location(df, country=None, state=None, num_start=100, description=""):
     series_sum = series_sum_for_location(df, country=country, state=state)
-    idx_start = series_sum.index[series_sum >= 100][0]
+    idx_start = series_sum.index[series_sum >= num_start][0]
     df_sum = pd.DataFrame(series_sum, columns=['current'])
     df_plot = df_sum.loc[idx_start:]
     location = location_name(country=country, state=state)
@@ -315,7 +314,7 @@ print(df_plot)
 # Solution to challenge 10
 def plot_doubling_for_location(df, country=None, state=None, num_start=100, description="", averaged_days=3):
     series_sum = series_sum_for_location(df, country=country, state=state)
-    idx_start = series_sum.index[series_sum >= 100][0]
+    idx_start = series_sum.index[series_sum >= num_start][0]
     df_sum = pd.DataFrame(series_sum, columns=['current'])
     df_plot = df_sum.loc[idx_start:].copy()
     df_plot['flt_current'] = df_plot['current'].astype(float)  # need floats for np.log2 to work
@@ -338,7 +337,7 @@ plot_doubling_for_location(df_confirmed, country="Australia", description="Confi
 # Advanced solution to challenge 10
 def plot_for_location(df, country=None, state=None, num_start=100, description="", averaged_days=3):
     series_sum = series_sum_for_location(df, country=country, state=state)
-    idx_start = series_sum.index[series_sum >= 100][0]
+    idx_start = series_sum.index[series_sum >= num_start][0]
     df_sum = pd.DataFrame(series_sum, columns=['current'])
     df_plot = df_sum.loc[idx_start:].copy()
     df_plot['flt_current'] = df_plot['current'].astype(float)  # need floats for np.log2 to work
@@ -386,7 +385,7 @@ plot_for_location(df_confirmed, country="Australia", description="Confirmed").wr
 # Solution to challenge 11
 def plot_for_location(df, country=None, state=None, num_start=100, description="", averaged_days=3):
     series_sum = series_sum_for_location(df, country=country, state=state)
-    idx_start = series_sum.index[series_sum >= 100][0]
+    idx_start = series_sum.index[series_sum >= num_start][0]
     df_sum = pd.DataFrame(series_sum, columns=['current'])
     df_plot = df_sum.loc[idx_start:].copy()
     df_plot['flt_current'] = df_plot['current'].astype(float)  # need floats for np.log2 to work
