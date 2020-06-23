@@ -24,7 +24,11 @@ https://gutenberg.org/files/1727/1727-0.txt
 import builtins
 import datetime
 import io
+import logging
 import unicodedata
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Task 1. Set up Python project
 """
@@ -64,9 +68,11 @@ conda install --name venv-email-pdf --file requirements.txt       # Anaconda
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib aiosmtpd reportlab
 """
 
-# Task 4: Run demo 4 to create a PDF document and save to a file
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.pagesizes import A4
+
+
+# Task 4: Run demo 4 to create a PDF document and save to a file
 
 
 # Sec 2.1 Basic concepts of reportlab-userguide.pdf
@@ -301,13 +307,68 @@ def pdf_demo_11(file):
 # Using platypus print a "page x of y" at top right of each page
 # Sec 7 Tables and TableStyles
 from reportlab.platypus import Table
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont, TTFError
+
+fonts_by_language = {}
+
+
+# Sec 3.5 TrueType font support
+def register_language_fonts():
+    """
+    Register Noto fonts and reference by language
+
+    If this function is not called then pdf_demo_12 will use standard font Helvetica
+    :return: None
+
+    # Get fonts from https://www.google.com/get/noto/
+    mkdir fonts
+    cd fonts
+    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-unhinted.zip
+    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansEthiopic-unhinted.zip
+    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansRunic-unhinted.zip
+    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansTaiTham-unhinted.zip
+    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansKhmer-unhinted.zip
+    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansNewTaiLue-unhinted.zip
+    unzip -o \*.zip
+    """
+    # Register Arial as a backup embedded font
+    pdfmetrics.registerFont(TTFont("Arial", "Arial.ttf"))
+    pdfmetrics.registerFont(TTFont("ArialBd", "Arial Bold.ttf"))
+    pdfmetrics.registerFont(TTFont("ArialBI", "Arial Bold Italic.ttf"))
+    pdfmetrics.registerFont(TTFont("ArialIt", "Arial Italic.ttf"))
+
+    languages = {"default": "", "ethiopic": "Ethiopic", "khmer": "Khmer", "new tai lue": "NewTaiLue", "runic": "Runic", "tai tham": "TaiTham" }
+    variations = ["Regular", "Bold", "BoldItalic", "Italic"]
+    for key, file_part in languages.items():
+        family = {}
+        base_font = f"NotoSans{file_part}"
+        for variation in variations:
+            font = f"{base_font}-{variation}"
+            try:
+                pdfmetrics.registerFont(TTFont(font, f"fonts/{font}.ttf"))
+                logger.debug(f"register_language_fonts: Registered font {font}")
+            except TTFError:
+                if variation == "Regular":
+                    logger.warning(f"register_language_fonts: Can't find font fonts/{font}.ttf. Defaulting to Arial")
+                    family = {"Regular": "Arial", "Bold": "ArialBd", "BoldItalic": "ArialBI", "Italic": "ArialIt"}
+            else:
+                family[variation] = font
+        pdfmetrics.registerFontFamily(family["Regular"], normal=family["Regular"], bold=family.get("Bold", family["Regular"]), boldItalic=family.get("BoldItalic", family["Regular"]), italic=family.get("Italic", family["Regular"]))
+        fonts_by_language[key] = family["Regular"]
+        logger.debug(f"register_language_fonts: Family of {base_font} is {family}")
+    logger.debug(f"register_language_fonts: {fonts_by_language}")
+
+
+# Run register_language_fonts() if you want to embed fonts
+# register_language_fonts()
 
 
 class NumberedCanvas(Canvas):
     """
-    Can be used in doc.build() when need to show total number of pages.
+    Can be used in doc.build(canvasmaker=NumberedCanvas) when need to show total number of pages.
 
-    Modify class for position of "Page x of y"
+    You will need to modify this class to change position and font of "Page x of y"
     https://code.activestate.com/recipes/576832-improved-reportlab-recipe-for-page-x-of-y/
     """
     def __init__(self, *args, **kwargs):
@@ -328,12 +389,16 @@ class NumberedCanvas(Canvas):
         Canvas.save(self)
 
     def draw_page_number(self, page_count):
-        self.setFont("Helvetica", 8)
+        self.saveState()
+        self.setFont("Helvetica", 9)
         self.drawRightString(200*mm, 280*mm, f"Page {self.getPageNumber()} of {page_count}")
+        self.restoreState()  # Shouldn't be any drawing after this but let's restore anyway
 
 
 def invoice_header_first(canvas, doc):
-    """First page of invoice has company logo, date, and Invoice"""
+    """First page of invoice has company logo, date, and Invoice
+
+    Use in doc.build(onFirstPage=invoice_header_first)"""
     canvas.rect(20 * mm, 250 * mm, 12 * mm, 30 * mm)
     canvas.rect(36 * mm, 250 * mm, 12 * mm, 30 * mm)
     canvas.rect(52 * mm, 250 * mm, 12 * mm, 30 * mm)
@@ -342,32 +407,49 @@ def invoice_header_first(canvas, doc):
 
 
 def invoice_header_later(canvas, doc):
-    """Later pages of invoice have small version of company logo"""
+    """Later pages of invoice have small version of company logo
+
+    Use in doc.build(onLaterPages=invoice_header_later)"""
     canvas.rect(20 * mm, 275 * mm, 6 * mm, 15 * mm)
     canvas.rect(28 * mm, 275 * mm, 6 * mm, 15 * mm)
     canvas.rect(36 * mm, 275 * mm, 6 * mm, 15 * mm)
 
 
+def paragraph_description(c: str) -> Paragraph:
+    """
+    Creates a flowable Paragraph showing and describing the unicode character c.
+    Paragraph will try to use the most appropriate font for the language of the character.
+
+    :param c: a single character in a str
+    :return: the Paragraph
+    """
+    name = unicodedata.name(c).lower()
+    font = fonts_by_language.get("default", "Helvetica")
+    for language, font_family in fonts_by_language.items():
+        if name.startswith(language):
+            font = font_family
+    s = f'<font face="{font}">{c}</font> {name}'
+    logger.info(f"paragraph_description: {s}, {unicodedata.category(c)}, {unicodedata.numeric(c)}")
+    return Paragraph(s, getSampleStyleSheet()["Normal"])
+
+
 def invoice_data_unicode_numbers():
-    """Returns a table of data (list of lists) for demo invoice selling unicode characters ;)"""
-    lst_data = [["Item", "Quantity", "Part number", "Description", "Unit price", "Price"]]
+    """Creates a table of data (list of lists) for demo invoice selling unicode characters ;)"""
+    lst_data = [["Item", "Quantity", "Part", "Description", "Unit price", "Price"]]
     item = 0
     total = 0
-    style = getSampleStyleSheet()["Normal"]
-    style.fontName = "Helvetica"
-    for i in range(4900, 8542):
+    for i in range(4900, 8543):
         c = chr(i)
         # Find numbers other than digits
-        if unicodedata.category(c) == "No":
+        if unicodedata.category(c) in ["No", "Nl"]:  # "Nd" number digit, "Nl" number letter, "No" number other
             item += 1
             quantity = i % 10
-            part = f"{i}"
-            # print(f"{c} {unicodedata.name(c).lower()}")
-            description = Paragraph(f"{c} {unicodedata.name(c).lower()}", style)
+            part = fr"\u{i:0>4X}"  # hex code if you want to use this unicode character in str
+            description = paragraph_description(c)
             unit_price = round(unicodedata.numeric(c), 2)
             price = quantity * unit_price
-            total += price
             row = [item, quantity, part, description, f"${unit_price:10,.2f}",  f"${price:10,.2f}"]
+            total += price
             lst_data.append(row)
     lst_data.append(["", "", "", Paragraph("TOTAL", getSampleStyleSheet()["Normal"]), "", f"${total:10,.2f}"])
     return lst_data
