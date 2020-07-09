@@ -41,7 +41,7 @@ In these folders you will encounter three different types of files.
             https://www.datacamp.com/courses/intro-to-python-for-data-science
             (Part of 1st & 2nd Session)
         
-        3. Install and IDE such as PyCharm Edu onto your computer following the instructions in:
+        3. Install an IDE such as PyCharm Edu onto your computer following the instructions in:
             anniequasar/session-summaries/resources/Installing_python.ipynb
 
         4. Read SLQ/sess_2/python_basics_summary.py  carefully ensuring that you understand everything
