@@ -63,8 +63,6 @@ import pymongo
 from pymongo.errors import DuplicateKeyError, OperationFailure
 
 DBNAME = "db_bpaml078"
-# If you don't have your own db then use my readonly URI
-# MDB_URI = f"mongodb+srv://readonly:readonly@cluster0.dfwz3.mongodb.net/{DBNAME}?retryWrites=true&w=majority"
 try:
     with open("mongopw.txt", "r") as pw:
         # password is stored in a file so not visible in code
@@ -74,7 +72,7 @@ except FileNotFoundError:
     print("You need to create a file mongopw.txt containing your mongo password before running this script")
     exit(1)
 # Create the URI using format str
-USERNAME = "pythonator"  # CHANGE THIS LINE TO YOUR DATABASE ACCESS USERNAME
+USERNAME = "my_username"  # CHANGE THIS LINE TO YOUR DATABASE ACCESS USERNAME
 # CHANGE NEXT LINE TO URI FOR YOUR DATABASE
 MDB_URI = f"mongodb+srv://{USERNAME}:{PASSWORD}@cluster0.dfwz3.mongodb.net/{DBNAME}?retryWrites=true&w=majority"
 
