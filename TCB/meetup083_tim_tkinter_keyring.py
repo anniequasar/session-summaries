@@ -75,17 +75,8 @@ lbl_heading.grid()
 #
 #
 # # Task 4: Add another button to see help on bind
-# def click_help_bind():
-#     top = tk.Toplevel(window)
-#     top.title("help(bind)")
-#     lbl_help = tk.Label(master=top, text=tk.Label.bind.__doc__, justify=tk.LEFT)
-#     lbl_help.grid()
-#
-#
-# btn_help_bind = tk.Button(text="help(bind)", command=click_help_bind)
-# btn_help_bind.grid()
-#
-#
+
+
 # # Solution 4: Making the solution generic, adding a button in new window, using pack rather than grid
 # def click_help_by_name(name):
 #     top = tk.Toplevel(window)
@@ -107,18 +98,8 @@ lbl_heading.grid()
 # add_button_for_help("config")
 #
 # # Task 5: Add a button which creates a window showing the current time
-#
-#
-# def click_time_now():
-#     top = tk.Toplevel(window)
-#     lbl_time = tk.Label(master=top, text=datetime.datetime.now().strftime("%H:%M:%S"), font=("Courier", 60))
-#     lbl_time.pack()
-#
-#
-# btn_time_now = tk.Button(text="Time now", command=click_time_now)
-# btn_time_now.grid(row=1, column=1)
-#
-#
+
+
 # # Solution 5: Time which updates
 # def click_time_clock():
 #     fmt = "%H:%M:%S [%f]"
@@ -153,20 +134,8 @@ lbl_heading.grid()
 # # Following is required for task 6
 # sv_service_name = tk.StringVar(value="bpaml-tkinter-demo")
 # # Task 6: Create a window which accepts a string (into tk.StringVar sv_service_name) with a label "Service name"
-#
-#
-# def click_service_name():
-#     top = tk.Toplevel()
-#     lbl_service_name = tk.Label(top, text="Service name")
-#     lbl_service_name.pack(side=tk.LEFT)
-#     ent_service_name = tk.Entry(top, textvariable=sv_service_name)
-#     ent_service_name.pack(side=tk.LEFT)
-#
-#
-# btn_service_name = tk.Button(text="Service name", command=click_service_name)
-# btn_service_name.grid(row=3, column=1)
-#
-#
+
+
 # # Solution 6: Collecting service name, username and password
 #
 # sv_username = tk.StringVar(value=getpass.getuser())
@@ -206,13 +175,8 @@ lbl_heading.grid()
 #
 #
 # # Task 7: Add a menu item which prints password from keyring
-# def menu_print_password():
-#     print(f"{keyring.get_password(sv_service_name.get(), sv_username.get())=}")
-#
-#
-# edit_menu.add_command(label="Print password", command=menu_print_password)
-#
-#
+
+
 # # Solution 7: Also add keyboard shortcut for menu
 # def menu_log_password(event=None):
 #     # Normally you would never log a password at any level. This is for demo purposes only
@@ -222,9 +186,10 @@ lbl_heading.grid()
 # edit_menu.add_command(label="Log password", command=menu_log_password, underline=0, accelerator="Ctrl-l")
 # window.bind_all("<Control-l>", menu_log_password)
 #
-# # Task 8: Create a window with a canvas and draw based on mouse down events
-#
-#
+# # Task 8: Create a window with a canvas and draw based on mouse down events.
+# # This is more a demo than a task as it uses methods and classes not previously covered
+
+
 # # Solution 8:
 # def click_btn_draw():
 #     start = {"x": 0, "y": 0}
