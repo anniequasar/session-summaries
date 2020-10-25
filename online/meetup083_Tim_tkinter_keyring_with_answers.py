@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+r"""
 MeetUp 083 - Beginners' Python and Machine Learning - 27 Oct 2020 - tkinter and keyring
 
 Learning objectives
