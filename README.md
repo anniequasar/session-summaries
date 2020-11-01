@@ -2,13 +2,19 @@
 
 ## This is a repository for all the session summaries from the Beginners' Python Support Sessions held in Brisbane.
 
-The first six sessions were held at the State Library of Queensland (SLQ) [sess_1 to sess_6]
+The first six sessions were held at the State Library of Queensland *(SLQ)* [sess_1 to sess_6]
 
-The next four sessions were held at Red Hat in Brisbane [sess_7 to sess_10]
+The next four sessions were held at *Red Hat* in Brisbane [sess_7 to sess_10]
 
-Sessions held at River City Labs (RCL) (March 2019 - January 2020) are called meetup###.py
+Sessions held at River City Labs *(RCL)* (March 2019 - January 2020) are called meetup###.py
 
-Sessions held at Pepper Studio in the T.C. Beirne Building (TCB) (February 2020 - present) are called meetup###.py
+Sessions held at Pepper Studio in the T.C. Beirne Building *(TCB)* (February 2020 - March 2020) are called meetup###.py
+<br>
+Sessions hosted live on Youtube are in the folder *online* and the links to the mentors are:
+<br>
+Tim: https://www.youtube.com/channel/UCaaN3NbnQ2HQW4tGj6-Yy5w
+<br>
+Arun: https://www.youtube.com/channel/UCKDjPjgzijZvq4qjN0K7JSA
 <br>
 <br>
 
