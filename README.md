@@ -10,11 +10,15 @@ Sessions held at River City Labs *(RCL)* (March 2019 - January 2020) are called 
 
 Sessions held at Pepper Studio in the T.C. Beirne Building *(TCB)* (February 2020 - March 2020) are called meetup###.py
 <br>
+<br>
 Sessions hosted live on Youtube are in the folder *online* and the links to the mentors are:
+<br>
 <br>
 Tim: https://www.youtube.com/channel/UCaaN3NbnQ2HQW4tGj6-Yy5w
 <br>
+<br>
 Arun: https://www.youtube.com/channel/UCKDjPjgzijZvq4qjN0K7JSA
+<br>
 <br>
 <br>
 
