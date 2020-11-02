@@ -43,7 +43,7 @@ t = turtle.Turtle()  # create a turtle to start drawing with
 t.shape("turtle")
 
 # The following 7 lines are to speed up early tasks when we are doing later tasks. Ignore for now
-fast_until_task = 9
+fast_until_task = 1
 if fast_until_task > 1:
     t.hideturtle()
     t.speed(0)
@@ -343,8 +343,8 @@ t.seth(0)
 
 
 # Solution 8: def a function which includes a default scaling value
-def draw_horse_39(the_turtle, scale=1):
-    """function to draw a stick horse. Uses the Walrus operator := so requires Python 3.9 or later"""
+def draw_horse_38(the_turtle, scale=1):
+    """function to draw a stick horse. Uses the Walrus operator := so requires Python 3.8 or later"""
     the_turtle.left(tail_angle := 15)  # turn left 15° AND assign 15 to variable tail_angle
     the_turtle.forward(tail := 5 * scale)
     the_turtle.right(tail_angle)
@@ -416,7 +416,7 @@ t.goto(0, 0)
 t.pendown()
 t.pensize(5)
 t.color("brown")
-draw_horse_36(t, 15)  # use draw_horse_39 if using python 3.9
+draw_horse_36(t, 15)  # use draw_horse_39 if using python 3.8
 
 # What we have learnt
 # 1. Create a function with default values for parameters
@@ -435,7 +435,7 @@ else:
 jump_to(t, 0, 100)
 t.pensize(1)
 t.begin_poly()
-draw_horse_39(t, 1)  # or draw_horse_36(t)
+draw_horse_38(t, 1)  # or draw_horse_36(t)
 t.end_poly()
 turtle.register_shape("horse", t.get_poly())
 t.hideturtle()
@@ -454,7 +454,7 @@ t.penup()
 t.goto(0, 0)
 t.setheading(90)
 t.begin_poly()
-draw_horse_39(t)  # or draw_horse_36(t)
+draw_horse_38(t)  # or draw_horse_36(t)
 t.end_poly()
 turtle.register_shape("horse", t.get_poly())
 t.shape("horse")

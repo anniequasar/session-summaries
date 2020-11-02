@@ -287,8 +287,8 @@ else:
 
 
 # # Solution 8: def a function which includes a default scaling value
-# def draw_horse_39(the_turtle, scale=1):
-#     """function to draw a stick horse. Uses the Walrus operator := so requires Python 3.9 or later"""
+# def draw_horse_38(the_turtle, scale=1):
+#     """function to draw a stick horse. Uses the Walrus operator := so requires Python 3.8 or later"""
 #     the_turtle.left(tail_angle := 15)  # turn left 15° AND assign 15 to variable tail_angle
 #     the_turtle.forward(tail := 5 * scale)
 #     the_turtle.right(tail_angle)
@@ -360,11 +360,11 @@ else:
 # t.pendown()
 # t.pensize(5)
 # t.color("brown")
-# draw_horse_36(t, 15)  # use draw_horse_39 if using python 3.9
+# draw_horse_36(t, 15)  # use draw_horse_38 if using python 3.8
 #
 # # What we have learnt
 # # 1. Create a function with default values for parameters
-# # 2. Python 3.9 walrus operator
+# # 2. Python 3.8 walrus operator
 # # 3. Turtle graphics abbreviated method names
 #
 # if fast_until_task > 9:
@@ -383,7 +383,7 @@ else:
 # t.goto(0, 0)
 # t.setheading(90)
 # t.begin_poly()
-# draw_horse_39(t)  # or draw_horse_36(t)
+# draw_horse_38(t)  # or draw_horse_36(t)
 # t.end_poly()
 # turtle.register_shape("horse", t.get_poly())
 # t.shape("horse")
