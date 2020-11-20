@@ -7,6 +7,31 @@ Learning objectives
 
 @author D Tim Cummings
 
+References
+
+	https://help.libreoffice.org/latest/sq/text/sbasic/python/python_programming.html
+	Explains XSCRIPTCONTEXT
+
+	https://www.pitonyak.org/oo.php
+	675 page manual on openoffice macros (BASIC)
+
+	https://wiki.documentfoundation.org/Macros/Python_Guide/Calc
+	How to manipulate sheets, cells and ranges using Python
+
+	http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html
+	Nice tutorial. Shows named ranges
+
+	http://document-foundation-mail-archive.969070.n3.nabble.com/PyUNO-usability-improvements-td4151556.html
+	Explains cell references sheet["A1"], sheet[r, c]
+
+	https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Cells_and_Ranges
+	How to manipulate sheets, cells and ranges using BASIC
+
+Extensions (bad links in LibreOffice website)
+
+	https://github.com/hanya/MRI/releases . MRI helps you find commands properties and methods.
+	https://gitlab.com/jmzambon/apso . Alternative Python Script Organizer
+
 
 Task 1: Install LibreOffice https://www.libreoffice.org/download/
 LibreOffice 7.0.3 comes with Python 3.7.7 so you shouldn't need anything else installed.
@@ -65,7 +90,8 @@ Function bas_revenue(buy_sell, quantity, unit_price, Optional quantity_split)
 	bas_revenue = myScript.invoke(Array(buy_sell, quantity, unit_price, quantity_split), Array(), Array() )
 End Function
 
-Task 7: Install extension MRI from https://github.com/hanya/MRI/releases . MRI helps you find commands properties and methods. 
+Task 7: Install extension MRI from https://github.com/hanya/MRI/releases . MRI helps you find commands properties and methods.
+Install extension APSO from https://gitlab.com/jmzambon/apso . Alternative Python Script Organizer
 
 Task 8: Define a python function cells_and_ranges with one optional argument which sets contents of one cell with string "Cells and Ranges"
 Run the script in an empty worksheet from Tools > Macros > Run Macro... > My Macros > meetup087_tim_libreoffice.py > cells_and_ranges
@@ -76,13 +102,13 @@ CurrentController works with user interface elements such as active worksheet or
 Task 9: Create a push button making it easier to run macro.
 Form design mode > Right click button > Control properties > Events > Execute Action > ... > My Macros > meetup087_tim_libreoffice.py > cells_and_ranges
 
-Task 10: With some data in Trades table (especially Buy Sell, Quantity, Unit Price) write and run a python macro calc_revenue_simple 
+Task 10: With some data in Trades table (especially Buy Sell, Quantity, Unit Price) write and run a python macro calc_revenue_simple
 which puts in formula for calculating brokerage and revenue on every row.
 
-Task 11: Repeat Task 10 with named ranges. 
+Task 11: Repeat Task 10 with named ranges.
 (Solution uses two functions update_named_range and calc_revenue)
 
-Task 12: Create a macro which analyses your trades matches sells to buys and calculates the capital gains 
+Task 12: Create a macro which analyses your trades matches sells to buys and calculates the capital gains
 (Solution uses two functions link_buy_sell and calc_gains)
 
 Task 13: Usg msgbox from https://wiki.documentfoundation.org/Macros/Python_Guide/Useful_functions to display a message
@@ -329,20 +355,7 @@ def calc_gains(event=None):
     sheet[1:row, 4:7].NumberFormat = CURRENCY
     sheet[1:row, 9:13].NumberFormat = CURRENCY
 
-# https://help.libreoffice.org/latest/sq/text/sbasic/python/python_programming.html
-
-# https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Cells_and_Ranges
-
-# http://document-foundation-mail-archive.969070.n3.nabble.com/PyUNO-usability-improvements-td4151556.html
-# Explains cell references sheet["A1"], sheet[r, c]
-
-# https://www.pitonyak.org/oo.php
-# 675 page manual on openoffice macros (BASIC)
-
-# http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html
-# Nice tutorial. Shows named ranges
-
-# https://wiki.documentfoundation.org/Macros/Python_Guide/Useful_functions  How to create your own msgbox
+# https://wiki.documentfoundation.org/Macros/Python_Guide/Useful_functions
 
 from com.sun.star.awt import MessageBoxButtons as MSG_BUTTONS
 import uno
