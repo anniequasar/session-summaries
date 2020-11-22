@@ -52,7 +52,8 @@ echo %APPDATA%
 /Applications/LibreOffice.app/Contents/MacOS/soffice
 
 Task 2: Create a script meetup087_tim_libreoffice.py and put in python scripts directory.
-Script to define a function 'py_brokerage' which takes 'quantity' and 'unit_price' and returns 20
+Script to define a function 'py_brokerage' which takes parameters 'quantity' and 
+'unit_price' and optional parameter 'quantity_split' and returns 20
 You can download solution and example files from https://github.com/anniequasar/session-summaries/online/
 meetup087_tim_libreoffice.py
 meetup087_tim_libreoffice.ods
