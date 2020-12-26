@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-MeetUp 061 - Beginners' Python and Machine Learning - Tue 26 May 2020 - duck typing
+"""MeetUp 061 - Beginners' Python and Machine Learning - Tue 26 May 2020 - duck typing
 
-https://youtu.be/5xTKbYRnvuw
+Youtube: https://youtu.be/5xTKbYRnvuw
+Colab:   https://colab.research.google.com/drive/1tFnyZJ5_Jj8Ol8fIlycn0Eulq1KWus2D
+Github:  https://github.com/anniequasar/session-summaries/tree/master/online
 
 Learning objectives:
 - duck typing
@@ -14,7 +15,6 @@ Learning objectives:
 """
 
 import sys
-import collections
 from collections import deque, namedtuple, defaultdict, Counter, ChainMap, UserString
 from collections.abc import Mapping
 import inspect
@@ -52,7 +52,7 @@ print(type(tf))
 # classes inherit from super classes. To find the super classes use attribute __bases__
 # bool inherits from int so can be used like an int
 print(f"base classes or super classes of bool are {bool.__bases__}")
-print(f"bool is a subclass of int where True==1 and False==0")
+print(f"bool is a subclass of int where True=={True:d} and False=={False:d}")
 
 # Example of using a bool like an int
 print(f"5 - True  : {5 - True}")
@@ -158,7 +158,7 @@ for var_name in ('lst', 'dd', 'cm', 'dq', 's', 'i', 'd', 'v1', 'v2', 'v3'):
     var = globals()[var_name]
     try:
         print(f"o_value({var_name:3}): {str(o_value(var)):5} : {var!r}")
-    except:
+    except Exception:
         # be very careful about catching exceptions this way
         # errors will go unnoticed
         # if you do this, often best to re-raise exception
@@ -190,7 +190,7 @@ for var_name in ('lst', 'dd', 'cm', 'dq', 's', 'i', 'd', 'v1', 'v2', 'v3'):
     var = globals()[var_name]
     try:
         print(f"o_value({var_name:3}): {str(o_value(var)):5} : {var!r}")
-    except:
+    except Exception:
         # if you catch all errors this way, often best to re-raise exception
         print(f"o_value({var_name:3}): {sys.exc_info()[0].__name__:12} {str(sys.exc_info()[1]):30} : {var!r}")
         raise
@@ -205,7 +205,7 @@ def divide(x, y):
         result = x / y
     except ZeroDivisionError as zde:
         # subclass of ArithmeticError
-        print("division by zero!")
+        print("division by zero!", zde)
     except (AttributeError, ArithmeticError):
         print("either an attribute error or arithmetic error other than zero division")
     else:
@@ -310,4 +310,3 @@ print(f"{mus!r} + 5 + 4: {mus + 5 + 4!r}")
 print(inspect.getsource(UserString.__add__))
 print()
 print(inspect.getsource(UserString.__radd__))
-

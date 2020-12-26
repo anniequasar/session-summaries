@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-MeetUp 065 - Beginners' Python and Machine Learning - Tue 23 Jun 2020 - email
+"""MeetUp 065 - Beginners' Python and Machine Learning - Tue 23 Jun 2020 - email
 
-https://youtu.be/
+Youtube: https://youtu.be/YNOf4YNocWc
+Source code:
+https://raw.githubusercontent.com/anniequasar/session-summaries/master/TCB/meetup065_tim_email.py
 
 Learning objectives:
 - sending emails automatically from within Python program
-
 
 @author D Tim Cummings
 
