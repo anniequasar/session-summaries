@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 r"""MeetUp 088 - Beginners' Python and Machine Learning - 01 Dec 2020 - Getting Started 3
 
