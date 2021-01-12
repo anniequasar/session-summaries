@@ -3,6 +3,11 @@
 r"""
 MeetUp 084 - Beginners' Python and Machine Learning - 03 Nov 2020 - turtle graphics for absolute beginners
 
+Youtube: https://youtu.be/QJKRgPodeRA
+Source code with and without answers:
+https://github.com/anniequasar/session-summaries/raw/master/online/meetup084_tim_turtle_with_answers.py
+https://github.com/anniequasar/session-summaries/raw/master/online/meetup084_tim_turtle.py
+
 Learning objectives
  - learn coding concepts using the educational turtle graphics
 
@@ -126,7 +131,7 @@ if fast_until_task > 3:
 else:
     t.showturtle()
     t.speed(3)
-    
+
 t.color("red")
 t.setheading(45)
 for a in (70, 80, 90, 100):  # line before code block will end in :

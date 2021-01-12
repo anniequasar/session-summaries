@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-MeetUp 057 - Beginners' Python and Machine Learning - Tue 28 Apr 2020 - dash plotly
+"""MeetUp 057 - Beginners' Python and Machine Learning - Tue 28 Apr 2020 - dash plotly
 
-https://youtu.be/zxwSezObVkQ
+Youtube: https://youtu.be/zxwSezObVkQ
+Source:  https://github.com/anniequasar/session-summaries/blob/master/online/meetup058_Tim_pythonator_b2.py
+Github:  https://github.com/anniequasar/session-summaries/tree/master/online
 
 Learning objectives:
 - python scripts (not notebooks)
@@ -27,7 +28,7 @@ r'''
 cd ~/PycharmProjects                                        # use projects directory in home directory
 git clone https://github.com/timcu/bpaml-dash-graph.git     # copy repository from github to your computer
 cd bpaml-dash-graph                                         # change directory into the project directory
-git checkout task1                                          # show git repo as at beginning of task 1 
+git checkout task1                                          # show git repo as at beginning of task 1
 
 # Create virtual environment
 python -m venv venv                         # Windows

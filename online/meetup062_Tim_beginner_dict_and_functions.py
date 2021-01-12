@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-MeetUp 062 - Beginners' Python and Machine Learning - 02 Jun 2020 - Getting Started 2
+"""MeetUp 062 - Beginners' Python and Machine Learning - 02 Jun 2020 - Getting Started 2
+
+Youtube: https://youtu.be/xgqF7O0so9A
+Colab:   https://colab.research.google.com/drive/1vX8TK8yNvvIcyi35ZUjFfOoZwEgDtpcl
+Github:  https://github.com/anniequasar/session-summaries/tree/master/online
 
 Learning objectives:
 - Data types: dict
 - Program structures: functions
-
-Youtube : https://youtu.be/xgqF7O0so9A
-Colab: https://colab.research.google.com/drive/1vX8TK8yNvvIcyi35ZUjFfOoZwEgDtpcl
 
 Follows on from Meetup 054 - Getting Started 1
 
@@ -74,7 +74,7 @@ for i in [27, 52, 5, 12, 30]:
     left = i - right
     print(f"{i:>4d} : {left:>2d} + {right:1d} : {tens[left//10-2]}-{numbers[right]}")
 
-"""### Task 1: 
+"""### Task 1:
 Fix the above code so that all the names of numbers display correctly.
 Need to check for numbers less than 20, and numbers evenly divisible by 10
 
@@ -98,7 +98,7 @@ for i in [27, 52, 5, 12, 30]:
     else:
         print(f"{i:>4d} : {left:>2d} + {right:1d} : {tens[left//10-2]}-{numbers[right]}")
 
-# The expression 'left//10-2' is a bit complicated 
+# The expression 'left//10-2' is a bit complicated
 # It would be good if we could say tens[20] and it would give us 'twenty'
 # We could use a sparse list but that is very inefficient from a memory perspective
 # Python has a dict data type where you can set keys and values
@@ -118,7 +118,7 @@ print(f"Keys can't be mutable or unhashable such as list or dict\n{d2}")
 # Add new keys and values. Keys have to be unique or they will overwrite previous value
 d['d'] = 'delta'
 d['e'] = 'epsilon'
-# Merge 
+# Merge
 d.update({'e': 'echo', 'f': 'foxtrot'})
 print(f"Updated and merged dict\n{d}")
 
@@ -173,16 +173,17 @@ for i in [27, 52, 5, 12, 30, 100, 112, 300, 999]:
     remainder = i - hundreds_number * 100
     right = remainder % 10
     left = remainder - right
+    breakdown = f"{hundreds_number}00 + {left:0>2d} + {right:1d}"
     if remainder == 0 and hundreds_name != "":
-        print(f"{i:>4d} : {hundreds_number}00 + {left:0>2d} + {right:1d} : {hundreds_name}")
+        print(f"{i:>4d} : {breakdown} : {hundreds_name}")
     elif remainder < len(numbers):
-        print(f"{i:>4d} : {hundreds_number}00 + {left:0>2d} + {right:1d} : {hundreds_name}{conjunction}{numbers[remainder]}")
+        print(f"{i:>4d} : {breakdown} : {hundreds_name}{conjunction}{numbers[remainder]}")
     elif right == 0:
-        print(f"{i:>4d} : {hundreds_number}00 + {left:0>2d} + {right:1d} : {hundreds_name}{conjunction}{tens[left]}")
+        print(f"{i:>4d} : {breakdown} : {hundreds_name}{conjunction}{tens[left]}")
     else:
-        print(f"{i:>4d} : {hundreds_number}00 + {left:0>2d} + {right:1d} : {hundreds_name}{conjunction}{tens[left]}-{numbers[right]}")
+        print(f"{i:>4d} : {breakdown} : {hundreds_name}{conjunction}{tens[left]}-{numbers[right]}")
 
-# Now we have some code which works for numbers from 0 to 999. 
+# Now we have some code which works for numbers from 0 to 999.
 # We don't want to have to copy 18 lines of code every time we want to use it.
 # We can put the code in a function and then call the function when needed.
 
@@ -194,8 +195,8 @@ print("\nFUNCTIONS")
 
 print()
 
-# All functions return a value but for functions which are called procedures or 
-# subroutines in other languages, this return value can be None 
+# All functions return a value but for functions which are called procedures or
+# subroutines in other languages, this return value can be None
 # The return value can be used in an expression or saved to a variable
 return_value = copyright()
 print(f"The return value from copyright() is {return_value}")
@@ -231,11 +232,12 @@ print(f"my_str.lower()  : {my_str.lower()}")
 print(f""""bob's diner".title() : {"bob's diner".title()})""")
 print(f""""bob's diner".split() : {"bob's diner".split()})""")
 
+
 # Defining our own functions
 # Function which returns None but prints current time
-import datetime
 def show_now():
     """Simple example of a function which prints the current time"""
+    import datetime
     print(f"The time is now {datetime.datetime.now()}")
 
 
@@ -351,7 +353,7 @@ def number_name(number: int) -> str:
         if count > 0:
             # recursive call of number_name from within number_name
             s += f"{number_name(count)} {name} "
-            number -= count * power    
+            number -= count * power
     if s != "" and number > 0:
         conjunction = "and "
     else:
@@ -462,4 +464,3 @@ def kwd_only_arg(*, arg):
 
 def combined_example(pos_only, /, standard, *, kwd_only):
     print(pos_only, standard, kwd_only)
-

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-MeetUp 058 - Beginners' Python and Machine Learning - Tue 05 May 2020 - pythonator
+"""MeetUp 058 - Beginners' Python and Machine Learning - Tue 05 May 2020 - pythonator
 
-https://youtu.be/h3IwMGri428
+Youtube: https://youtu.be/h3IwMGri428
+Answers: https://github.com/anniequasar/session-summaries/raw/master/online/meetup058_tim_pythonator_b2.py
 
 Learning objectives:
 - python for absolute beginners
@@ -215,7 +215,8 @@ roof_z2 = wall_z2 + 1
 
 # BUILD
 # clear any existing structure or ground
-mc.build(range(castle_x_min - 1, castle_x_min + castle_length + 10), range(floor_y + 1, floor_y + 31), range(ref_z - 4, ref_z + 5), air)
+range_x_clear = range(castle_x_min - 1, castle_x_min + castle_length + 10)
+mc.build(range_x_clear, range(floor_y + 1, floor_y + 31), range(ref_z - 4, ref_z + 5), air)
 # the base of the castle
 mc.build(range_x_castle_ext, range_y_castle_ext, range_z_castle_ext, castle)
 mc.build(range_x_castle_int, range_y_castle_int, range_z_castle_int, air)
@@ -292,7 +293,8 @@ def half_ellipse_flag(global_x, global_y):
 # BUILDING MATERIALS
 air = "air"
 pole = "default:fence_junglewood"
-colours = ["wool:" + colour for colour in "white|grey|dark_grey|black|blue|cyan|green|dark_green|yellow|orange|brown|red|pink|magenta|violet".split("|")]
+colour_names = "white|grey|dark_grey|black|blue|cyan|green|dark_green|yellow|orange|brown|red|pink|magenta|violet".split("|")
+colours = ["wool:" + colour for colour in colour_names]
 
 # ENGINEERING CALCULATIONS
 num_colours = len(colours)

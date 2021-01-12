@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-MeetUp 066 - Beginners' Python and Machine Learning - Tue 30 Jun 2020 - PDF
+"""MeetUp 066 - Beginners' Python and Machine Learning - Tue 30 Jun 2020 - PDF
 
-https://youtu.be/FM3LEDckQFA
+Youtube: https://youtu.be/FM3LEDckQFA
+Source code:
+https://raw.githubusercontent.com/anniequasar/session-summaries/master/TCB/meetup066_tim_pdf.py
+https://raw.githubusercontent.com/anniequasar/session-summaries/master/TCB/meetup065_tim_email.py
 
 Learning objectives:
 - creating PDFs automatically with reportlab and attaching to emails
+
+Requirements:
+reportlab
 
 @author D Tim Cummings
 
@@ -20,12 +25,24 @@ sample data Homer's Odyssey. Call file odyssey.full.text for running demo odysse
 https://gutenberg.org/files/1727/1727-0.txt
 
 """
-
 import builtins
 import datetime
 import io
 import logging
 import unicodedata
+
+from reportlab.pdfgen.canvas import Canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import mm
+from reportlab.platypus import (SimpleDocTemplate, Paragraph, ListItem, ListFlowable, Preformatted, BalancedColumns, Spacer,
+                                PageBreak)
+from reportlab.platypus import Table
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont, TTFError
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.enums import TA_JUSTIFY
+
+from meetup065_tim_email import send_message_via_gmail, message_from_str
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -68,8 +85,8 @@ conda install --name venv-email-pdf --file requirements.txt       # Anaconda
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib aiosmtpd reportlab
 """
 
-from reportlab.pdfgen.canvas import Canvas
-from reportlab.lib.pagesizes import A4
+# from reportlab.pdfgen.canvas import Canvas
+# from reportlab.lib.pagesizes import A4
 
 
 # Task 4: Run demo 4 to create a PDF document and save to a file
@@ -93,7 +110,7 @@ def pdf_demo_4(filename, text):
 # I don't think emailing will work from online services such as Google colab
 # https://docs.python.org/3/library/email.examples.html
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
-from meetup065_Tim_email import send_message_via_gmail, message_from_str
+# from meetup065_tim_email import send_message_via_gmail, message_from_str
 
 
 def message_with_pdf_file_attachment(filename, subject="Task 5: Attaching a PDF document from a file to an email"):
@@ -132,7 +149,7 @@ def message_with_pdf_attachment(pdf_buffer_value, subject="Task 6: Attaching a P
 
 # Task 7: drawString at different locations in text to work out (rough) coordinates of corners
 # Reportlab provides units other than points making it easier to position on page, eg mm, cm, inch
-from reportlab.lib.units import mm
+# from reportlab.lib.units import mm
 
 
 # Sec 2.2 More about the canvas
@@ -221,9 +238,10 @@ def pdf_demo_10(file):
 
 
 # Task 11: Use Platypus to take flowable text more than one page long.
-from reportlab.platypus import SimpleDocTemplate, Paragraph, ListItem, ListFlowable, Preformatted, BalancedColumns, Spacer, PageBreak
-from reportlab.lib.styles import getSampleStyleSheet
-from reportlab.lib.enums import TA_JUSTIFY
+# from reportlab.platypus import (
+#     SimpleDocTemplate, Paragraph, ListItem, ListFlowable, Preformatted, BalancedColumns, Spacer, PageBreak)
+# from reportlab.lib.styles import getSampleStyleSheet
+# from reportlab.lib.enums import TA_JUSTIFY
 
 
 # Sec 5.1, 5.2 Platypus
@@ -249,7 +267,7 @@ def pdf_demo_11(file):
     story = []
     story.append(Paragraph("Paragraphs of text", head_style))
     for i in range(10):
-        s = f"This <strong>is</strong> <em>paragraph</em> {i} with ten sentences formatted using &lt;strong&gt; and &lt;em&gt; tags. " * 10
+        s = f"This <strong>is</strong> a <em>paragraph</em> {i} with ten sentences using &lt;strong&gt; and &lt;em&gt; tags. " * 10
         p = Paragraph(s, para_style)
         story.append(p)
     # Spacers currently leave vertical space even though they have parameters for horizontal and vertical
@@ -278,24 +296,24 @@ def pdf_demo_11(file):
     story.append(PageBreak())
     # If whitespace important use Preformatted rather than Paragraph
     story.append(Paragraph("Formatting text using whitespace", head_style))
-    story.append(Preformatted("""
-  ____             _                           _ 
+    story.append(Preformatted(r"""
+  ____             _                           _
  |  _ \           (_)                         ( )
- | |_) | ___  __ _ _ _ __  _ __   ___ _ __ ___|/ 
- |  _ < / _ \/ _` | | '_ \| '_ \ / _ \ '__/ __|  
- | |_) |  __/ (_| | | | | | | | |  __/ |  \__ \  
- |____/ \___|\__, |_|_| |_|_| |_|\___|_|  |___/  
-              __/ |                              
-             |___/                               
+ | |_) | ___  __ _ _ _ __  _ __   ___ _ __ ___|/
+ |  _ < / _ \/ _` | | '_ \| '_ \ / _ \ '__/ __|
+ | |_) |  __/ (_| | | | | | | | |  __/ |  \__ \
+ |____/ \___|\__, |_|_| |_|_| |_|\___|_|  |___/
+              __/ |
+             |___/
 
-  _____       _   _                 
- |  __ \     | | | |                
- | |__) |   _| |_| |__   ___  _ __  
- |  ___/ | | | __| '_ \ / _ \| '_ \ 
+  _____       _   _
+ |  __ \     | | | |
+ | |__) |   _| |_| |__   ___  _ __
+ |  ___/ | | | __| '_ \ / _ \| '_ \
  | |   | |_| | |_| | | | (_) | | | |
  |_|    \__, |\__|_| |_|\___/|_| |_|
-         __/ |                      
-        |___/                       
+         __/ |
+        |___/
     """, getSampleStyleSheet()["Code"]))
     doc.build(story, onFirstPage=number_page, onLaterPages=number_page)
 
@@ -306,16 +324,16 @@ def pdf_demo_11(file):
 # Task 12: Create a table in a PDF that spans more than one page
 # Using platypus print a "page x of y" at top right of each page
 # Sec 7 Tables and TableStyles
-from reportlab.platypus import Table
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont, TTFError
+# from reportlab.platypus import Table
+# from reportlab.pdfbase import pdfmetrics
+# from reportlab.pdfbase.ttfonts import TTFont, TTFError
 
 fonts_by_language = {}
 
 
 # Sec 3.5 TrueType font support
 def register_language_fonts():
-    """
+    r"""
     Register Noto fonts and reference by language
 
     If this function is not called then pdf_demo_12 will use standard font Helvetica
@@ -338,7 +356,8 @@ def register_language_fonts():
     pdfmetrics.registerFont(TTFont("ArialBI", "Arial Bold Italic.ttf"))
     pdfmetrics.registerFont(TTFont("ArialIt", "Arial Italic.ttf"))
 
-    languages = {"default": "", "ethiopic": "Ethiopic", "khmer": "Khmer", "new tai lue": "NewTaiLue", "runic": "Runic", "tai tham": "TaiTham" }
+    languages = {"default": "", "ethiopic": "Ethiopic", "khmer": "Khmer", "new tai lue": "NewTaiLue", "runic": "Runic",
+                 "tai tham": "TaiTham"}
     variations = ["Regular", "Bold", "BoldItalic", "Italic"]
     for key, file_part in languages.items():
         family = {}
@@ -354,7 +373,11 @@ def register_language_fonts():
                     family = {"Regular": "Arial", "Bold": "ArialBd", "BoldItalic": "ArialBI", "Italic": "ArialIt"}
             else:
                 family[variation] = font
-        pdfmetrics.registerFontFamily(family["Regular"], normal=family["Regular"], bold=family.get("Bold", family["Regular"]), boldItalic=family.get("BoldItalic", family["Regular"]), italic=family.get("Italic", family["Regular"]))
+        pdfmetrics.registerFontFamily(family["Regular"],
+                                      normal=family["Regular"],
+                                      bold=family.get("Bold", family["Regular"]),
+                                      boldItalic=family.get("BoldItalic", family["Regular"]),
+                                      italic=family.get("Italic", family["Regular"]))
         fonts_by_language[key] = family["Regular"]
         logger.debug(f"register_language_fonts: Family of {base_font} is {family}")
     logger.debug(f"register_language_fonts: {fonts_by_language}")
@@ -480,6 +503,12 @@ def pdf_demo_12(file):
 
 # pdf_demo_12("pdf_demo_12.pdf")
 
-# with io.BytesIO() as pdf_buffer:
-#     pdf_demo_12(pdf_buffer)
-#     send_message_via_gmail(message_with_pdf_attachment(pdf_buffer.getvalue()))
+
+def pdf_demo_13():
+    """Sending a pdf attachment on an email without saving as a file first"""
+    with io.BytesIO() as pdf_buffer:
+        pdf_demo_12(pdf_buffer)
+        send_message_via_gmail(message_with_pdf_attachment(pdf_buffer.getvalue()))
+
+
+# pdf_demo_13()

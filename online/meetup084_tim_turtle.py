@@ -3,6 +3,11 @@
 r"""
 MeetUp 084 - Beginners' Python and Machine Learning - 03 Nov 2020 - turtle graphics for absolute beginners
 
+Youtube: https://youtu.be/QJKRgPodeRA
+Source code with and without answers:
+https://github.com/anniequasar/session-summaries/raw/master/online/meetup084_tim_turtle_with_answers.py
+https://github.com/anniequasar/session-summaries/raw/master/online/meetup084_tim_turtle.py
+
 Learning objectives
  - learn coding concepts using the educational turtle graphics
 

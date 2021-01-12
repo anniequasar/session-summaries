@@ -2,6 +2,11 @@
 r"""
 MeetUp 087 - Beginners' Python and Machine Learning - 24 Nov 2020 - Python macros in LibreOffice
 
+Youtube: https://youtu.be/841Fgt1sQsY
+Source code and sample spreadsheet:
+https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.py
+https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.ods
+
 Learning objectives
  - how to write and run Python macros in LibreOffice 7 using pyuno
 
@@ -9,28 +14,28 @@ Learning objectives
 
 References
 
-	https://help.libreoffice.org/latest/sq/text/sbasic/python/python_programming.html
-	Explains XSCRIPTCONTEXT
+https://help.libreoffice.org/latest/sq/text/sbasic/python/python_programming.html
+Explains XSCRIPTCONTEXT
 
-	https://www.pitonyak.org/oo.php
-	675 page manual on openoffice macros (BASIC)
+https://www.pitonyak.org/oo.php
+675 page manual on openoffice macros (BASIC)
 
-	https://wiki.documentfoundation.org/Macros/Python_Guide/Calc
-	How to manipulate sheets, cells and ranges using Python
+https://wiki.documentfoundation.org/Macros/Python_Guide/Calc
+How to manipulate sheets, cells and ranges using Python
 
-	http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html
-	Nice tutorial. Shows named ranges
+http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html
+Nice tutorial. Shows named ranges
 
-	http://document-foundation-mail-archive.969070.n3.nabble.com/PyUNO-usability-improvements-td4151556.html
-	Explains cell references sheet["A1"], sheet[r, c]
+http://document-foundation-mail-archive.969070.n3.nabble.com/PyUNO-usability-improvements-td4151556.html
+Explains cell references sheet["A1"], sheet[r, c]
 
-	https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Cells_and_Ranges
-	How to manipulate sheets, cells and ranges using BASIC
+https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Cells_and_Ranges
+How to manipulate sheets, cells and ranges using BASIC
 
 Extensions (bad links in LibreOffice website)
 
-	https://github.com/hanya/MRI/releases . MRI helps you find commands properties and methods.
-	https://gitlab.com/jmzambon/apso . Alternative Python Script Organizer
+https://github.com/hanya/MRI/releases . MRI helps you find commands properties and methods.
+https://gitlab.com/jmzambon/apso . Alternative Python Script Organizer
 
 
 Task 1: Install LibreOffice https://www.libreoffice.org/download/
@@ -52,13 +57,14 @@ echo %APPDATA%
 /Applications/LibreOffice.app/Contents/MacOS/soffice
 
 Task 2: Create a script meetup087_tim_libreoffice.py and put in python scripts directory.
-Script to define a function 'py_brokerage' which takes parameters 'quantity' and 
+Script to define a function 'py_brokerage' which takes parameters 'quantity' and
 'unit_price' and optional parameter 'quantity_split' and returns 20
 You can download solution and example files from https://github.com/anniequasar/session-summaries/online/
 meetup087_tim_libreoffice.py
 meetup087_tim_libreoffice.ods
 
-Task 3: Create a LibreOffice calc document in your Documents directory with a worksheet called 'Trades' and column headings in row 1, col C of
+Task 3: Create a LibreOffice calc document in your Documents directory with a worksheet called 'Trades' and
+column headings in row 1, col C of
 Trade Date, Buy Sell, Stock Code, Quantity, Unit Price, Brokerage, Revenue
 Create Basic macro: Tools > Macros > Organise Macros > Basic...
 In workbook > Standard, click [New] and call it PythonBridge
@@ -73,7 +79,7 @@ End Function
 
 In a cell in worksheet, enter "=bas_brokerage(100, 15)" without the quotes and you should get 20
 
-Task 4: import logging and sys and in py_brokerage log the current python version to the console. Use F9 to recalc cell with brokerage
+Task 4: import logging and sys and in py_brokerage log the python version to the console. Use F9 to recalc cell with brokerage
 
 Task 5: Change py_brokerage to match commsec brokerage rates and test in worksheet
     $10.00 (Up to and including $1,000)
@@ -81,27 +87,28 @@ Task 5: Change py_brokerage to match commsec brokerage rates and test in workshe
     $29.95 (Over $10,000 up to $25,000 (inclusive))
     0.12% (Over $25,000)
 
-Task 6: Create py_revenue which returns a positive value for sale of shares (Buy / Sell = S) and negative value for purchase (Buy / Sell = B)
+Task 6: Create py_revenue which returns a positive value for sale of shares (Buy Sell = S) and negative for purchase (Buy Sell = B)
 You will need to create a BASIC function revenue to call it.
 
 Solution 6:
 Function bas_revenue(buy_sell, quantity, unit_price, Optional quantity_split)
-	Dim myScript as Object
-	myScript = ThisComponent.getScriptProvider().getScript("vnd.sun.star.script:meetup087_tim_libreoffice.py$py_revenue?language=Python&location=user")
-	bas_revenue = myScript.invoke(Array(buy_sell, quantity, unit_price, quantity_split), Array(), Array() )
+    Dim myScript as Object
+    myScript = ThisComponent.getScriptProvider().getScript("vnd.sun.star.script:meetup087_tim_libreoffice.py$py_revenue?language=Python&location=user")
+    bas_revenue = myScript.invoke(Array(buy_sell, quantity, unit_price, quantity_split), Array(), Array() )
 End Function
 
 Task 7: Install extension MRI from https://github.com/hanya/MRI/releases . MRI helps you find commands properties and methods.
 Install extension APSO from https://gitlab.com/jmzambon/apso . Alternative Python Script Organizer
 
-Task 8: Define a python function cells_and_ranges with one optional argument which sets contents of one cell with string "Cells and Ranges"
-Run the script in an empty worksheet from Tools > Macros > Run Macro... > My Macros > meetup087_tim_libreoffice.py > cells_and_ranges
+Task 8: Define a python function cells_and_ranges with one optional argument which sets contents of one cell with "Cells and Ranges"
+Run the script in a worksheet from Tools > Macros > Run Macro... > My Macros > meetup087_tim_libreoffice.py > cells_and_ranges
     XSCRIPTCONTEXT.getDocument().CurrentController.ActiveSheet["A6"].setString("Cells and Ranges")
 
 CurrentController works with user interface elements such as active worksheet or selection.
 
 Task 9: Create a push button making it easier to run macro.
-Form design mode > Right click button > Control properties > Events > Execute Action > ... > My Macros > meetup087_tim_libreoffice.py > cells_and_ranges
+Form design mode > Right click button > Control properties > Events > Execute Action >
+    ... > My Macros > meetup087_tim_libreoffice.py > cells_and_ranges
 
 Task 10: With some data in Trades table (especially Buy Sell, Quantity, Unit Price) write and run a python macro calc_revenue_simple
 which puts in formula for calculating brokerage and revenue on every row.
@@ -189,7 +196,7 @@ def cells_and_ranges(event=None):
     cursor.collapseToCurrentRegion()
     cr = cursor.RangeAddress
     sheet["A21"].String = f"collapseToCurrentRegion RangeAddress=(Sheet={cr.Sheet} StartRow={cr.StartRow} EndRow={cr.EndRow} StartColumn={cr.StartColumn} EndColumn={cr.EndColumn})"
-    doc.CurrentController.select(sheet.getCellRangeByPosition(cr.StartColumn, cr.StartRow, cr.EndColumn, cr.EndRow))  #[cr.StartRow:cr.EndRow+1, cr.StartColumn:cr.EndColumn+1])
+    doc.CurrentController.select(sheet.getCellRangeByPosition(cr.StartColumn, cr.StartRow, cr.EndColumn, cr.EndRow))
 
 
 def calc_revenue_simple(event=None):  # need optional argument so function can be run from button or menu
@@ -241,8 +248,8 @@ def calc_revenue(event=None):  # need optional argument so function can be run f
     update_named_range(sheet, "Unit_Price", "G", row_boundary, CURRENCY)  # 104 : [$$-C09]#,##0.00;[RED]-[$$-C09]#,##0.00
 
     for row in range(1, row_boundary):
-        sheet[row, 7].Formula = f'=BAS_BROKERAGE(1*Quantity;1*Unit_Price)'
-        sheet[row, 8].Formula = f'=BAS_REVENUE(""&Buy_Sell;1*Quantity;1*Unit_Price)'
+        sheet[row, 7].Formula = '=BAS_BROKERAGE(1*Quantity;1*Unit_Price)'
+        sheet[row, 8].Formula = '=BAS_REVENUE(""&Buy_Sell;1*Quantity;1*Unit_Price)'
     update_named_range(sheet, "Brokerage", "H", row_boundary, CURRENCY)  # 104 : Currency format
     update_named_range(sheet, "Revenue", "I", row_boundary, CURRENCY)  # 104 : Currency format
     # Setting formula
@@ -356,8 +363,8 @@ def calc_gains(event=None):
     sheet[1:row, 4:7].NumberFormat = CURRENCY
     sheet[1:row, 9:13].NumberFormat = CURRENCY
 
-# https://wiki.documentfoundation.org/Macros/Python_Guide/Useful_functions
 
+# https://wiki.documentfoundation.org/Macros/Python_Guide/Useful_functions
 from com.sun.star.awt import MessageBoxButtons as MSG_BUTTONS
 import uno
 
