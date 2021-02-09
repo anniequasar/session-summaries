@@ -74,5 +74,5 @@ Peta Ellis (CEO) and the entire team at River City Labs for their generosity and
 <br>
 Brad Cuthbert and Pepper Studio in the T.C. Beirne building in 2020
 <br>
-Kai Willadsen, Jake Owen and the team at Superloop in 2020 ** 
+Kai Willadsen, Jake Owen and Superloop for Meetup sponsorship in 2020-2021 ** 
 <br>
