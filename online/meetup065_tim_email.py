@@ -3,8 +3,7 @@
 """MeetUp 065 - Beginners' Python and Machine Learning - Tue 23 Jun 2020 - email
 
 Youtube: https://youtu.be/YNOf4YNocWc
-Source code:
-https://raw.githubusercontent.com/anniequasar/session-summaries/master/TCB/meetup065_tim_email.py
+Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup065_tim_email.py
 
 Learning objectives:
 - sending emails automatically from within Python program

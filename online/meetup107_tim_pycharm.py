@@ -3,6 +3,8 @@
 """MeetUp 107 - Beginners' Python and Machine Learning - 11 May 2021 - PyCharm
 
 Youtube: https://youtu.be/SF7Kq1oozbs
+Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup107_tim_pycharm.py
+Answers: https://github.com/anniequasar/session-summaries/raw/master/online/meetup107_tim_pycharm_solution.py
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/278075460/
 Github:  https://github.com/anniequasar/session-summaries/tree/master/online
 

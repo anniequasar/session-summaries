@@ -4,15 +4,15 @@
 
 This continues on from MeetUp 095.
 
+Colab:   https://colab.research.google.com/drive/1X2BNBYuks6pvW2JntcX7HmRTemeLJjrh
+Youtube: https://youtu.be/sF_VOxj42b4
+Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/276491844/
+Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+
 Learning objectives:
 - pandas DataFrames and Series
 - plotly.py
 
-Links:
-- Colab:   https://colab.research.google.com/drive/1X2BNBYuks6pvW2JntcX7HmRTemeLJjrh
-- Youtube: https://youtu.be/sF_VOxj42b4
-- Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/276491844/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
 
 To install third party library requirements
 

@@ -4,10 +4,10 @@
 
 Continuation from MeetUp 091 on 12th Jan 2021
 
-- Youtube: https://youtu.be/yn9FcpRLHgU
-- Colab: https://colab.research.google.com/drive/1v-QMawPtWPtUAa0LNEmbZUElFVdYziUx
-- Github: https://github.com/anniequasar/session-summaries/tree/master/online
-- Meetup: https://www.meetup.com/Beginners-Python-Machine-Learning/events/275785495
+Youtube: https://youtu.be/yn9FcpRLHgU
+Colab:   https://colab.research.google.com/drive/1v-QMawPtWPtUAa0LNEmbZUElFVdYziUx
+Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/275785495
 
 Learning objectives:
 - scipy optimize

@@ -2,16 +2,16 @@
 # -*- coding: utf-8 -*-
 """MeetUp 109 - Beginners' Python and Machine Learning - 03 Aug 2021 - Getting Started 3
 
+Colab:   https://colab.research.google.com/drive/1xBUG-gqxO8ZV-cW-KJrIgiEP-Axhbovk
+Youtube: https://youtu.be/CO_5WT_lGDw
+Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/279145866/
+Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+
 Learning objectives:
 - Interactive python
 - Introduction to coding
 - Functions, branching, looping
 
-Links:
-- Colab:   https://colab.research.google.com/drive/1xBUG-gqxO8ZV-cW-KJrIgiEP-Axhbovk
-- Youtube: https://youtu.be/CO_5WT_lGDw
-- Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/279145866/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
 
 @author D Tim Cummings
 
