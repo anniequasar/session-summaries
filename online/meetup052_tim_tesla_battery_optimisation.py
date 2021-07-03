@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """MeetUp 052 - Beginners Python and Machine Learning - 24th Mar 2020 - Optimise Tesla SA Battery
 

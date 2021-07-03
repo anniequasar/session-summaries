@@ -3,8 +3,8 @@
 """MeetUp 057 - Beginners' Python and Machine Learning - Tue 28 Apr 2020 - dash plotly
 
 Youtube: https://youtu.be/zxwSezObVkQ
-Source:  https://github.com/anniequasar/session-summaries/blob/master/online/meetup058_Tim_pythonator_b2.py
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup057_tim_dash_plotly.py
+Github:  https://github.com/anniequasar/session-summaries
 
 Learning objectives:
 - python scripts (not notebooks)

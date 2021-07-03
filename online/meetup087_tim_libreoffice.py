@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-r"""
-MeetUp 087 - Beginners' Python and Machine Learning - 24 Nov 2020 - Python macros in LibreOffice
+r"""MeetUp 087 - Beginners' Python and Machine Learning - 24 Nov 2020 - Python macros in LibreOffice
 
 Youtube: https://youtu.be/841Fgt1sQsY
-Source code and sample spreadsheet:
-https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.py
-https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.ods
+Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.py
+Sample:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.ods
 
 Learning objectives
  - how to write and run Python macros in LibreOffice 7 using pyuno

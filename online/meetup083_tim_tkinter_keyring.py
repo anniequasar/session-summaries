@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-r"""
-MeetUp 083 - Beginners' Python and Machine Learning - 27 Oct 2020 - tkinter and keyring
+r"""MeetUp 083 - Beginners' Python and Machine Learning - 27 Oct 2020 - tkinter and keyring
 
 Youtube: https://youtu.be/d4m17IinfsU
-Source code with and without answers:
-https://github.com/anniequasar/session-summaries/raw/master/online/meetup083_tim_tkinter_keyring_with_answers.py
-https://github.com/anniequasar/session-summaries/raw/master/online/meetup083_tim_tkinter_keyring.py
+Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup083_tim_tkinter_keyring.py
+Answers: https://github.com/anniequasar/session-summaries/raw/master/online/meetup083_tim_tkinter_keyring_with_answers.py
 
 Learning objectives
  - Graphical User Interface
