@@ -23,7 +23,7 @@ Challenge 1: Install Software
 - Install Python 3.9.6 from https://www.python.org/downloads/
  - necessary for running python on your computer
  - alternatively can install anaconda which includes many third party libraries
-- PyCharm Community Edition 2021.1.2 from https://www.jetbrains.com/pycharm/download/
+- PyCharm Community Edition 2021.1.3 from https://www.jetbrains.com/pycharm/download/
  - Integrated Development Environment (IDE)
  - Easier to write programs
 
