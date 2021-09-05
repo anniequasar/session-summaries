@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 r"""MeetUp 110 - Beginners' Python and Machine Learning - 10 Aug 2021 - Print to xlsx printer in Python
 
-Youtube: https://youtu.be/sEz1xsuusv4
+Youtube: https://youtu.be/rEf4H6_FJ94
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/279540703/
 Github:  https://github.com/anniequasar/session-summaries.git
 
