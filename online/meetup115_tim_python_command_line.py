@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 r"""MeetUp 115 - Beginners' Python and Machine Learning - 14 Sep 2021 - Run Python scripts from the command line
 
-Youtube: https://youtu.be/0Uf_RTLycnQ
+Youtube: https://youtu.be/MBF_jxNvrps
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/280569331/
 Github:  https://github.com/anniequasar/session-summaries.git
 
@@ -13,7 +13,7 @@ Learning objectives:
 - Parse command line arguments
 
 Prerequisites:
-- Need to have python 3.7 or later installed on your computer from python.org or anaconda.com
+- Need to have python 3.8 or later installed on your computer from python.org or anaconda.com
 
 @author D Tim Cummings
 
