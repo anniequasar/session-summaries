@@ -93,4 +93,4 @@ for actor in my_list:
 
     # Print channel and time for all shows using an actor with name of Smith or smith
 
-    print(actor.string, ":", prog.title.string, ": Channel", prog["channel"], ": Time", start_time_str
+    print(actor.string, ":", prog.title.string, ": Channel", prog["channel"], ": Time", start_time_str)
