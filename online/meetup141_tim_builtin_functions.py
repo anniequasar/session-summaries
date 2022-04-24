@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-"""MeetUp 141 - Beginners' Python and Machine Learning - 05 Apr 2022 - Getting Started 3
+#! /usr/bin/env python3
+r"""MeetUp 141 - Beginners' Python and Machine Learning - 05 Apr 2022 - Getting Started 3
 
 Learning objectives:
 - Interactive python

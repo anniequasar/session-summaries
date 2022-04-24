@@ -1,4 +1,5 @@
-"""MeetUp 142 - Beginners' Python and Machine Learning - 12 Apr 2022 - Wordle game with word list
+#! /usr/bin/env python3
+r"""MeetUp 142 - Beginners' Python and Machine Learning - 12 Apr 2022 - Wordle game with word list
 
 Learning objectives:
 - how to scrape data from website and store in local file

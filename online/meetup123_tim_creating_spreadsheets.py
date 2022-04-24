@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 r"""MeetUp 123 - Beginners' Python and Machine Learning - 09 Nov 2021 - Creating spreadsheets from Python
 
 Learning objectives:

@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-"""MeetUp 137 - Beginners' Python and Machine Learning - 08 Mar 2022 - Wordle game
+#! /usr/bin/env python3
+r"""MeetUp 137 - Beginners' Python and Machine Learning - 08 Mar 2022 - Wordle game
 
 Learning objectives:
 - how to write a wordle game in Python
