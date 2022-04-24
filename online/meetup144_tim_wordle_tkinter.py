@@ -353,7 +353,7 @@ def handle_keypress_for_letters(event, dct_labels):
 
 if __name__ == "__main__":
     root.title("Wordle")
-    create_letters()
+    # create_letters()
     current_guess = 0
     current_letter = 0
     lst_valid_answers, lst_valid_guesses = fetch_word_lists()
