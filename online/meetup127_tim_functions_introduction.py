@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MeetUp 127 - Beginners' Python and Machine Learning - 07 Dec 2021 - Getting Started 3b
+r"""MeetUp 127 - Beginners' Python and Machine Learning - 07 Dec 2021 - Getting Started 3b
 
 Learning objectives:
 - Interactive python

@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-"""MeetUp 129 - Beginners' Python and Machine Learning - 11 Jan 2022 - Collections
+#! /usr/bin/env python3
+r"""MeetUp 129 - Beginners' Python and Machine Learning - 11 Jan 2022 - Collections
 
 Learning objectives:
 - built-in and library collections https://docs.python.org/3/library/collections.html

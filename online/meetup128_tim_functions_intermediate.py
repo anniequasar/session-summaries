@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MeetUp 128 - Beginners' Python and Machine Learning - 14 Dec 2021 - Functions (intermediate)
+r"""MeetUp 128 - Beginners' Python and Machine Learning - 14 Dec 2021 - Functions (intermediate)
 
 Learning objectives:
 - dict

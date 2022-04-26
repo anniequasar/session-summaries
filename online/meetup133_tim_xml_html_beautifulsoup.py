@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""MeetUp 070 - Beginners' Python and Machine Learning - 8 Feb 2022 - RSS XML HTML
+r"""MeetUp 133 - Beginners' Python and Machine Learning - 8 Feb 2022 - RSS XML HTML
 
 Meetup: https://www.meetup.com/Beginners-Python-Machine-Learning/events/283584438/
 Youtube: https://youtu.be/hnlFXljRaBQ
