@@ -68,13 +68,25 @@ pip install -r requirements.txt
 #   Use dir(event) to find which attributes can be used
 #   Log values of all attributes when a key has been pressed
 
-# Task 6 - use pyinstaller to create a single executable file for your platform
+# Task 6 - Fix cross platform issues with saving files for five letter guesses and answers
+# macOS runs app in sandbox, different path each time. Can't write to cwd = /
+# Hints:
+#   https://pyinstaller.org/en/stable/runtime-information.html use sys._MEIPASS to find bundle_dir
+#   https://stackoverflow.com/questions/404744/determining-application-path-in-a-python-exe-generated-by-pyinstaller
+from pathlib import Path
+bundle_dir = Path(getattr(sys, '_MEIPASS', Path(__file__).parent)
+#
+#
+# Task 7 - use pyinstaller to create a single executable file for your platform
 # pyinstaller --onefile --windowed meetup146_tim_wordle_tkinter_pyinstaller.py
+
 """
 import json
 import logging
+import pathlib
 import random
 import re
+import sys
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
@@ -263,8 +275,18 @@ def s5_handle_keypress_for_letters(event, dct_labels):
 
 # Define constants (see meetup137)
 URL = "https://nytimes.com/games/wordle/index.html"
-FIVE_LETTER_ANSWERS = "five_letter_answers.txt"
-FIVE_LETTER_GUESSES = "five_letter_guesses.txt"
+
+# Task 6 - Fix cross platform issues with saving files for five letter guesses and answers
+# macOS runs app in sandbox, different path each time. Can't write to cwd = /
+# Hints:
+#   https://pyinstaller.org/en/stable/runtime-information.html use sys._MEIPASS to find bundle_dir
+# from pathlib import Path
+# bundle_dir = Path(getattr(sys, '_MEIPASS', Path(__file__).parent)
+
+bundle_dir = pathlib.Path(__file__).parent
+logger.debug(f"{bundle_dir=}")
+FIVE_LETTER_ANSWERS = bundle_dir / "five_letter_answers.txt"
+FIVE_LETTER_GUESSES = bundle_dir / "five_letter_guesses.txt"
 # These constants from meetup137 will have different values which will be explained later
 CORRECT = f'Correct.Letter.TLabel'
 MOVE = f'Move.Letter.TLabel'
