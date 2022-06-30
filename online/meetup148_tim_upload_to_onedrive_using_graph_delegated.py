@@ -1,8 +1,8 @@
 r"""MeetUp 148 - Beginners' Python and Machine Learning - 12 July 2022 - Upload to onedrive using MS Graph - delegation
 
-Youtube: https://youtu.be/
+Youtube: https://youtu.be/Ijj_a09rwio
 Github:  https://github.com/timcu/session-summaries/raw/master/online/meetup148_tim_upload_to_onedrive_using_graph_delegation.py
-Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/
+Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/286892519/
 
 Learning objectives
  - REST API
