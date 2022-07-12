@@ -35,6 +35,7 @@ Use API menu in graph-explorer to go to quick start and "build and run the sampl
 Open in Pycharm
 Create virtual environment
 Set content root to graphtutorial (because requirements.txt is in that subfolder)
+Add reportlab to requirements.txt as we will use it later
 Install requirements
 Run code, try a couple of API calls and exit
 
@@ -161,10 +162,9 @@ def put_pdf_in_documents(user_client):
         bytes_pdf = pdf_buffer.getvalue()
 
     filename = "pdf_banner_bpaml148.pdf"
-    request_url = f'https://graph.microsoft.com/v1.0/me/drive/items/{fetch_documents_id()}:/{filename}:/content'
+    request_url = f'https://graph.microsoft.com/v1.0/me/drive/items/{fetch_documents_id(user_client)}:/{filename}:/content'
 
     response = user_client.put(request_url, data=bytes_pdf,
                                headers={'Content-Type': 'application/pdf'})
     logger.warning(f"response=\n{pprint.pformat(response.json())}")
     return response
-
