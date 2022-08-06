@@ -2,7 +2,7 @@
 
 Links:
 - Youtube: https://youtu.be/CRd-4E9uNr0
-- Github:  https://github.com/timcu/session-summaries/raw/master/online/meetup152_tim_flask_web_app_prime_minister.md
+- Github:  https://github.com/timcu/bpaml-prime-minister
 - Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/287509206/
 
 References:
