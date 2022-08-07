@@ -2,11 +2,12 @@
 
 Links:
 - Youtube: https://youtu.be/CRd-4E9uNr0
+- Github:  https://github.com/timcu/session-summaries/raw/master/online/meetup152_tim_flask_web_app_prime_minister.md
 - Github:  https://github.com/timcu/bpaml-prime-minister
 - Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/287509206/
 
 References:
-- https://flask.palletsprojects.com/en/2.2.0/tutorial/
+- https://flask.palletsprojects.com/en/2.2.x/tutorial/
 - https://docs.python.org/3/library/sqlite3.html
 
 Learning objectives:
@@ -18,16 +19,16 @@ Learning objectives:
 
 ### Set up using IDE
 
-- Install Python 3.10.5 from https://www.python.org/downloads/release/python-392/
+- Install Python 3.10.5 from https://www.python.org/downloads/
   - (3.8 or later should be fine, anaconda also fine) 
 - Install Git 2.37.1 from https://git-scm.com/download/
 - Install IDE e.g. PyCharm Community Edition 2022.2 from https://www.jetbrains.com/pycharm/download/
 - Run PyCharm
 - Clone repository and setup virtual environment
 - Check out `task1`
-- run `flask app` in Terminal
+- run `flask run` in Terminal
 
-Running `flask app` works because of `.flaskenv` file and `python-dotenv` in `requirements.txt`
+Running `flask run` works because of `.flaskenv` file and `python-dotenv` in `requirements.txt`
 
 ### Set up using command line
 
@@ -38,10 +39,10 @@ git checkout task1                                           # start with flask 
 ```
 
 Create virtual environment in Windows
-```Shell
-py -m venv venv                                              # create the virtual environment
-venv\Scripts\Activate.bat                                    # activate the virtual environment
-pip install -r requirements.txt                              # install the third party libraries
+```batchfile
+py -m venv venv                                              &:: create the virtual environment
+venv\Scripts\Activate.bat                                    &:: activate the virtual environment
+pip install -r requirements.txt                              &:: install the third party libraries
 ```
 
 Create virtual environment in Mac or Linux
@@ -89,10 +90,25 @@ git checkout task2            # to get ready for doing task 2
 1. Create a run configuration to `init-db`
 2. List all prime ministers in a table
 
+```sql
+select distinct p.id, p.vc_common_name, p.vc_surname, p.date_birth, p.vc_birth_place, p.date_death 
+from tbl_person p inner join tbl_ministry m on p.id=m.id_person 
+where m.vc_ministry=?
+order by p.vc_surname asc, p.vc_common_name asc
+```
+```
+ministers = pm_db.execute(sql, (ministry,)).fetchall()
+```
 ### Challenge 2: List all people in database in list_person.html
 
 1. Add sql to `prime_minister.view_persons()` function and pass results to `render_template`
 2. Create a table in `list_person.html` with a loop to repeat the rows
+
+```sql
+select distinct p.id, p.vc_common_name, p.vc_surname, p.date_birth, p.vc_birth_place, p.date_death 
+from tbl_person p
+order by p.vc_surname asc, p.vc_common_name asc
+```
 
 ```Shell
 git checkout -b task2attempt  # create a branch to save your attempt
@@ -108,6 +124,11 @@ git diff task2 task3          # to see what has changed in creating the solution
 3. Add sql in `prime_minister.view_person(id_person)` to find the list of recreations
 4. Pass the list of recreations to `render_template('view_person.html')`
 5. Modify `view_person.html` to list any recreations
+
+```
+sql = """select * from tbl_recreation where id_person=?"""
+recreations = pm_db.execute(sql, (person['id'],)).fetchall()
+```
 
 ```Shell
 git checkout -b task3attempt  # create a branch to save your attempt
@@ -134,7 +155,7 @@ git diff task4 task5          # to see what has changed in creating the solution
 ### Challenge 5: Add authentication to application so users can log in.
 
 1. Table already exists in database
-2. Follow instructions in tutorial at https://flask.palletsprojects.com/en/2.1.x/tutorial/views/
+2. Follow instructions in tutorial at https://flask.palletsprojects.com/en/2.2.x/tutorial/views/
 3. Table is tbl_user with fields (id, vc_username, vc_password). Table in tutorial is user with fields (id, username, password)
 
 ```Shell
@@ -154,7 +175,7 @@ git diff task6 task6soln      # to see what has changed in creating the solution
 
 ### Challenge 7: Create files so that app can be packaged and installed
 
-1. See https://flask.palletsprojects.com/en/2.2.0/tutorial/install/
+1. See https://flask.palletsprojects.com/en/2.2.x/tutorial/install/
 2. Create setup.py
 3. Create MANIFEST.in
 4. pip install wheel
@@ -167,7 +188,7 @@ git diff task6 task6soln      # to see what has changed in creating the solution
 - e.g. "Married 1981 to Margie Aitken and had 3 children"
 - If not actually married num_year_marriage will be None.
 - e.g. "Partnered with Tim Matheison and had 0 children"
-- Modify function view_person(id_person) in __init__.py to pass marriages to template
+- Modify function view_person(id_person) in `__init__.py` to pass marriages to template
 - Use a union sql statement because we need to search id_person and id_person_partner.
 - The following sql uses named bindings.
 ```python
