@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 r"""MeetUp 144 - Beginners' Python and Machine Learning - 31 May 2022 - tkinter and wordle
 
 Youtube: https://youtu.be/EZnSHYC_eG4
@@ -315,7 +314,7 @@ def handle_keypress_for_letters(event, dct_labels):
     global current_guess, current_letter, lst_possible
     if len(event.char) < 1:
         return
-    logger.debug(event.char, ord(event.char), current_guess, current_letter)
+    logger.debug(f"{event.char=}, {ord(event.char)=}, {current_guess=}, {current_letter=}")
     if ord(event.char) == 8:  # backspace key
         if current_letter > 0:
             current_letter -= 1

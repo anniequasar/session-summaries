@@ -5,6 +5,15 @@ Created on Sat Jul  2 14:18:22 2022
 @author: nnguyen3
 
 Beginner's Python & Machine Learning Support Session #147: absolute beginners
+<<<<<<< HEAD
+=======
+
+Youtube: https://youtu.be/R3Dkwv8ANXc
+Github:  https://github.com/timcu/session-summaries/raw/master/online/meetup147_Annie_absolute_beginner.py
+Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/286826367/
+
+
+>>>>>>> master
 """
 
 # S T R I N G S
