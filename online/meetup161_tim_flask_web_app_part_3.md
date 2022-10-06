@@ -1,10 +1,10 @@
 # MeetUp 161 - Beginners Python and Machine Learning - Tue 18 Oct 2022 - flask web application - Part 3
 
 Links:
-- Youtube: https://youtu.be/
+- Youtube: https://youtu.be/lVqcltpfMQY
 - Github:  https://github.com/timcu/session-summaries/raw/master/online/meetup161_tim_flask_web_app_part_3.md
 - Github:  https://github.com/timcu/bpaml-prime-minister
-- Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/
+- Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/288939740/
 
 References:
 - https://flask.palletsprojects.com/en/2.2.x/tutorial/
