@@ -13,7 +13,7 @@ green-blue-brown-gold (green=5, blue=6, brown=10, gold=±5%) => 56 x 10Ω  ±5%
 Run meetup167_tim_internet_of_things.py to create a better schematic in svg format.
 
 GND ──┬────────────────┬─────┬─────┬─────┬──────────────┐
-      ⌇               │     │     │     │              ⌇
+      ⌇                │     │     │     │              ⌇
      10kΩ              │     ⏄↗↗  ⏄↗↗  ⏄↗↗          10kΩ
       │                │    red   blue green            │
       ├───────┐        │     │     │     │        ┌─────┤
@@ -48,6 +48,9 @@ rpi.gpio
 import RPi.GPIO as GPIO
 import time
 import paho.mqtt.client as mqtt
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 GREEN = 12
 BLUE = 26
@@ -105,6 +108,7 @@ def on_command_to_pi(client, userdata, message):
 
 def pub_and_sub_to_mqtt():
     client = mqtt.Client()
+    client.enable_logger(logger=logging.getLogger())
     client.on_message = on_message
     client.message_callback_add("bpaml/pi", on_command_to_pi)
     client.connect(MQTT)

@@ -24,6 +24,19 @@ Create a file called requirements.txt with the following contents
 paho-mqtt
 schemdraw
 ```
+
+Run MQTT broker
+(Port forward from router to 1883 if access outside intranet required)
+
+For example using docker
+```
+nano mosquitto.config
+listener 1883
+allow_anonymous true
+log_type all
+
+sudo docker run --rm -it --name mosquitto -p 1883:1883 -v $(pwd):/mosquitto/config:ro eclipse-mosquitto
+```
 """
 import paho.mqtt.client as mqtt
 
@@ -33,8 +46,8 @@ import time
 
 
 # logging was not covered in the session, but it is possible to use a logger with mqtt
-# change the logging level from logging.INFO to logging.DEBUG to use
-logging.basicConfig(level=logging.INFO)
+# change the logging level from logging.WARNING to logging.INFO or logging.DEBUG to use
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
@@ -147,8 +160,8 @@ def on_message(client, userdata, message):
 
 
 # Create an object of class mqtt.Client. "userdata" allows me to identify which client in the call back functions
-client2 = mqtt.Client(userdata="Challenge 5:")
-# Assign callback functions to object client5. Notice we are referring to function names without parentheses ()
+client2 = mqtt.Client(userdata="Challenge 2:")
+# Assign callback functions to object client2. Notice we are referring to function names without parentheses ()
 client2.on_connect = on_connect
 client2.on_disconnect = on_disconnect
 client2.on_message = on_message
@@ -157,7 +170,7 @@ client2.connect(broker_url)
 # Subscribe to topic bpaml. If a message comes on this channel, the function on_message will be called
 client2.subscribe(topic=topic, qos=0)
 # Publish a message to topic bpaml. As we are previously subscribed we should get the message back ourselves
-client2.publish(topic=topic, payload=f"Tim's challenge 2 message  at {now()}", qos=0, retain=True)
+client2.publish(topic=topic, payload=f"Tim's challenge 2 message at {now()}", qos=0, retain=True)
 # If this was the last lines of my script I could call client2.loop_forever()
 # However I want to only loop for 5 seconds listening for other messages and during that time I want to
 # count down from 5 to 1
@@ -195,10 +208,10 @@ def on_message_from_pi(client, userdata, message):
 # clean_session=False means the server will provide me all data received since I last connected
 # clean_session=True  means the server will clean out any outstanding data and just return the last retained message
 # To use sessions you will need a unique client_id. To get a client_id which will almost always be unique
-# type the following two lines into Python Console
+# type the following line (after the #) into Python Console
 # import uuid; print(uuid.uuid4())
 client3 = mqtt.Client(client_id="02d961ed-2a4d-4bb8-a12e-755e26ebcf18", clean_session=False, userdata="Challenge 3:")
-client3.enable_logger(logger=logging.getLogger())
+client3.enable_logger(logger=logging.getLogger(__name__))
 # will is only executed if connection dies without being disconnected
 client3.will_set(topic=topic, payload=f"Tim's connection6 has left the building {now()}", qos=1, retain=True)
 # client6 will use the same on_connect, on_disconnect and on_message as client5
@@ -214,7 +227,7 @@ client3.subscribe(topic=topic, qos=1)
 client3.subscribe(topic=topic_window, qos=1)
 client3.subscribe(topic=topic_wall, qos=1)
 client3.subscribe(topic=topic_pi, qos=1)
-client3.publish(topic=topic, payload=f"Tim's challenge 6 message  at {now()}", qos=1)
+client3.publish(topic=topic, payload=f"Tim's challenge 3 message at {now()}", qos=1)
 client3.publish(topic=topic_window, payload=f"Message to the window group from Tim at {now()}", qos=1)
 client3.loop_start()
 for counter in range(5, 0, -1):
