@@ -10,7 +10,7 @@ For Windows and Mac, recommend that you install Docker Desktop
 
 Docker Engine is free. Docker Desktop is free except for commercial use in a company with 250 employees or more than US$10 million annual revenue.
 
-On Windows you will also need to install WSL 2 (Windows Subsystem for Linux 2) in features or https://aka.mw/wsl2kernel 
+On Windows you will also need to install WSL 2 (Windows Subsystem for Linux 2) in features or https://aka.ms/wsl2kernel 
 
 References:
 - https://docs.docker.com/get-started/
@@ -67,7 +67,7 @@ docker run bpaml169-hi-from-py-image
 cd ..
 ```
 
-Notice how program uses Python 3.11 even though the latest Python installed on this computer is Python 3.10 
+Notice how program uses Python 3.11 even if the latest Python installed on your computer is Python 3.10 
 
 Some docker commands
 ```shell
