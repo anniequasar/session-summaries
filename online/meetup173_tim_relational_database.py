@@ -2,6 +2,7 @@ r"""# MeetUp 173 - Beginners' Python and Machine Learning - 15 Feb 2022 - Python
 
 Learning objectives:
 - using python's sqlite3 to create, read, update, delete data (crud)
+- python `with` context manager
 
 Links:
 - Colab:   https://colab.research.google.com/drive/1MgCv1TiEYuOeXlrIggICaTKRwdVshFgr
@@ -45,6 +46,7 @@ import datetime
 import pprint
 import requests
 import sqlite3
+from contextlib import closing
 
 # Challenge 1 - Create a list of dicts of metadata and data from telemetry sensors for rainfall and stream heights
 resource_id_meta = '117218af-4adc-4f8e-927a-0fe43c46cdb4'
@@ -103,10 +105,11 @@ cur.close()
 
 # Check if table was created (sqlite_master is a table created automatically)
 sql = 'SELECT name FROM sqlite_master'
-cur = con.execute(sql)
-# we get the results from the cur object. use fetchall to save results in list
-rows = cur.fetchall()
-cur.close()
+# Another way to automatically close cursor is with contextlib
+with closing(con.execute(sql)) as cur:
+    # we get the results from the cur object. use fetchall to save results in list
+    rows = cur.fetchall()
+# cur.close()  # don't need this now because automatically closed
 print("\nnames from sqlite_master as tuples")
 for row in rows:
     print(row)
@@ -115,14 +118,13 @@ for row in rows:
 # Set the row_factory if you want something else 
 con.row_factory = sqlite3.Row
 # sqlite3.Row allows us to access results by index or case-insensitive name
-cur = con.execute(sql)
+with closing(con.execute(sql)) as cur:
 # iterate over cursor if you don't need all data at once saved in variable
 # this is more memory efficient
-print("\nnames from sqlite_master as Rows converted to dicts")
-for row in cur:
-    print(row, dict(row))
-# need to leave cursor open until finished iterating over it
-cur.close()
+    print("\nnames from sqlite_master as Rows converted to dicts")
+    for row in cur:
+        print(row, dict(row))
+    # need to leave cursor open until finished iterating over it
 
 # Challenge 2 - Prepare our metadata for insertion in database
 # 1. Rename keys, so they don't include spaces (str.replace(" ", "_"))
@@ -154,50 +156,51 @@ INSERT INTO tbl_sensor
    VALUES 
    (:_id, :Sensor_ID, :Location_ID, :Location_Name, :Sensor_Type, :Unit_of_Measure, :Latitude, :Longitude)"""
 
-cur = con.execute(sql, lst_meta[0])
-# transactions are a feature used by banks to ensure if money was taken out of
-# one account and added to another in two separate sql statements, then if the 
-# two statements were in the same transaction then either they both were 
-# committed or neither were committed. Can't have one committed without the 
-# other.
-con.commit()  # Need to commit after inserting unless autocommit turned on
-cur.close()
+with closing(con.execute(sql, lst_meta[0])):
+    # transactions are a feature used by banks to ensure if money was taken out of
+    # one account and added to another in two separate sql statements, then if the 
+    # two statements were in the same transaction then either they both were 
+    # committed or neither were committed. Can't have one committed without the 
+    # other.
+    con.commit()  # Need to commit after inserting unless autocommit turned on
 
-cur = con.execute("SELECT * from tbl_sensor")
-print("\nRecords in tbl_sensor after one insert")
-for row in cur:
-    print(dict(row))
-cur.close()
+with closing(con.execute("SELECT * from tbl_sensor")) as cur:
+    print("\nRecords in tbl_sensor after one insert")
+    for row in cur:
+        print(dict(row))
 # Notice how even though we entered latitudes and longitudes as str they came back as floats
 
 # Challenge 3 - insert second row into table and display full contents of table
 
 print("\nSolution 3 - Records in tbl_sensor after second insert")
-cur = con.execute(sql, lst_meta[1])
-con.commit()
-cur.close()
-cur = con.execute("SELECT * from tbl_sensor")
-for row in cur:
-    print(dict(row))
-cur.close()
+with con:  # context manager can be used to ensure commit() (not close) is automatically applied when leaving context
+    with closing(con.execute(sql, lst_meta[1])):
+        pass
+
+with closing(con.execute("SELECT * from tbl_sensor")) as cur:
+    for row in cur:
+        print(dict(row))
 
 # Challenge 4 - insert remaining rows into table
 
 print("\nSolution 4 - Number of records in tbl_sensor after all inserts")
 # example of using executemany
-cur = con.executemany(sql, lst_meta[2:])
-con.commit()
-# can also re-use open cursor 
-for row in cur.execute("SELECT count(*) from tbl_sensor"):
-    print(dict(row))
-cur.close()
+# Nested with statements can be written on one line 
+
+# with con:
+    # with closing(con.executemany(sql, lst_meta[2:])) as cur:
+
+# same as 
+with con, closing(con.executemany(sql, lst_meta[2:])) as cur:
+    # can also re-use open cursor 
+    for row in cur.execute("SELECT count(*) from tbl_sensor"):
+        print(dict(row))
 
 # Challenge 5 - try inserting first row again
 
 # Solution 5 - commented out because it raises an exception
-# cur = con.execute(sql, lst_meta[0])
-# cur.close()
-# con.commit()
+# with con, closing(con.executemany(sql, lst_meta[2:])):
+#     pass
 
 # Challenge 6 - create a datastructure for lst_data
 # {'_id': 1, 'Measured': '2023-02-04T18:00:00', 'E1809': '0', 'E1531': '-', 'E1515': '0', 'E1512': '0', 'E2020': '0',
@@ -236,9 +239,9 @@ COMMIT;
 # BEGIN COMMIT start and stop an SQL transaction
 
 # create empty tbl_measure
-cur = con.executescript(sql)  # use executescript for multiple sql statements
-cur.close()
-con.commit()
+# use executescript for multiple sql statements
+with con, closing(con.executescript(sql)):
+    pass
 
 # Convert all our measurement times to datetimes, so we can do date arithmetic
 # sqlite3 can do some date arithmetic even if dates are in strings, but I would rather be sure.
@@ -250,17 +253,14 @@ pprint.pprint(lst_data_raw[0])
 sql = """INSERT INTO tbl_measure (dt_measure, id_sensor, rl_measurement) 
          VALUES (:dt_measure, :id_sensor, :rl_measurement)"""
 raw = lst_data_raw[0]
-cur = con.cursor()  # can get the cursor before executing sql
-for k, v in raw.items():
-    if k not in ['_id', 'Measured'] and v != '-':
-        data = {'dt_measure': raw['dt_measure'], 'id_sensor': k, 'rl_measurement': v}
-        cur.execute(sql, data)
-con.commit()
-
-print("\nFirst 5 records which have been inserted into tbl_measure")
-for row in cur.execute("SELECT * from tbl_measure LIMIT 5"):
-    print(dict(row))
-cur.close()  # still have to remember to close it when finished
+with con, closing(con.cursor()) as cur:  # can get the cursor before executing sql
+    for k, v in raw.items():
+        if k not in ['_id', 'Measured'] and v != '-':
+            data = {'dt_measure': raw['dt_measure'], 'id_sensor': k, 'rl_measurement': v}
+            cur.execute(sql, data)
+    print("\nFirst 5 records which have been inserted into tbl_measure")
+    for row in cur.execute("SELECT * from tbl_measure LIMIT 5"):
+        print(dict(row))
 
 # Challenge 7 - add remaining data
 
@@ -271,10 +271,8 @@ for raw in lst_data_raw[1:]:
         if k not in ['_id', 'Measured'] and v != '-':
             lst_data.append({'dt_measure': raw['dt_measure'], 'id_sensor': k, 'rl_measurement': v})
 # using executemany() can be more efficient than many execute()
-cur = con.executemany(sql, lst_data)
-print(f"{cur.rowcount=}")
-cur.close()
-con.commit()
+with con, closing(con.executemany(sql, lst_data)) as cur:
+    print(f"{cur.rowcount=}")
 
 # QUERYING DATA
 sql = "SELECT * FROM tbl_sensor WHERE deg_latitude > -27.4 AND id_sensor LIKE 'E18%'"
@@ -285,10 +283,9 @@ sql = "SELECT * FROM tbl_sensor WHERE deg_latitude > -27.4 AND id_sensor LIKE 'E
 # and the sensor id starts with E18 and ends with anything
 print("\nQUERY EXAMPLES")
 print(sql)
-cur = con.execute(sql)
-for row in cur:
-    print(dict(row))
-cur.close()
+with closing(con.execute(sql)) as cur:
+    for row in cur:
+        print(dict(row))
 
 # Querying relational data
 sql = """
@@ -304,30 +301,27 @@ LIMIT 30
 """
 print()
 print(sql)
-cur = con.execute(sql)
-print(f"{'Time':<16s}{'Measurement':>16s}{'Sensor':^12s}{'Type':<20s}{'Location':<8s}")
-print(f"{'====':<16s}{'===========':>16s}{'======':^12s}{'====':<20s}{'========':<8s}")
-for r in cur:
-    print(f"{r['dt_measure']:%Y-%m-%d %H:%M}{r['rl_measurement']:>12.3f} {r['txt_unit']:<3s}{r['id_sensor']:^12s}"
-          f"{r['txt_type']:<20s}{r['txt_location']:<8s}")
-cur.close()
+with closing(con.execute(sql)) as cur:
+    print(f"{'Time':<16s}{'Measurement':>16s}{'Sensor':^12s}{'Type':<20s}{'Location':<8s}")
+    print(f"{'====':<16s}{'===========':>16s}{'======':^12s}{'====':<20s}{'========':<8s}")
+    for r in cur:
+        print(f"{r['dt_measure']:%Y-%m-%d %H:%M}{r['rl_measurement']:>12.3f} {r['txt_unit']:<3s}{r['id_sensor']:^12s}"
+            f"{r['txt_type']:<20s}{r['txt_location']:<8s}")
 
 # Data constraints - e.g., don't want the same sensor measured at the same time twice in database
 sql = """CREATE UNIQUE INDEX IF NOT EXISTS idx_sensor_time ON tbl_measure (dt_measure, id_sensor)"""
-cur = con.execute(sql)
-cur.close()
-con.commit()
+with con, closing(con.execute(sql)):
+    pass
 
 # Now try adding duplicate data - commented out because raises IntegrityError
 sql = """INSERT INTO tbl_measure (dt_measure, id_sensor, rl_measurement) 
          VALUES (:dt_measure, :id_sensor, :rl_measurement)"""
 raw = lst_data_raw[0]
-cur = con.cursor()
-for k, v in raw.items():
-    if k not in ['_id', 'Measured'] and v != '-':
-        data = {'dt_measure': raw['dt_measure'], 'id_sensor': k, 'rl_measurement': v}
-        # cur.execute(sql, data)
-con.commit()
+with con, closing(con.cursor()) as cur:
+    for k, v in raw.items():
+        if k not in ['_id', 'Measured'] and v != '-':
+            data = {'dt_measure': raw['dt_measure'], 'id_sensor': k, 'rl_measurement': v}
+            # cur.execute(sql, data)
 
 # Databases are good at aggregate functions like summing and counting on groups
 sql = """
@@ -341,40 +335,35 @@ HAVING frequency > 3
 ORDER BY frequency DESC, total DESC"""
 print()
 print(sql)
-cur = con.execute(sql)
-for row in cur:
-    print(dict(row))
-cur.close()
+with closing(con.execute(sql)) as cur:
+    for row in cur:
+        print(dict(row))
 
 # Updating data
 sql = "UPDATE tbl_sensor SET txt_type = 'rainfall' WHERE txt_type = 'Rainfall'"
-cur = con.execute(sql)
 print()
 print(sql)
-print(f"{cur.rowcount=}")
-cur.close()
-con.commit()  # after any sql that updates data
+with con, closing(con.execute(sql)) as cur:
+    print(f"{cur.rowcount=}")
 
 sql = "SELECT * FROM tbl_sensor WHERE txt_type='Rainfall'"
 print()
 print(sql)
-cur = con.execute(sql)
-for row in cur:
-    print(dict(row))
-cur.close()
+with closing(con.execute(sql)) as cur:
+    for row in cur:
+        print(dict(row))
 
 # Deleting data
 sql = "DELETE FROM tbl_sensor WHERE txt_type = 'rainfall'"
 print()
 print(sql)
-cur = con.execute(sql)
-print(f"{cur.rowcount=}")
-cur.close()
-con.commit()  # after any sql that updates data
+with con, closing(con.execute(sql)) as cur:
+    print(f"{cur.rowcount=}")
 
 sql = "SELECT COUNT(*) FROM tbl_sensor"
-cur = con.execute(sql)
-print(sql)
-for row in cur:
-    print(dict(row))
-cur.close()
+with closing(con.execute(sql)) as cur:
+    for row in cur:
+        print(dict(row))
+
+# when no longer needed - close your database connection
+con.close()
