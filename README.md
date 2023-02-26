@@ -9,38 +9,32 @@ The next four sessions were held at *Red Hat* in Brisbane [sess_7 to sess_10]
 Sessions held at River City Labs *(RCL)* (March 2019 - January 2020) are called meetup###.py
 
 Sessions held at Pepper Studio in the T.C. Beirne Building *(TCB)* (February 2020 - March 2020) are called meetup###.py
-<br>
-<br>
+
 Sessions hosted live on Youtube are in the folder *online* and the links to the mentors are:
-<br>
-<br>
-Tim: https://www.youtube.com/channel/UCaaN3NbnQ2HQW4tGj6-Yy5w
-<br>
-<br>
-Arun: https://www.youtube.com/channel/UCKDjPjgzijZvq4qjN0K7JSA
-<br>
-<br>
-<br>
+
+ - Tim: https://www.youtube.com/@DTimCummings/streams
+
+ - Arun: https://www.youtube.com/channel/UCKDjPjgzijZvq4qjN0K7JSA
 
 In these folders you will encounter three different types of files.
 
     + readme.md     is a markdown file. You do not need to do anything except read these files.
 
-    + readme.py     is a python file that usually contains scripts to be run in your python IDE. 
+    + meetup###.py  is a python file that usually contains scripts to be run in your python IDE. 
                     You need to download and save the file in order to run it.
 
-    + readme.ipynb  is an ipython notebook file that you can either read on github or download to run.
-                    To run the file you will need a notebook interpreter such as Jupyter notebooks or 
-                    you can install jupyter using pip in a python virtual environment in your python console. 
-                    Alternatively, you can use Google Colaboratory. Colaboratory is a free Jupyter notebook 
-                    environment that requires no setup and runs entirely from your web browser.
+    + meetup###.ipynb  is an ipython notebook file that you can either read on github or download to run.
+                       To run the file you will need a notebook interpreter such as Jupyter notebooks or 
+                       you can install jupyter using pip in a python virtual environment in your python console. 
+                       Alternatively, you can use Google Colaboratory. Colaboratory is a free Jupyter notebook 
+                       environment that requires no setup and runs entirely from your web browser.
 
 
 
 
 **Instructions for new learners**
 
-        1. Contact the Administrator with your e-mail to get an invite sent to join the slack space:
+        1. Contact the Administrator (skypyprojectatgmaildotcom) with your e-mail to get an invitation sent to join the slack space:
             https://beginnerspython.slack.com/
                  
         2. Sign up to the DataCamp free course: 
