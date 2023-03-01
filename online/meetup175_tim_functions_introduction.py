@@ -10,7 +10,7 @@ Links:
 - Colab:   https://colab.research.google.com/drive/1qsw1g8yX1_bGmI2iIbIope8Mq6VQgXur
 - Youtube: https://youtu.be/6jVpG_vsYf4
 - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/291695159/
-- Github:  https://github.com/timcu/session-summaries/tree/master/online
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 @author D Tim Cummings
 
@@ -89,7 +89,6 @@ print(f"{x=}, {y=}")
 
 # We can calculate y for different values of x and put all the x and y values into lists
 print("\nPrint from a loop")
-x = 0
 lst_x = []
 lst_y = []
 for i in range(41):
@@ -138,17 +137,25 @@ x = 3.
 y = f(x)
 print(f"type(x)={type(x).__name__:7s}: type(y)={type(y).__name__:7s} f({x})={y}")
 
+# Let's create a function to make printing return value and type easier
+def print_function_result(fun, x):
+    y = fun(x)
+    print(f"type(x)={type(x).__name__:7s}: type(y)={type(y).__name__:7s} f({x})={y}")
+
+x = 3
+print_function_result(f, x)
+x = 3.
+print_function_result(f, x)
+
 # Task 2: Try calling function with argument of different data type eg decimal.Decimal("1.1") from standard library decimal (which needs to be imported)
 import decimal
 
 print("\nSolution 2: Can also import class Decimal from decimal library")
 from decimal import Decimal
 x = Decimal("1.1")
-y = f(x)
-print(f"type(x)={type(x).__name__:7s}: type(y)={type(y).__name__:7s} f({x})={y}")
+print_function_result(f, x)
 x = 1.1
-y = f(x)
-print(f"type(x)={type(x).__name__:7s}: type(y)={type(y).__name__:7s} f({x})={y}")
+print_function_result(f, x)
 
 # Task 3: rewrite our loop from before which created lst_x and lst_y but this time calling the function
 
@@ -301,4 +308,3 @@ def fahrenheit(celsius):
 
 for c in [0, 100, -40]:
     print(f"{c:7.2f}°C is equivalent to {fahrenheit(c):7.2f}°F")
-
