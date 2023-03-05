@@ -33,7 +33,7 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-EMAIL_TO = "tim@triptera.com.au"
+EMAIL_TO = ""
 IMAGE_FILE = "bpaml.jpg"
 
 # Task 1. Set up Python project
@@ -105,7 +105,7 @@ python -m aiosmtpd -n --listen localhost:8025 --debug
 
 # Task 6: Send a message to the debug server. Try including a non-ascii unicode character
 def send_message_via_aiosmtpd(email_message):
-    email_message['From'] = "admin@triptera.com"
+    email_message['From'] = "debugger@my_computer.python"
     # Ports 8025 debugging server, 25 SMTP(), 465 SMTP_SSL(), 587 .starttls()
     smtp_port = 8025  # For debugging server
     smtp_host = "127.0.0.1"
