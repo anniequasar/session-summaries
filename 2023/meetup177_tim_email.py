@@ -13,8 +13,8 @@ Refs:
 https://aiosmtpd.readthedocs.io/
 https://docs.python.org/3/library/email.examples.html
 https://docs.python.org/3/library/smtplib.html
-https://developers.google.com/gmail/api/quickstart/python      (sample code is compatible with both Python 2 and 3)
-https://developers.google.com/gmail/api/guides/sending#python  (sample code is Python 2 not Python 3)
+https://developers.google.com/gmail/api/quickstart/python
+https://developers.google.com/gmail/api/guides/sending#python
 """
 
 import base64
@@ -22,7 +22,6 @@ import collections
 import datetime
 import imghdr
 import os.path
-import pickle
 import smtplib
 import unicodedata
 
@@ -30,11 +29,13 @@ from email.message import EmailMessage
 from email.utils import make_msgid
 
 from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 EMAIL_TO = ""
-IMAGE_FILE = "bpaml.jpg"
+IMAGE_FILE = "bpaml.webp"
 
 # Task 1. Set up Python project
 """
@@ -92,7 +93,7 @@ https://docs.python.org/3/library/email.message.html
     return email_message
 
 
-print(message_from_str())
+# print(message_from_str())
 
 
 # Task 5: Run debugging email server aiosmtpd
@@ -115,7 +116,7 @@ def send_message_via_aiosmtpd(email_message):
 
 
 # send_message_via_aiosmtpd(message_from_str("Task 6: Test to debugging server"))
-send_message_via_aiosmtpd(message_from_str("Task 6: Test to debugging server 😃"))
+# send_message_via_aiosmtpd(message_from_str("Task 6: Test to debugging server 😃"))
 
 
 # Task 7: Send a message via ISP server.
@@ -133,42 +134,67 @@ def send_message_via_isp(email_message):
 
 
 # Task 8: Set up a gmail account for sending email
-# 8. https://developers.google.com/gmail/api/quickstart/python
-# 8a. Turn on Gmail API
-# 8a1. Configure your OAuth client : Desktop app or Web server
-# 8a2. Save file credentials.json in project directory
-# 8b. Install Google Client Library using pip install or requirements.txt
-# 8c. Create function like quickstart.py and add scope gmail.send and remove labels demo
-# 8d. Call function although may not work with Firefox as default browser on Mac. Try Chrome
+# https://developers.google.com/gmail/api/quickstart/python
+#
+# Create project - eg bpaml177
+# https://console.cloud.google.com
+#
+# Enable the API - enable Gmail API -
+# https://console.cloud.google.com/flows/enableapi?apiid=gmail.googleapis.com
+#
+# Configure consent screen
+# https://console.cloud.google.com/apis/credentials/consent?project=bpaml177
+# External - because we don't have an organisation - Create
+# App name - bpaml177
+# User support email - your gmail address
+# Developer contact info - your gmail address
+# Save and continue
+# Add or remove scopes
+# Filter - API:Gmail API
+# .../auth/gmail.readonly
+# .../auth/gmail.send
+# Save and Continue
+# Test users: + Add users : your email address
+# Save and continue
+# Back to dashboard
+#
+# Authorise credentials for desktop application
+# https://console.cloud.google.com/apis/credentials
+# Create Credentials > OAuth Client ID
+# Application Type > Desktop App
+# Name > bpaml177
+# Under OAuth 2.0 Client IDs download client id as client_secret.json
+# Save client_secret.json in project directory
+#
+# Copy quickstart code but add in scope for gmail.send
+# Run quickstart.py
 def gmail_service():
-    """Gmail API to get the Gmail service.
+    """Gmail API to get the Gmail service. Needs client_secret.json in working directory
 
-    If token.pickle doesn't exist then the user's browser will open for them to authenticate
+    If token.json doesn't exist then the user's browser will open for them to authenticate
     before service is able to send emails.
 
     :returns: Authorized Gmail API service instance.
     """
-    # if you change scopes then you will need to delete token.pickle and get another one
+    # if you change scopes then you will need to delete token.json and get another one
     scopes = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.send']
 
     credentials = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
+    # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            credentials = pickle.load(token)
+    if os.path.exists('token.json'):
+        credentials = Credentials.from_authorized_user_file('token.json', scopes)
     # If there are no (valid) credentials available, let the user log in.
     if not credentials or not credentials.valid:
         if credentials and credentials.expired and credentials.refresh_token:
             credentials.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file('credentials.json', scopes)
+            flow = InstalledAppFlow.from_client_secrets_file('client_secret.json', scopes)
             credentials = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(credentials, token)
-
+        with open('token.json', 'w') as token:
+            token.write(credentials.to_json())
     return build('gmail', 'v1', credentials=credentials)
 
 
@@ -176,7 +202,7 @@ def gmail_service():
 
 
 # Task 9: Send email via gmail
-# https://developers.google.com/gmail/api/guides/sending#python  (sample code is Python 2 not Python 3)
+# https://developers.google.com/gmail/api/guides/sending#python
 def send_message_via_gmail(email_message: EmailMessage):
     """Send an email message via Gmail."""
     email_message['From'] = 'pythonatordev@gmail.com'
@@ -194,12 +220,12 @@ def send_message_via_gmail(email_message: EmailMessage):
 # Task 10: Attach image to email
 # https://docs.python.org/3/library/email.examples.html
 def message_with_image_attachment():
-    email_message = message_from_str("Task 10: Attaching a JPG image to an email")
+    email_message = message_from_str("Task 10: Attaching a WEBP image to an email")
     # Place image in same directory as this Python script and put name in next line
     with open(IMAGE_FILE, 'rb') as fp:
         img_data = fp.read()
     # img_data is a bytes object
-    # MIME type will be image/jpg which comes from maintype/subtype
+    # MIME type will be image/webp which comes from maintype/subtype
     # imghdr determines type of image by looking at the first few bytes of the image
     # filename is optional. It provides a default name should the recipient save the attachment
     subtype = imghdr.what(None, img_data)
@@ -241,7 +267,7 @@ def message_using_html():
     style = "<style type='text/css'>.digit {width: 30px; border: 1px solid #ccffcc; text-align: center;}</style>"
     html = f"<html><head>{style}</head><body>\n"
     html += "<p>Our <em>favourite</em> numbers.</p>"
-    # html += html_table_of_unicode_digits()
+    html += html_table_of_unicode_digits()
     html += "</body></html>"
     message = message_from_str("Task 11: Adding html to email")
     message.add_alternative(html, subtype='html')
