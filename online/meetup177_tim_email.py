@@ -2,7 +2,7 @@
 """MeetUp 177 - Beginners' Python and Machine Learning - Wed 15 Mar 2023 - email
 
 Youtube: https://youtu.be/
-Source:  https://github.com/timcu/bpaml-sessions/raw/master/2023/meetup177_tim_email.py
+Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup177_tim_email.py
 
 Learning objectives:
 - sending emails automatically from within Python program
