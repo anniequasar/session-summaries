@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """MeetUp 177 - Beginners' Python and Machine Learning - Wed 15 Mar 2023 - email
 
-Youtube: https://youtu.be/
+Youtube: https://youtu.be/CMS7JUMVh_I
 Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup177_tim_email.py
 
 Learning objectives:
