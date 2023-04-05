@@ -32,8 +32,8 @@ import unicodedata
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
-from reportlab.platypus import (SimpleDocTemplate, Paragraph, ListItem, ListFlowable, Preformatted, BalancedColumns, Spacer,
-                                PageBreak)
+from reportlab.platypus import (SimpleDocTemplate, Paragraph, ListItem, ListFlowable, Preformatted, BalancedColumns,
+                                Spacer, PageBreak)
 from reportlab.platypus import Table
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont, TTFError
@@ -78,7 +78,7 @@ reportlab
 
 # If you are not using an IDE, install requirements from command line
 pip install -r requirements.txt                                   # Windows, Mac or Linux without Anaconda
-conda install --name venv177 --file requirements.txt       # Anaconda
+conda install --name venv177 --file requirements.txt              # Anaconda
 # or if you don't want to use the requirements.txt file
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib aiosmtpd reportlab
 """
@@ -90,7 +90,7 @@ pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-
 # Task 4: Run demo 4 to create a PDF document and save to a file
 
 
-# Sec 2.1 Basic concepts of reportlab-userguide.pdf
+# Basic concepts https://docs.reportlab.com/reportlab/userguide/ch2_graphics/
 def pdf_demo_4(filename, text):
     # prepare for drawing
     c = Canvas(filename, pagesize=A4)
@@ -342,31 +342,38 @@ def register_language_fonts():
     If this function is not called then pdf_demo_12 will use standard font Helvetica
     :return: None
 
-    # Get fonts from https://www.google.com/get/noto/
+    # Get fonts from https://www.google.com/get/noto/ using bash (Linux, Mac, Windows) or powershell (very slow)
     mkdir fonts
     cd fonts
-    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-unhinted.zip
-    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansEthiopic-unhinted.zip
-    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansRunic-unhinted.zip
-    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansTaiTham-unhinted.zip
-    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansKhmer-unhinted.zip
-    curl -O https://noto-website-2.storage.googleapis.com/pkgs/NotoSansNewTaiLue-unhinted.zip
+    curl -o NotoSans-unhinted.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-unhinted.zip
+    curl -o NotoSansEthiopic-unhinted.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansEthiopic-unhinted.zip
+    curl -o NotoSansRunic-unhinted.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansRunic-unhinted.zip
+    curl -o NotoSansTaiTham-unhinted.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansTaiTham-unhinted.zip
+    curl -o NotoSansKhmer-unhinted.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansKhmer-unhinted.zip
+    curl -o NotoSansNewTaiLue-unhinted.zip https://noto-website-2.storage.googleapis.com/pkgs/NotoSansNewTaiLue-unhinted.zip
+
+    # Unzip in bash
     unzip -o \*.zip
+
+    # Unzip in powershell
+    Get-ChildItem *.zip | Expand-Archive -DestinationPath .
+
     """
     # Register Arial as a backup embedded font
     pdfmetrics.registerFont(TTFont("Arial", "Arial.ttf"))
-    try:
-        pdfmetrics.registerFont(TTFont("ArialBd", "Arial Bold.ttf"))
-    except TTFError:
-        pdfmetrics.registerFont(TTFont("ArialBd", "Arial_Bold.ttf"))
-    try:
-        pdfmetrics.registerFont(TTFont("ArialBI", "Arial Bold Italic.ttf"))
-    except TTFError:
-        pdfmetrics.registerFont(TTFont("ArialBI", "Arial_Bold_Italic.ttf"))
-    try:
-        pdfmetrics.registerFont(TTFont("ArialIt", "Arial Italic.ttf"))
-    except TTFError:
-        pdfmetrics.registerFont(TTFont("ArialIt", "Arial_Italic.ttf"))
+    files_by_font = {"Arial": ["Arial.ttf"],
+                     "ArialBd": ["Arial Bold.ttf", "Arial_Bold.ttf", "ArialBd.ttf"],
+                     "ArialBI": ["Arial Bold Italic.ttf", "Arial_Bold_Italic.ttf", "ArialBI.ttf"],
+                     "ArialIt": ["Arial Italic.ttf", "Arial_Italic.ttf", "ArialI.ttf"]}
+    for fontname, filenames in files_by_font.items():
+        for filename in filenames:
+            try:
+                pdfmetrics.registerFont(TTFont(fontname, filename))
+                break
+            except TTFError:
+                continue
+        else:  # only gets called if break never called
+            raise TTFError(f"All filenames for {fontname} failed. {filenames}")
 
     languages = {"default": "", "ethiopic": "Ethiopic", "khmer": "Khmer", "new tai lue": "NewTaiLue", "runic": "Runic",
                  "tai tham": "TaiTham"}
