@@ -1,4 +1,4 @@
-# MeetUp 169 - Beginners' Python and Machine Learning - 18 Jan 2022 - Using Python with Docker
+# MeetUp 169 - Beginners' Python and Machine Learning - 18 Jan 2023 - Using Python with Docker
 
 - Youtube: https://youtu.be/eELmAk_zJIs
 - Github: https://github.com/timcu/session-summaries/blob/master/online/meetup169_tim_python_with_docker.md

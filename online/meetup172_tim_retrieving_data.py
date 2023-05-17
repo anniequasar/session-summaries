@@ -1,4 +1,4 @@
-r"""MeetUp 172 - Beginners' Python and Machine Learning - 08 Feb 2022 - Retrieving data over the Internet
+r"""MeetUp 172 - Beginners' Python and Machine Learning - 08 Feb 2023 - Retrieving data over the Internet
 
 Learning objectives:
 - fetching data over a network

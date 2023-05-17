@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""MeetUp 132 - Beginners' Python and Machine Learning - 01 Feb 2022 - Getting Started 1
+r"""MeetUp 180 - Beginners' Python and Machine Learning - 05 Apr 2023 - Getting Started 1
 
 Colab:   https://colab.research.google.com/drive/1MTKVmaERigiE0TbPozGoZjefrRolzPyu
 Youtube: https://youtu.be/Y6l9PyWEAXk

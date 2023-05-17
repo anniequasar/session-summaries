@@ -1,4 +1,4 @@
-r"""# MeetUp 173 - Beginners' Python and Machine Learning - 15 Feb 2022 - Python's Relational Database - Sqlite3
+r"""# MeetUp 173 - Beginners' Python and Machine Learning - 15 Feb 2023 - Python's Relational Database - Sqlite3
 
 Learning objectives:
 - using python's sqlite3 to create, read, update, delete data (crud)
