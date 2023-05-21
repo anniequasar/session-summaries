@@ -1,6 +1,6 @@
 # MeetUp 183 - Beginners' Python and Machine Learning - 24 May 2023 - Using Python with AMQP and Docker
 
-- Youtube: https://youtu.be/eELmAk_zJIs
+- Youtube: https://youtu.be/SNh3nGHa-Fg
 - Github:  https://github.com/timcu/session-summaries/blob/master/online/meetup183_tim_python_rabbitmq_and_docker.md
 - Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/293609551/
 
