@@ -101,7 +101,7 @@ source venv183/bin/activate
 ```shell
 # Windows
 py -m venv venv183
-source venv183\Scripts\Activate.bat
+venv183\Scripts\Activate.bat
 ```
 Install pika third party library into virtual environment
 ```shell
@@ -142,7 +142,7 @@ python send.py
 ```
 Quit `receive.py` using ctrl-c or ctrl-F2.
 
-Log in to RabbitMW management console http://localhost:15672 user `guest` pass `guest`.
+Log in to RabbitMQ management console http://localhost:15672 user `guest` pass `guest`.
 
 Repeat, send and receive tutorial this time running `send.py` several times first and then running `receive.py`. This time they can be in the same shell.
 ```shell
