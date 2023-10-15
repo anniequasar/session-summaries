@@ -13,10 +13,10 @@ References
 
 - <https://github.com/Oracen/python-intro>  # Original script used during BPAML in-person session
 - <https://git-scm.com>  # Git source code manager
-- <https://pdm.fming.dev/latest/>  # Python Dependency Manager
 - <https://github.com/pyenv/pyenv>  # pyenv not officially supported on windows
 - <https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md>  # fork of pyenv to work on windows without wsl
 - <https://github.com/pyenv-win/pyenv-win/wiki>
+- <https://pdm.fming.dev/latest/>  # Python Dependency Manager
 
 Learning objectives:
 
@@ -27,8 +27,6 @@ Learning objectives:
 - Install pdm for managing dependencies and virtual environments (more advanced than `python -m venv` and `pip`, more standard than poetry and anaconda)
 
 @author D Tim Cummings
-
-Install in C:\Users\pytho\AppData\Local\Programs\Git
 
 ## Microsoft Visual Studio Code
 
@@ -80,7 +78,6 @@ Get-ExecutionPolicy -List
 Shows in order of precedence. First one not undefined wins.
 https:/go.microsoft.com/fwlink/?LinkID=135170 shows list of policies
 AllSigned Bypass Default RemoteSigned Restricted Undefined Unrestricted
-
 
 Set the execution policy required to run a script on Process so it is temporary while this PowerShell is open.
 
@@ -167,7 +164,8 @@ curl -sSL https://pdm.fming.dev/install-pdm.py | python - --remove
 Uninstall pyenv-win using Powershell with `-Uninstall` at the end.
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1 -Uninstall"
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1" -Uninstall
+Remove-Item "./install-pyenv-win.ps1"
 ```
 
 Uninstall git from Settings > Apps > Git > Uninstall
