@@ -9,7 +9,6 @@ Links:
 
 References:
 
-- <https://github.com/Oracen/python-intro>  # Original script used during BPAML in-person session
 - <https://github.com/timcu/python-intro>  # fork of original script used for BPAML online session for windows
 - <https://git-scm.com>  # Git source code manager
 - <https://github.com/pyenv/pyenv>  # pyenv not officially supported on windows
@@ -60,7 +59,7 @@ code .
 
 Need to check if Windows PowerShell will let you run scripts (default is Restricted which means you can't).
 
-Go to PowerShell terminal in VSCode (Ctrl-`)
+Go to PowerShell terminal from Windows Start Menu (Don't use PowerShell in VSCode (Ctrl-`) as is done in the video as install script can't set correct environment variables)
 
 In shells, the path is the list of directories where the shell will look for programs to run. For example in PowerShell:
 
