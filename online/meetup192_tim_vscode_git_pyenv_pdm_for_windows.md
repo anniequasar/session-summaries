@@ -9,9 +9,8 @@ Links:
 
 References:
 
-References
-
 - <https://github.com/Oracen/python-intro>  # Original script used during BPAML in-person session
+- <https://github.com/timcu/python-intro>  # fork of original script used for BPAML online session for windows
 - <https://git-scm.com>  # Git source code manager
 - <https://github.com/pyenv/pyenv>  # pyenv not officially supported on windows
 - <https://github.com/pyenv-win/pyenv-win/blob/master/docs/installation.md>  # fork of pyenv to work on windows without wsl
@@ -46,7 +45,7 @@ Run Git Bash and paste following code (Shift-Insert)
 ```bash
 mkdir --parents ~/projects
 cd ~/projects
-git clone https://github.com/Oracen/python-intro.git
+git clone https://github.com/timcu/python-intro.git
 cd python-intro
 ls .
 ```
