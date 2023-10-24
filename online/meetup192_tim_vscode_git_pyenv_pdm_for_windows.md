@@ -49,7 +49,7 @@ cd python-intro
 ls .
 ```
 
-Run VSCode from python-intro directory (from Git Bash or PowerShell or Command Prompt)
+Run VSCode from python-intro directory (from Git Bash or PowerShell or Command Prompt). VSCode will inherit environment from where it is started.
 
 ```bash
 code .
@@ -75,7 +75,14 @@ Get-ExecutionPolicy -List
 
 Shows in order of precedence. First one not undefined wins.
 https:/go.microsoft.com/fwlink/?LinkID=135170 shows list of policies
-AllSigned Bypass Default RemoteSigned Restricted Undefined Unrestricted
+
+- AllSigned
+- Bypass
+- Default
+- RemoteSigned
+- Restricted
+- Undefined
+- Unrestricted
 
 Set the execution policy required to run a script on Process so it is temporary while this PowerShell is open.
 
@@ -89,9 +96,10 @@ Install pyenv-win using PowerShell
 Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
 ```
 
-Check installation
+Check installation by opening new PowerShell window
 
 ```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 pyenv --version
 ```
 
