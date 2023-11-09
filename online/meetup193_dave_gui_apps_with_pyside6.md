@@ -3,7 +3,7 @@
 Links:
 
 - Youtube: <https://youtu.be/2adtcot9lm0>
-- Github:  <https://github.com/timcu/bpaml-sessions/raw/master/online/meetup193_dave_gui_apps_with_pyside6.md>
+- Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup193_dave_gui_apps_with_pyside6.md>
 - Github:  <https://github.com/fatgecko73/BeginnersGUI_PySide6>
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/294509580/> In person
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/297133330/> Online
