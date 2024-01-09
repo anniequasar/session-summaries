@@ -1,36 +1,36 @@
-# # MeetUp 145 - Beginners' Python and Machine Learning - 07 Jun 2022 - f-strings for absolute beginners
-# 
-# Learning objectives:
-# - Formatting output with f-strings
-# 
-# 
-# Links:
-# - Colab:   https://colab.research.google.com/drive/12k2VXt_9z6416PPhonh5WcPFqjU7m94F
-# - Youtube: https://youtu.be/1P7y_H9ptSM
-# - Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/294358336/
-# - Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
-# 
-# @author D Tim Cummings
-# 
-# This session will show you how to use the f-strings to format all text output. They were introduced in Python 3.6 and
-# quickly became the formatting and string building method of choice.
-# 
-# - https://docs.python.org/3/library/string.html#formatspec
-# - https://docs.python.org/3/tutorial/inputoutput.html
-# - https://realpython.com/python-f-strings/
-# 
-# 
-# # Using Google Colab / Jupyter Notebooks / IPython
-# 
-# - type into a cell
-# - press `<shift><enter>` to execute the cell
-# - cells can be python code or Markdown text or input fields
-# - use ? or Help menu for help
-# - see Help menu > Keyboard shortcuts
-# 
-# Datalore uses Python 3.8 while Google Colab uses Python 3.7
+r"""MeetUp 186 - Beginners' Python and Machine Learning - 07 Jun 2022 - f-strings for absolute beginners
 
-# standard and third party libraries need to be imported. built-in functions and classes do not.
+Learning objectives:
+- Formatting output with f-strings
+
+Links:
+- Colab:   https://colab.research.google.com/drive/12k2VXt_9z6416PPhonh5WcPFqjU7m94F
+- Youtube: https://youtu.be/1P7y_H9ptSM
+- Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/294358336/
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+
+@author D Tim Cummings
+
+This session will show you how to use the f-strings to format all text output. They were introduced in Python 3.6 and
+quickly became the formatting and string building method of choice.
+
+- https://docs.python.org/3/library/string.html#formatspec
+- https://docs.python.org/3/tutorial/inputoutput.html
+- https://realpython.com/python-f-strings/
+
+
+# Using Google Colab / Jupyter Notebooks / IPython
+
+- type into a cell
+- press `<shift><enter>` to execute the cell
+- cells can be python code or Markdown text or input fields
+- use ? or Help menu for help
+- see Help menu > Keyboard shortcuts
+
+Datalore uses Python 3.8 while Google Colab uses Python 3.7
+
+standard and third party libraries need to be imported. built-in functions and classes do not.
+"""
 import json
 import math
 import sys
