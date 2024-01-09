@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 079 - Beginners' Python and Machine Learning - 29 Sep 2020 - Object Oriented Programming
 
 Youtube: https://youtu.be/DizXf7v-1Nw
 Colab:   https://colab.research.google.com/drive/1gYiHBy0YfaDPteCYAFgdOp074ejH27vG
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Python classes allow you to use object oriented programming style. OOP makes it simpler to organise all the code for an 'object'
 into a class. This breaks the programming problem down into smaller compartments where each class can be debugged on its own. It

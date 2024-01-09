@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-r"""
-# MeetUp 194 - Beginners' Python and Machine Learning -  29 Nov 2023 and 06 Dec 2023 - Logging
+r"""# MeetUp 194 - Beginners' Python and Machine Learning -  29 Nov 2023 and 06 Dec 2023 - Logging
 
 Learning objectives:
 - How to use logging and loggers

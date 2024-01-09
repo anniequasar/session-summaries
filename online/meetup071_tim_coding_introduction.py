@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 071 - Beginners' Python and Machine Learning - 03 Aug 2020 - Getting Started 3
 
 Youtube: https://youtu.be/AmCeHuCW0kw
 Colab:   https://colab.research.google.com/drive/1UU-KS3EGgmyYlyVLRFN3HWgZbqR0qUeg
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Interactive python
@@ -34,7 +33,7 @@ The language is the same in every case, but the ways users
 interact with the program is different in each case.
 Today we are using Jupyter Notebooks on Google Colab.
 Jupyter Notebooks are an extension of IPython (Interactive Python). Every exercise could also be done in Python.
-Python version of this notebook available in https://github.com/anniequasar/session-summaries/online
+Python version of this notebook available in https://github.com/timcu/bpaml-sessions/online
 
 Jupyter Notebooks are a great way to learn because you see the results immediately. They can also be great for data science.
 However, they are not suited for some Python programs such as web applications, database apps, desktop apps, GUI apps,

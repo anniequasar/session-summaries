@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
 r"""MeetUp 087 - Beginners' Python and Machine Learning - 24 Nov 2020 - Python macros in LibreOffice
 
 Youtube: https://youtu.be/841Fgt1sQsY
-Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.py
-Sample:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup087_tim_libreoffice.ods
+Github:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup087_tim_libreoffice.py
+Sample:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup087_tim_libreoffice.ods
 
 Learning objectives
  - how to write and run Python macros in LibreOffice 7 using pyuno
@@ -57,7 +56,7 @@ echo %APPDATA%
 Task 2: Create a script meetup087_tim_libreoffice.py and put in python scripts directory.
 Script to define a function 'py_brokerage' which takes parameters 'quantity' and
 'unit_price' and optional parameter 'quantity_split' and returns 20
-You can download solution and example files from https://github.com/anniequasar/session-summaries/online/
+You can download solution and example files from https://github.com/timcu/bpaml-sessions/online/
 meetup087_tim_libreoffice.py
 meetup087_tim_libreoffice.ods
 

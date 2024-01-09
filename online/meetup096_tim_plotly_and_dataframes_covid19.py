@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 096 - Beginners Python and Machine Learning - 23 Feb 2021 - Charting COVID-19 doubling rate with plotly
 
 This continues on from MeetUp 095.
@@ -7,7 +6,7 @@ This continues on from MeetUp 095.
 Colab:   https://colab.research.google.com/drive/1X2BNBYuks6pvW2JntcX7HmRTemeLJjrh
 Youtube: https://youtu.be/sF_VOxj42b4
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/276491844/
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - pandas DataFrames and Series

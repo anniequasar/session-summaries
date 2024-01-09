@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 061 - Beginners' Python and Machine Learning - Tue 26 May 2020 - duck typing
 
 Youtube: https://youtu.be/5xTKbYRnvuw
 Colab:   https://colab.research.google.com/drive/1tFnyZJ5_Jj8Ol8fIlycn0Eulq1KWus2D
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - duck typing

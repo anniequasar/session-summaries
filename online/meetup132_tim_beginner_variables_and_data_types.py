@@ -4,7 +4,7 @@ r"""MeetUp 132 - Beginners' Python and Machine Learning - 01 Feb 2022 - Getting 
 Colab:   https://colab.research.google.com/drive/16DsX8AlRNK749R6vQGIh5D-AmuLUd45B
 Youtube: https://youtu.be/xHio6dJA3jY
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/283477534/
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Interactive python

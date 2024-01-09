@@ -1,7 +1,7 @@
 r"""MeetUp 144 - Beginners' Python and Machine Learning - 31 May 2022 - tkinter and wordle
 
 Youtube: https://youtu.be/EZnSHYC_eG4
-Github:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup144_tim_wordle_tkinter.py
+Github:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup144_tim_wordle_tkinter.py
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/285475011/
 
 Learning objectives

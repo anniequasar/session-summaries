@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 074 - Beginners' Python and Machine Learning - 25 Aug 2020 - JSON and Regular Expressions
 
 Youtube: https://youtu.be/4ocyF6nSyR0
 Colab:   https://colab.research.google.com/drive/1El9hOgXGbhwkOnBpv0WrFnSEBZxfTt4B
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - How to get data from information servers such as events data from Brisbane City Council Planetarium JSON feed

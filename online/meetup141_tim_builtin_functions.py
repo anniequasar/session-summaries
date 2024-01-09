@@ -11,7 +11,7 @@ Links:
 - Colab:   https://colab.research.google.com/drive/1jJGVXCfZIv9qBZTZOc7-ar0-GhfgdrYi
 - Youtube: https://youtu.be/gY_puqn964M
 - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/284934591/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 @author D Tim Cummings
 

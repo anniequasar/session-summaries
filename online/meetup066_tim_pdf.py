@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 066 - Beginners' Python and Machine Learning - Tue 30 Jun 2020 - PDF
 
 Youtube: https://youtu.be/FM3LEDckQFA
-Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup066_tim_pdf.py
-Source:  https://github.com/anniequasar/session-summaries/raw/master/online/meetup065_tim_email.py
+Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup066_tim_pdf.py
+Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup065_tim_email.py
 
 Learning objectives:
 - creating PDFs automatically with reportlab and attaching to emails

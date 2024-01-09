@@ -9,7 +9,7 @@ Links:
 - Colab:   https://colab.research.google.com/drive/1kyJQDgQwzEUFIcj58Uvbm_OUCtsLg8Gb
 - Youtube: https://youtu.be/arpGk_K5f_U
 - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/285029634/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 - Meetup 074: https://colab.research.google.com/drive/1El9hOgXGbhwkOnBpv0WrFnSEBZxfTt4B (regular expressions)
 - Meetup 133: https://colab.research.google.com/drive/1omqD-sGNnu9vq-PieZgTvNAEa1Kj6m7M (web scraping)

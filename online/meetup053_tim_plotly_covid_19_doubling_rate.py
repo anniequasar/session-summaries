@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 053 - Beginners Python and Machine Learning - 31st Mar 2020 - Charting COVID-19 doubling rate with plotly
 
 Youtube: https://youtu.be/pXctRtdlxCM
 Colab:   https://colab.research.google.com/drive/10QrPb0ion0vCBnp1HtxtTcCD0SXaeGaQ
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - pandas DataFrames and Series

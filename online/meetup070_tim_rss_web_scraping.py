@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 070 - Beginners' Python and Machine Learning - 28 Jul 2020 - RSS XML HTML
 
 Youtube: https://youtu.be/BJGSjOmKiZw
 Colab:   https://colab.research.google.com/drive/1RksbsUKRf5zik1lhGmLG5jsEo0amOOnh
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Collecting data from http feeds using RSS, XML, HTML

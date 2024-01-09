@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 104 - Beginners' Python and Machine Learning - 20 Apr 2021 - Pandas pivot tables, spreadsheets and timezones
 
 Colab:   https://colab.research.google.com/drive/1E2UpcfeixraUxQG3PWUyhpIQsKPfcWId
 Youtube: https://youtu.be/BrKZI6STurE
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/277479287/
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Pivoting and unpivoting datasets in pandas

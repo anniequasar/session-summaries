@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 118 - Beginners' Python and Machine Learning - 05 Oct 2021 - Getting Started 2
 
 - Youtube: https://youtu.be/pk-SBS70A-M
 - Colab:   https://colab.research.google.com/drive/1q477bqdCEeK3pGBRdMql6oxJPzX3q9JA
 - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/281083136/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 

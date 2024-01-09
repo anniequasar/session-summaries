@@ -10,7 +10,7 @@ Links:
 - Colab:   https://colab.research.google.com/drive/1p5M01TeyHy95gxb3xmnDopXd3JanhsB6
 - Youtube: https://youtu.be/9Z94ZQOUEU4
 - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/282356833/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 @author D Tim Cummings
 
@@ -18,7 +18,7 @@ There are different ways to write Python.
 The language is the same in every case, but the ways users
 interact with the program is different in each case.
 Today we are using Jupyter Notebooks on Google Colab. 
-Jupyter Notebooks are an extension of IPython (Interactive Python). Every exercise could also be done in Python. Python version of this notebook available in https://github.com/anniequasar/session-summaries/online
+Jupyter Notebooks are an extension of IPython (Interactive Python). Every exercise could also be done in Python. Python version of this notebook available in https://github.com/timcu/bpaml-sessions/online
 
 Jupyter Notebooks are a great way to learn because you see the results immediately. They can also be great for data science. However, they are not suited for some Python programs such as web applications, database apps, desktop apps, GUI apps, operating system services.
 

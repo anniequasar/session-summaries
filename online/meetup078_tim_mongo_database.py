@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 078 - Beginners' Python and Machine Learning - 22 Sep 2020 - Mongo database
 
 Youtube: https://youtu.be/ZkulTVfpkuo
 Colab:   https://colab.research.google.com/drive/1Ct8EZCH9Prt_bFwQ5hniXUglz545zG3A
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Databases allow you to save data when your Python program is not running. They are much faster, more powerful and more memory
 efficient than data files for retrieving and updating specific data within the data set.

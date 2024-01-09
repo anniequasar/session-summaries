@@ -11,7 +11,7 @@ Links:
 - Colab:   https://colab.research.google.com/drive/16vB_HDGVMH_EYD4dU3mZA9j5eIJtVqTL
 - Youtube: https://youtu.be/XdEsNxbVrQA
 - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/281813250/
-- Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+- Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 @author D Tim Cummings
 """
@@ -19,7 +19,7 @@ Links:
 # Clone the github repository so we can create some data to populate our spreadsheet
 # We are going to parse the python scripts from all our meetups and make a table in a spreadsheet
 # To run command line operations in google colab, start the line with !. Don't type ! if in Windows macOS or Linux command line.
-# !git clone https://github.com/anniequasar/session-summaries.git
+# !git clone https://github.com/timcu/bpaml-sessions.git
 
 # To run this script
 # I recommend creating a virtual environment

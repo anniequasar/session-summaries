@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 095 - Beginners Python and Machine Learning - 16 Feb 2021 - Introduction to charting with plotly
 
 Colab:   https://colab.research.google.com/drive/1x-Jscp45vksby-1rBjjOjA3V7EtL8lEW
 Youtube: https://youtu.be/B69sxYH70rk
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/276263628/
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - pandas DataFrames and Series

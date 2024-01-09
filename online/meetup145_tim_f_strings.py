@@ -8,7 +8,7 @@
 # - Jupyter: https://datalore.jetbrains.com/notebook/MA3olMEhs1UHOHPX0PVRxK/US91XMd8s37WhJxL2m2YBE/
 # - Youtube: https://youtu.be/XFnmEHsQE1o
 # - Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/286330989/
-# - Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+# - Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 # 
 # @author D Tim Cummings
 # 

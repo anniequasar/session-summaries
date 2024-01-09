@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""MeetUp 058 - Beginners' Python and Machine Learning - Tue 05 May 2020 - pythonator
+r"""MeetUp 058 - Beginners' Python and Machine Learning - Tue 05 May 2020 - pythonator
 
 Youtube: https://youtu.be/h3IwMGri428
-Answers: https://github.com/anniequasar/session-summaries/raw/master/online/meetup058_tim_pythonator_b2.py
+Answers: https://github.com/timcu/bpaml-sessions/raw/master/online/meetup058_tim_pythonator_b2.py
 
 Learning objectives:
 - python for absolute beginners

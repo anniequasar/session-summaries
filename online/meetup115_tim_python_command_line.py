@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 r"""MeetUp 115 - Beginners' Python and Machine Learning - 14 Sep 2021 - Run Python scripts from the command line
 
 Youtube: https://youtu.be/MBF_jxNvrps
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/280569331/
-Github:  https://github.com/anniequasar/session-summaries.git
+Github:  https://github.com/timcu/bpaml-sessions.git
 
 Learning objectives:
 - Create virtual environment

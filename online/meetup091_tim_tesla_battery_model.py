@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 091 - Beginners' Python and Machine Learning - 12 Jan 2021 - Model Tesla South Australian battery
 
 Youtube: https://youtu.be/yn0k-nLjvR8
 Colab:   https://colab.research.google.com/drive/1DZzbdOuG7WZE3xfE8j08mjMcr6dTUIhn
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/275600676/
 
 Learning objectives:

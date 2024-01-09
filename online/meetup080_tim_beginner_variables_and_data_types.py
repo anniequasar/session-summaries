@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 080 - Beginners' Python and Machine Learning - 06 Oct 2020 - Getting Started 1
 
 Youtube: https://youtu.be/nPQQljirzCE
 Colab:   https://colab.research.google.com/drive/1zomyGmpSBFX_opshc_vo72EYgowKSaIN
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Interactive python

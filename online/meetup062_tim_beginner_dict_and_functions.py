@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """MeetUp 062 - Beginners' Python and Machine Learning - 02 Jun 2020 - Getting Started 2
 
 Youtube: https://youtu.be/xgqF7O0so9A
 Colab:   https://colab.research.google.com/drive/1vX8TK8yNvvIcyi35ZUjFfOoZwEgDtpcl
-Github:  https://github.com/anniequasar/session-summaries/tree/master/online
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Data types: dict
