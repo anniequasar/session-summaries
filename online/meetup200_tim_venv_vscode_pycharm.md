@@ -2,9 +2,9 @@
 
 Links:
 
-- Youtube: <https://youtu.be/>
-- Github:  <https://github.com/timcu/bpaml-sessions/raw/master/online/meetup200_tim_venv_vscode_pycharm.md>
-- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/>
+- Youtube: <https://youtu.be/sYSwLQhHYXA>
+- Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup200_tim_venv_vscode_pycharm.md>
+- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/299977463/>
 
 References:
 
