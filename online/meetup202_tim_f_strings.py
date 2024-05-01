@@ -1,12 +1,12 @@
-r"""MeetUp 186 - Beginners' Python and Machine Learning - 05 Jul 2023 - f-strings for absolute beginners
+r"""MeetUp 202 - Beginners' Python and Machine Learning - 01 May 2024 - f-strings for absolute beginners
 
 Learning objectives:
 - Formatting output with f-strings
 
 Links:
-- Colab:   https://colab.research.google.com/drive/12k2VXt_9z6416PPhonh5WcPFqjU7m94F
-- Youtube: https://youtu.be/1P7y_H9ptSM
-- Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/294358336/
+- Colab:   https://colab.research.google.com/drive/16TOMzTpW0Hof72_ILoEk0JVqZq1r-1dl
+- Youtube: https://youtu.be/v1J8vvcnkQM
+- Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/300444722/
 - Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 @author D Tim Cummings
@@ -26,8 +26,6 @@ quickly became the formatting and string building method of choice.
 - cells can be python code or Markdown text or input fields
 - use ? or Help menu for help
 - see Help menu > Keyboard shortcuts
-
-Datalore uses Python 3.8 while Google Colab uses Python 3.7
 
 standard and third party libraries need to be imported. built-in functions and classes do not.
 """
@@ -98,7 +96,7 @@ s = f"Teaching about f strings from sunny {city}"
 print(s)
 
 # Expression can be numeric variable
-meetup = 186
+meetup = 202
 print(f"This is meetup number {meetup}")
 
 # Challenge 3: Calculate the quotient and remainder from dividing meetup number by weeks per year and show in f string
@@ -137,17 +135,15 @@ for n in range(16):
     print(f"{n:7d} {n:7b} {n:7o} {n:7x} {n:7X} miles equals {n*1.6:4.1f} km {n*1.6:8.3e} km")
 
 # Import data from Brisbane City Council Open Data - Ferry Terminal locations
-# https://www.data.brisbane.qld.gov.au/data/dataset/ferry-terminals/resource/430c7115-f63d-4614-816f-a8aa9265ec7b
+# https://www.data.brisbane.qld.gov.au/data/dataset/ferry-terminals/resource/3370521b-2746-4d2d-ac87-53ce0c92492a
 # Sample Python 2 code
 # import urllib
-# url = 'https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search?' \
-#       'resource_id=430c7115-f63d-4614-816f-a8aa9265ec7b&limit=5&q=title:jones'
+# url = 'https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search?resource_id=3370521b-2746-4d2d-ac87-53ce0c92492a&limit=5&q=title:jones'  
 # fileobj = urllib.urlopen(url)
 # print fileobj.read()
-# Convert to Python 3, import statements moved to beginning of this file
+# Convert to Python 3
 # import urllib.request
-url = 'https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search?' \
-      'resource_id=430c7115-f63d-4614-816f-a8aa9265ec7b&limit=5'
+url = 'https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search?resource_id=3370521b-2746-4d2d-ac87-53ce0c92492a&limit=5'
 fileobj = urllib.request.urlopen(url)
 print(fileobj.read())
 
@@ -156,7 +152,7 @@ print(fileobj.read())
 # from pprint import pprint
 # from urllib.request import urlopen
 url = 'https://www.data.brisbane.qld.gov.au/data/api/3/action/datastore_search?' \
-      'resource_id=430c7115-f63d-4614-816f-a8aa9265ec7b&q=ACTIVE'
+      'resource_id=3370521b-2746-4d2d-ac87-53ce0c92492a&q=ACTIVE'
 with urlopen(url) as file_obj:
     dct_ferry_full = json.loads(file_obj.read().decode('utf-8'))
 pprint(dct_ferry_full)
@@ -189,20 +185,23 @@ for r in lst_records:
     print(f"{r['DESCRIPTION']:35} {float(r['LATITUDE']):10.3f} {float(r['LONGITUDE']):10.3f} "
           f"{float(r['PONTOON_LENGTH']):9.1f}m  {r['PONTOON_MATERIAL'].strip():^10}")
 
-# Challenge 8: Print terminal DESCRIPTION, LATITUDE, LONGITUDE, PONTOON_LENGTH, PONTOON_MATERIAL, LAST_INSPECTION_DATE
-# Normally to convert '2020/10/09 00:00:00+00' I would add '00' and parse with timezone
-# However, here they are obviously using a datetime with tz field to store 
-# dates without tz (all dates end in ' 00:00:00+00')
-# To convert str to date strip the last 12 characters and use strptime
+# Challenge 8: Print Ferry terminal DESCRIPTION, LATITUDE, LONGITUDE, PONTOON_LENGTH, PONTOON_MATERIAL, LAST_INSPECTION_DATE
+# Normally to convert '5/28/2021 12:00:00 AM' I would add parse to datetime
+# However, here they are obviously using a datetime field to store
+# dates (all dates end in ' 12:00:00 AM')
+# To convert str to datetime use strptime
+# To convert datetime to date use .date()
 # To convert date to str use strftime
-d = datetime.strptime('2020/10/09 00:00:00+00'[:10], '%Y/%m/%d')
-print(d.strftime('%d %b %Y'))
+from datetime import datetime
+d = datetime.strptime('5/28/2021 12:00:00 AM', '%m/%d/%Y %I:%M:%S %p')
+print(d.strftime('%d %b %Y %H:%M:%S %z'))
+print(d.date().strftime('%d %b %Y'))
 
 print("Solution 8:")
 print(f"{'FERRY TERMINAL':35} {'LATITUDE':>10} {'LONGITUDE':>10} {'PONTOON':>10}  {'PONTOON' :^10}   LAST")
 print(f"{''              :35} {''         :10} {''          :10} {'LENGTH' :>10}  {'MATERIAL':^10}   INSPECTION")
 for r in lst_records:
-    d = datetime.strptime(r['LAST_INSPECTION_DATE'][:10], '%Y/%m/%d')
+    d = datetime.strptime(r['LAST_INSPECTION_DATE'], '%m/%d/%Y %I:%M:%S %p').date()
     print(f"{r['DESCRIPTION']:35} {float(r['LATITUDE']):10.3f} {float(r['LONGITUDE']):10.3f} "
           f"{float(r['PONTOON_LENGTH']):9.1f}m  {r['PONTOON_MATERIAL'].strip():^10}   {d:%d %b %Y}")
 
