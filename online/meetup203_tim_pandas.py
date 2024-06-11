@@ -44,8 +44,9 @@ from matplotlib import pyplot as plt
 # Use the pandas method read_csv to read data from URL or from a file
 # Good if you know the encoding. I had to try a few before this worked.
 # Default encoding is 'utf-8'. I also tried 'latin1' which didn't show quotes correctly
+# Update 2024: BCC fixed encoding issues so utf-8 works as does cp1252, latin1
 url_art = 'https://www.data.brisbane.qld.gov.au/data/dataset/1e11bcdd-fab1-4ec5-b671-396fd1e6dd70/resource/3c972b8e-9340-4b6d-8c7b-2ed988aa3343/download/public-art-open-data-2023-03-14.csv'
-df_art = pd.read_csv(url_art, encoding='cp1252')
+df_art = pd.read_csv(url_art, encoding='utf-8')
 # Look at the data
 print(f"df_art=\n{df_art}")
 
@@ -81,9 +82,12 @@ chart.show()
 # Click chart icon to show example charts
 # Select chart Longitude vs Latitude
 # Add cell
-# Edit supplied code to plot Latitude vs Longitude and change scatter_plot_size to 7.5
+# Edit supplied code to plot Latitude vs Longitude rather then Longitude vs Latitude
+# and change scatter_plot_size to 7
+df_art.plot(kind='scatter', x='Longitude', y='Latitude', s=7, alpha=.8)
 
-# Modify code to show just Latitude (y) versus Longitude (x) with scatter_plot_size=5
+# This is the sample code that used to be generated. It used matplotlib directly rather than through pandas dataframe
+# It is modified to show just Latitude (y) versus Longitude (x) with scatter_plot_size=5 and some titles
 
 def scatter_plots_with_titles(df, colname_pairs, scatter_plot_size=2.5, size=8, alpha=.6):
   plt.figure(figsize=(len(colname_pairs) * scatter_plot_size, scatter_plot_size))
@@ -142,6 +146,7 @@ df_art.rename(columns=new_names, inplace=True)
 print(f"{df_art.columns=}")
 
 # Save csv file from BCC Open Data to see what caused the spaces at end of column names
+# Update 2024: BCC have fixed data so no longer spaces at the end of some column names
 from urllib.request import urlopen
 with urlopen(url_art) as file_obj:
     with open('public_art.csv', 'wb') as pa_csv:
@@ -153,7 +158,8 @@ with open('public_art.csv', 'rb') as pa_csv:
     print(pa_csv.readline())
 
 # Advanced - Find a line which is not utf-8
-print("\nFINDING NON-UNICODE TEXT IN ART LIST")
+# Update 2024: BCC have fixed data so no longer encoded cp1252. Must be ascii
+print("\nFINDING NON-UNICODE TEXT IN ART LIST (may be none)")
 with open('public_art.csv', 'rb') as pa_csv:
     lines = pa_csv.read().split(b'\r\n')
     for i, line in enumerate(lines):
@@ -183,7 +189,7 @@ print(f'\ndf_art[df_art.columns[df_art.columns.str.contains("_")]]=\n{df_art[df_
 
 # More common to filter this way on rows
 print("\nFind art installed last year")
-print(f"df_art.loc[df_art['Installed']==2023]=\n{df_art.loc[df_art['Installed']==2023]}")
+print(f"df_art.loc[df_art['Installed']>=2023]=\n{df_art.loc[df_art['Installed']>=2023]}")
 
 # Look at traffic data
 # https://www.data.brisbane.qld.gov.au/data/dataset/traffic-management-key-corridor-monthly-performance-report/resource/70da5292-87a1-4fd4-8a35-b0a723566884
