@@ -2,10 +2,9 @@
 
 ## References
 
-- https://www.jetbrains.com/pycharm/
-- https://docs.djangoproject.com/en/5.0/intro/tutorial01/
-- https://realpython.com/django-nginx-gunicorn/
-
+- <https://www.jetbrains.com/pycharm/>
+- <https://docs.djangoproject.com/en/5.0/intro/tutorial01/>
+- <https://realpython.com/django-nginx-gunicorn/>
 
 ## Procedure
 
@@ -75,10 +74,9 @@ Now can test at <http://localhost:8000/bpaml-event/>
 
 ### Database setup <https://docs.djangoproject.com/en/5.0/intro/tutorial02/>
 
+Create a data structure for Event and Attendee.
 
-
-Create a data structure for Event and Attendee. 
-- Events need a code, date, title, location and description. 
+- Events need a code, date, title, location and description.
 - Attendees can extend the admin User table. Only extra field required is their meetup name
 
 Override the user model by adding the following to `django_bpaml_site/settings.py`
@@ -113,7 +111,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"{self.email}<{self.first_name} {self.last_name}>"
-
 ```
 
 Make bpaml_event show up in admin app by editing `bpaml_event/admin.py`
@@ -154,6 +151,7 @@ index.html
 ```
 
 event.html
+
 ```html
 <h1>Selected event</h1>
 <p>Beginners' Python and Machine Learning</p>
@@ -182,7 +180,7 @@ urlpatterns = [
 ]
 ```
 
-### Create a template for http://127.0.0.1:5000 with a couple of links in it
+### Create a template for <http://127.0.0.1:5000> with a couple of links in it
 
 In `django_bpaml_event/templates/bpaml_home.html`
 
@@ -354,7 +352,7 @@ Replace in `django_bpaml_event/templates/django_bpaml_event/event.html` the foll
 {% endblock %}
 ```
 
-This code demonstrates how to 
+This code demonstrates how to:
 
 - show values from data model
 - construct dynamic URLs
@@ -622,33 +620,34 @@ admin.site.register(User)
 class EventAdmin(admin.ModelAdmin):
     form = EventAdminForm
 ```
+
 ### OAuth
 
 Follow Google OpenID Connect to create a project and get credentials <https://developers.google.com/identity/openid-connect/openid-connect>
 
 Set up project in Google API Console <https://console.developers.google.com/>
 
-Needed credentials are client ID and client secret https://docs.allauth.org/en/latest/socialaccount/providers/google.html
+Needed credentials are client ID and client secret <https://docs.allauth.org/en/latest/socialaccount/providers/google.html>
 
-https://console.cloud.google.com/apis/credentials
+<https://console.cloud.google.com/apis/credentials>
 
 - Select project (or create a new one)
 - Create credentials > OAuth Client ID > Configure OAuth consent screen
   - External
   - App name: BPAML
-  - User support email: pythonatordev@gmail.com
-  - Home page: https://bpaml.pythonator.com
-  - Privacy: https://link.pythonator.com/privacy.html
-  - Terms of service: https://link.pythonator.com/terms-of-service.html
-  - Developer contact: pythonatordev@gmail.com
+  - User support email: <pythonatordev@gmail.com>
+  - Home page: <https://bpaml.pythonator.com>
+  - Privacy: <https://link.pythonator.com/privacy.html>
+  - Terms of service: <https://link.pythonator.com/terms-of-service.html>
+  - Developer contact: <pythonatordev@gmail.com>
   - Non-sensitive Scopes: /auth/userinfo.email, /auth/userinfo.profile, openid
 - Create credentials > OAuth Client ID > Web Application
   - Name: BPAML Event
-  - Authorised JavaScript origins: http://localhost:8000
-  - Authorised redirect URIs: http://127.0.0.1:8000/accounts/google/login/callback/
+  - Authorised JavaScript origins: <http://localhost:8000>
+  - Authorised redirect URIs: <http://127.0.0.1:8000/accounts/google/login/callback/>
 - Download client_secret.json to bpaml206_django directory
 
-Follow set up in https://docs.allauth.org/en/latest/installation/quickstart.html
+Follow set up in <https://docs.allauth.org/en/latest/installation/quickstart.html>
 
 Add following to `django_bpaml_site/settings.py`
 
@@ -663,7 +662,7 @@ LOGIN_REDIRECT_URL = "/bpaml-event/"
 LOGOUT_REDIRECT_URL = "/bpaml-event/"
 ```
 
-In `base.html` replace 
+In `base.html` replace
 
 `<a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Sign in</a>`
 
