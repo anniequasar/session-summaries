@@ -294,3 +294,26 @@ def fahrenheit(celsius):
 
 for c in [0, 100, -40]:
     print(f"{c:7.2f}°C is equivalent to {fahrenheit(c):7.2f}°F")
+
+print("\nParameters in a list")
+params = [1, 2, 3]
+# How would we pass to function
+print(f"{total_seconds(params[0], params[1], params[2])=}")
+# We can also unpack a list or tuple of parameters
+print(f"{total_seconds(*params)=}")
+
+print("\nParameters in a dict")
+params = {"seconds": 1, "minutes": 2, "hours": 3}
+# How would we pass to function
+print(f'{total_seconds(seconds=params["seconds"], hours=params["hours"], minutes=params["minutes"])=}')
+# We can also unpack a dict of parameters
+print(f"{total_seconds(**params)=}")
+
+print("\nConverting parameters to list or dict")
+def unexplode(*args, **kwargs):
+    for i, v in enumerate(args):
+        print(f"Ordered parameter {i} is {v}")
+    for k, v in kwargs.items():
+        print(f"Named parameter {k} is {v}")
+
+unexplode(5, 6, 2, fourth=10, fifth="FIFTH")
