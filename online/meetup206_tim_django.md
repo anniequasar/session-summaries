@@ -10,6 +10,13 @@
 
 ### Create project and app <https://docs.djangoproject.com/en/5.0/intro/tutorial01/>
 
+If you are checking out the source code from github
+
+- `git clone https://github.com/timcu/bpaml206-event-pycharm-project`
+- `git checkout step01`
+
+If you are following the script manually
+
 - Create a new PyCharm project `bpaml206-event-pycharm-project`
   - Make sure you use a new virtual environment either venv, conda depending on your python installation
 - Add this file to your project `meetup206_tim_django.md`
@@ -24,7 +31,7 @@
 - `python manage.py runserver`
 - `python manage.py startapp django_bpaml_event`
 
-#### Create settings for our app
+#### Create settings for our app `git checkout step02`
 
 Edit `django_bpaml_site/settings.py`
 
@@ -72,7 +79,7 @@ def index_page(request):
 
 Now can test at <http://localhost:8000/bpaml-event/>
 
-### Database setup <https://docs.djangoproject.com/en/5.0/intro/tutorial02/>
+### Database setup <https://docs.djangoproject.com/en/5.0/intro/tutorial02/> `git checkout step03`
 
 Create a data structure for Event and Attendee.
 
@@ -125,17 +132,17 @@ admin.site.register(User)
 ```
 
 - Make the database migrations for bpaml_event with `python manage.py makemigrations`
-- Create database tables for django_bpaml_event and admin `python manage.py migrate`
+- Create database tables for django_bpaml_event and admin `python manage.py migrate` (git users do this also)
 
-- From a terminal window create a superuser `python manage.py createsuperuser`
+- From a terminal window create a superuser `python manage.py createsuperuser` (git users do this also)
 - Check out admin section of your django app <http://localhost:8000/admin/>
 
 Now you can add some events in the admin interface
 
-### Django views <https://docs.djangoproject.com/en/5.0/intro/tutorial03/>
+### Django views <https://docs.djangoproject.com/en/5.0/intro/tutorial03/> `git checkout step04`
 
 - We need a list of events on a page we will call using url <http://127.0.0.1:8000/bpaml-event/>
-- We want an individual event on a page we will call <http://127.0.0.1:8000/bpaml-event/event/event-code/>
+- We want an individual event on a page we will call <http://127.0.0.1:8000/bpaml-event/event/[event-code]/>
 
 In `django_bpaml_event/templates/django_bpaml_event/` create some templates used to construct the views.
 
@@ -180,7 +187,7 @@ urlpatterns = [
 ]
 ```
 
-### Create a template for <http://127.0.0.1:5000> with a couple of links in it
+#### Create a template for <http://127.0.0.1:5000> with a couple of links in it
 
 In `django_bpaml_event/templates/bpaml_home.html`
 
@@ -203,7 +210,7 @@ urlpatterns = [
 ]
 ```
 
-### Create a base template so our style can be consistent throughout
+#### Create a base template so our style can be consistent throughout
 
 Base it on the admin base template. Create file `django_bpaml_event/templates/django_bpaml_event/base.html`
 
@@ -254,7 +261,7 @@ Now in each template remove the surrounding `<body>` tags and everything outside
 
 Try it out.
 
-### Display real data in our web app
+### Display real data in our web app `git checkout step05`
 
 Edit `views.py` to fetch the data we want
 
@@ -358,7 +365,7 @@ This code demonstrates how to:
 - construct dynamic URLs
 - override different blocks in templates being extended
 
-### Challenge - add the breadcrumbs to index page
+### Challenge - add the breadcrumbs to index page `git checkout step06`
 
 Here are the breadcrumbs for the top navigation bar in `index.html`
 
@@ -372,7 +379,7 @@ Here are the breadcrumbs for the top navigation bar in `index.html`
 {% endblock %}
 ```
 
-### Handling authenticated users who want to register
+### Handling authenticated users who want to register `git checkout step07`
 
 Edit `django_bpaml_site/settings.py` ato add allauth components
 
@@ -450,7 +457,7 @@ add the following to the bottom of the aside block
 {% endblock %}
 ```
 
-### Accepting registrations to events
+### Accepting registrations to events `git checkout step08`
 
 Add a registration function to the `django_bpaml_event/views.py`
 
@@ -522,7 +529,7 @@ In the templates add hyperlinks and status of attendance.
 </p>
 ```
 
-### Django form to allow member to update their own details
+### Django form to allow member to update their own details `git checkout step09`
 
 Add function to `django_bpaml_event/views.py` to render a form (if GET request) or save form data (if POST request)
 
@@ -590,7 +597,7 @@ urlpatterns = [
 
 Change url in `django_bpaml_event/base.html` to `{% url 'member-edit' %}`
 
-### Changing admin forms - Use a textarea rather than a text input field for event description
+### Changing admin forms - Use a textarea rather than a text input field for event description `git checkout step10`
 
 Create a file `django_bpaml_event/forms.py`
 
@@ -621,7 +628,9 @@ class EventAdmin(admin.ModelAdmin):
     form = EventAdminForm
 ```
 
-### OAuth
+### OAuth `git checkout step11`
+
+(git users do this also)
 
 Follow Google OpenID Connect to create a project and get credentials <https://developers.google.com/identity/openid-connect/openid-connect>
 
@@ -670,7 +679,7 @@ with
 
 `<a class="btnlink" href="{% provider_login_url 'google' %}">Sign in with Google</a>`
 
-### Fix style on `Sign in` and `Sign out` pages by overriding allauth base.html (copied from venv)
+### Fix style on `Sign in` and `Sign out` pages by overriding allauth base.html (copied from venv) `git checkout step12`
 
 Create file `templates/allauth/layouts/base.html`
 
@@ -743,7 +752,7 @@ Create file `templates/allauth/layouts/base.html`
         {% endblock extra_body %}
 ```
 
-### Creating a deployable package <https://docs.djangoproject.com/en/5.0/intro/reusable-apps/>
+### Creating a deployable package <https://docs.djangoproject.com/en/5.0/intro/reusable-apps/> `git checkout step13`
 
 Copy this file to `django_bpaml_site/README.md`
 
