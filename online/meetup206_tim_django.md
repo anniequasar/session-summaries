@@ -1,5 +1,11 @@
 # BPAML Django with PyCharm Community Edition
 
+Links:
+
+- Youtube: <https://youtu.be/golNmplBnmI>
+- Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
+- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/302090350/>
+
 ## References
 
 - <https://www.jetbrains.com/pycharm/>
