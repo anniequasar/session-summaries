@@ -12,21 +12,21 @@
 
 If you are checking out the source code from github
 
-- `git clone https://github.com/timcu/bpaml206-event-pycharm-project`
+- `git clone https://github.com/timcu/django_bpaml_site`
 - `git checkout step01`
 
 If you are following the script manually
 
-- Create a new PyCharm project `bpaml206-event-pycharm-project`
+- Create a new PyCharm project `django_bpaml_site`
   - Make sure you use a new virtual environment either venv, conda depending on your python installation
 - Add this file to your project `meetup206_tim_django.md`
 - Open Terminal window
 - `pip install django-allauth[socialaccount]` This will also install Django, allauth with Google Auth and other dependencies
 - `django-admin startproject django_bpaml_site`  # instead of `mysite` in tutorial
-- In PyCharm File > Settings > Project: bpaml206-event-pycharm-project > Project Structure  
-  - change content root to `bpaml206-event-pycharm-project/django_bpaml_site`
-- `exit` old Terminal window (or `cd django_bpaml_site`)
-- Move this markdown file into project
+- PyCharm project and Django both have concept of "Project". We need to move all files from django project into pycharm project (up one directory)
+  - Move `manage.py` up a folder
+  - Move five files `__init__.py`, `asgi.py`, `settings.py`, `urls.py` and `wsgi.py` up a folder
+  - Delete empty folder `django_bpaml_site`
 - `pip freeze > requirements.txt`
 - `python manage.py runserver`
 - `python manage.py startapp django_bpaml_event`
@@ -36,6 +36,11 @@ If you are following the script manually
 Edit `django_bpaml_site/settings.py`
 
 ```python
+INSTALLED_APPS = [
+    'django_bpaml_event.apps.DjangoBpamlEventConfig',
+    # ... before django.contrib
+]
+# ...
 TEMPLATES = [
     {
         # ...
@@ -47,7 +52,7 @@ TEMPLATES = [
 
 - Check database and timezone in `django_bpaml_site/settings.py` (default is sqlite3 and UTC)
 
-In `django_bpaml_site/urls.py` link to new urls 
+In `django_bpaml_site/urls.py` link to new urls
 
 ```python
 from django.contrib import admin
@@ -187,7 +192,7 @@ urlpatterns = [
 ]
 ```
 
-#### Create a template for <http://127.0.0.1:5000> with a couple of links in it
+#### Create a template for <http://127.0.0.1:8000> with a couple of links in it
 
 In `django_bpaml_event/templates/bpaml_home.html`
 
@@ -237,7 +242,7 @@ Base it on the admin base template. Create file `django_bpaml_event/templates/dj
 {% endblock %}
 ```
 
-Create a style sheet `django_bpaml_event/stastic/django_bpaml_event/bpaml.css`
+Create a style sheet `django_bpaml_event/static/django_bpaml_event/bpaml.css`
 
 ```css
 .bpaml-content {font-size: 1.0em;}
@@ -316,16 +321,6 @@ Replace in `django_bpaml_event/templates/django_bpaml_event/event.html` the foll
 <h2>{{event.title}}</h2>
 <h3>Code: {{event.code}}  Date: {{event.date}}</h3>
 <h3>Location: {{event.location}}</h3>
-{% if user.is_authenticated %}
-<p class="highlight">
-    Member {{ user.first_name }} {{user.last_name}} with email address {{ user.email }}:
-    {% if user in event.attendees.all %}
-      ATTENDING  (<a href="{% url 'attend' code=event.code rsvp='no' %}" title="change to NOT ATTENDING">change</a>)
-    {% else %}
-      NOT ATTENDING (<a href="{% url 'attend' code=event.code rsvp='yes' %}" title="change to ATTENDING">change</a>)
-    {% endif %}
-</p>
-{% endif %}
 <div>{{event.description|safe}}</div>
 <h2>Attendee list</h2>
 <table>
@@ -381,7 +376,7 @@ Here are the breadcrumbs for the top navigation bar in `index.html`
 
 ### Handling authenticated users who want to register `git checkout step07`
 
-Edit `django_bpaml_site/settings.py` ato add allauth components
+Edit `django_bpaml_site/settings.py` to add allauth components
 
 ```python
 AUTHENTICATION_BACKENDS = [
@@ -447,9 +442,9 @@ add the following to the bottom of the aside block
             <tr><td><div class="label">Name</div><div>{{user.first_name}} {{user.last_name}}</div></td></tr>
             <tr><td><div class="label">Name on Meetup</div><div>{{user.meetup_name}}</div></td></tr>
             <tr><td><div><a class="btnlink" href="{% url 'index' %}">Update member details</a></div></td></tr>
-            <tr><td><div><a class="btnlink" href="{% url 'account_logout' %}">Sign out</a></div></td></tr>
+            <tr><td><div><a class="btnlink" href="{% url 'account_logout' %}">Log out</a></div></td></tr>
             {% else %}
-            <tr><td><div>Not logged in. <a class="btnlink" href="{% provider_login_url 'google' %}">Sign in with Google</a></div></td></tr>
+            <tr><td><div>Not logged in. <a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Log in</a></div></td></tr>
             {% endif %}
         </table>
     </div>
@@ -516,17 +511,19 @@ In the templates add hyperlinks and status of attendance.
             {% endif %}
 ```
 
-`django_bpaml_event/event.html` add a third column to table
+`django_bpaml_event/event.html` add a paragraph after location heading indicating attendee status.
 
 ```html
-<p>
-    Member {{ user.first_name }} {{user.last_name}} with email {{ user.email }}: 
+{% if user.is_authenticated %}
+<p class="highlight">
+    Member {{ user.first_name }} {{user.last_name}} with email address {{ user.email }}:
     {% if user in event.attendees.all %}
       ATTENDING  (<a href="{% url 'attend' code=event.code rsvp='no' %}" title="change to NOT ATTENDING">change</a>)
     {% else %}
       NOT ATTENDING (<a href="{% url 'attend' code=event.code rsvp='yes' %}" title="change to ATTENDING">change</a>)
     {% endif %}
 </p>
+{% endif %}
 ```
 
 ### Django form to allow member to update their own details `git checkout step09`
@@ -579,7 +576,7 @@ Create the html template of the form `django_bpaml_event/templates/django_bpaml_
     <input type="submit" value="Save">
 </form>
 {% else %}
-<p>Please sign in to update member details</p>
+<p>Please log in to update member details</p>
 {% endif %}
 {% endblock %}
 ```
@@ -654,7 +651,7 @@ Needed credentials are client ID and client secret <https://docs.allauth.org/en/
   - Name: BPAML Event
   - Authorised JavaScript origins: <http://localhost:8000>
   - Authorised redirect URIs: <http://127.0.0.1:8000/accounts/google/login/callback/>
-- Download client_secret.json to bpaml206_django directory
+- Download client_secret.json to project directory top level `django_bpaml_site`. Don't commit to git.
 
 Follow set up in <https://docs.allauth.org/en/latest/installation/quickstart.html>
 
@@ -673,13 +670,13 @@ LOGOUT_REDIRECT_URL = "/bpaml-event/"
 
 In `base.html` replace
 
-`<a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Sign in</a>`
+`<a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Log in</a>`
 
 with
 
-`<a class="btnlink" href="{% provider_login_url 'google' %}">Sign in with Google</a>`
+`<a class="btnlink" href="{% provider_login_url 'google' %}">Log in with Google</a>`
 
-### Fix style on `Sign in` and `Sign out` pages by overriding allauth base.html (copied from venv) `git checkout step12`
+### Fix style on `Log in` and `Log out` pages by overriding allauth base.html (copied from venv) `git checkout step12`
 
 Create file `templates/allauth/layouts/base.html`
 
