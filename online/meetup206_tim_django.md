@@ -1,10 +1,20 @@
-# BPAML Django with PyCharm Community Edition
+# MeetUp 206 - Beginners Python and Machine Learning - Wed 24 Jul 2024 - Django with PyCharm Community Edition
+
+## Part 1 - 24 Jul 2024
 
 Links:
 
 - Youtube: <https://youtu.be/golNmplBnmI>
 - Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/302090350/>
+
+## Part 2 - 18 Sep 2024
+
+Links:
+
+- Youtube: <https://youtu.be/JSn1CzjyUS0>
+- Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
+- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/303070278/>
 
 ## References
 
@@ -58,7 +68,7 @@ TEMPLATES = [
 
 - Check database and timezone in `django_bpaml_site/settings.py` (default is sqlite3 and UTC)
 
-In `django_bpaml_site/urls.py` link to new urls
+In `django_bpaml_site/urls.py` link to new urls 
 
 ```python
 from django.contrib import admin
@@ -448,9 +458,9 @@ add the following to the bottom of the aside block
             <tr><td><div class="label">Name</div><div>{{user.first_name}} {{user.last_name}}</div></td></tr>
             <tr><td><div class="label">Name on Meetup</div><div>{{user.meetup_name}}</div></td></tr>
             <tr><td><div><a class="btnlink" href="{% url 'index' %}">Update member details</a></div></td></tr>
-            <tr><td><div><a class="btnlink" href="{% url 'account_logout' %}">Log out</a></div></td></tr>
+            <tr><td><div><a class="btnlink" href="{% url 'account_logout' %}">Sign out</a></div></td></tr>
             {% else %}
-            <tr><td><div>Not logged in. <a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Log in</a></div></td></tr>
+            <tr><td><div>Not logged in. <a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Sign in</a></div></td></tr>
             {% endif %}
         </table>
     </div>
@@ -582,7 +592,7 @@ Create the html template of the form `django_bpaml_event/templates/django_bpaml_
     <input type="submit" value="Save">
 </form>
 {% else %}
-<p>Please log in to update member details</p>
+<p>Please sign in to update member details</p>
 {% endif %}
 {% endblock %}
 ```
@@ -676,13 +686,13 @@ LOGOUT_REDIRECT_URL = "/bpaml-event/"
 
 In `base.html` replace
 
-`<a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Log in</a>`
+`<a class="btnlink" href="{% url 'admin:login' %}?next={{request.path}}">Sign in</a>`
 
 with
 
-`<a class="btnlink" href="{% provider_login_url 'google' %}">Log in with Google</a>`
+`<a class="btnlink" href="{% provider_login_url 'google' %}">Sign in with Google</a>`
 
-### Fix style on `Log in` and `Log out` pages by overriding allauth base.html (copied from venv) `git checkout step12`
+### Fix style on `Sign in` and `Sign out` pages by overriding allauth base.html (copied from venv) `git checkout step12`
 
 Create file `templates/allauth/layouts/base.html`
 
@@ -785,74 +795,209 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+Create `django_bpaml_site/pyproject.toml` 
+- <https://packaging.python.org/en/latest/guides/writing-pyproject-toml/>
+- <https://setuptools-scm.readthedocs.io/en/stable/usage/>
+
+```toml
+[project]
+name = "django-bpaml-event"
+dynamic = ["version"]
+authors = [
+    {name = "D Tim Cummings", email = "pythonatordev@gmail.com"},
+]
+description = "A Django app to accept registrations for upcoming events using Google login"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">= 3.10"
+keywords = ["bpaml", "registration", "oauth", "django", "google", "beginners' python"]
+dependencies = [
+    "Django ~= 5.1.1",
+    "django-allauth[socialaccount] ~= 64.2.1",
+    "gunicorn ~= 23.0.0",
+    "psycopg ~= 3.2.1",
+]
+
+classifiers =[
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 5.1.1",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+
+[project.urls]
+homepage = "https://bpaml.pythonator.com/bpaml-event/"
+repository = "https://github.com/timcu/django_bpaml_site"
+
+[build-system]
+requires = ['setuptools>=74.1.2', "wheel>=0.44.0", "setuptools-scm[toml]>=8.1.0"]
+build-backend = 'setuptools.build_meta'
+
+[tool.setuptools_scm]
+version_file = "django_bpaml_event/_version.py"
+
+[tool.setuptools.packages.find]
+include = ["django_bpaml_event*"]
+```
+
 Create `django_bpaml_site/MANIFEST.in`
 
 ```text
-include LICENSE
-include README.md
-recursive-include django_bpaml_event/static *
-recursive-include django_bpaml_event/templates *
-recursive-include docs *
+# setuptools_scm includes all files in git so need to exclude some
+recursive-exclude .idea *
+recursive-exclude django_bpaml_site *
+exclude manage.py requirements.txt meetup206_tim_django.md
 ```
 
-Create `django_bpaml_site/pyproject.toml`
+Git ignore _version.py by adding to .gitignore
 
-```toml
-[build-system]
-requires = ['setuptools>=70.0.0']
-build-backend = 'setuptools.build_meta'
+```txt
+django_bpaml_event/_version.py
 ```
 
-Create `django_bpaml_site/setup.cfg`
+Create a new branch in git and commit these changes. Then create a tag 0.13.0
 
-```cfg
-[metadata]
-name = django-bpaml-event
-version = 1.0.0
-description = A Django app to accept registrations for upcoming events using Google login
-long_description = file: README.md
-url = https://bpaml.pythonator.com/bpaml-event/
-author = D Tim Cummings
-author_email = pythonatordev@gmail.com
-license = MIT
-classifiers =
-    Environment :: Web Environment
-    Framework :: Django
-    Framework :: Django :: 5.0.6
-    Intended Audience :: Developers
-    License :: OSI Approved :: BSD License
-    Operating System :: OS Independent
-    Programming Language :: Python
-    Programming Language :: Python :: 3
-    Programming Language :: Python :: 3 :: Only
-    Programming Language :: Python :: 3.10
-    Programming Language :: Python :: 3.11
-    Programming Language :: Python :: 3.12
-    Topic :: Internet :: WWW/HTTP
-    Topic :: Internet :: WWW/HTTP :: Dynamic Content
-
-[options]
-include_package_data = true
-packages = find:
-python_requires = >=3.10
-install_requires =
-    Django >= 5.0.6
-    django-allauth[socialaccount] ~= 0.63.3
-    psycopg >= 3.1.19
+```commandline
+git checkout -b my-branch
+git add .
+git commit -m "ready to build wheel"
+git tag 0.13.0
 ```
 
-Create `django_bpaml_site/setup.py`
+To package python distribution:
+
+```bash
+rm -R dist django_bpaml_event.egg-info
+python -m build
+```
+
+### Deploy to debian based linux such as debian, ubuntu, or raspios
+
+Need to create a new client_secret.json file as we will be calling javascript from different host other than 127.0.0.1
+If you have a domain name, use that. In our example we could use https://bpaml.pythonator.com
+
+- "redirect_uris":["http://192.168.0.1/accounts/google/login/callback/"]
+- "javascript_origins":["http://192.168.0.1"]
+
+
+Copy the following files to debian server
+
+```
+dist/django_bpaml_event-0.13.0-py3-none-any.whl
+django_bpaml_site/settings.py
+django_bpaml_site/urls.py
+client_secret.json
+```
+
+We are going to run as an unprivileged user `djangoer`
+
+```bash
+sudo apt install nginx
+sudo useradd -m -s /bin/bash djangoer  # creates user
+sudo mv django_bpaml_event-0.13.0-py3-none-any.whl ~djangoer/  # move install wheel to deploy user from 
+sudo mv settings.py ~djangoer/  # copy our site settings to deploy user
+sudo mv urls.py ~djangoer/  # copy our site urls to deploy user
+sudo mv client_secret.json ~djangoer/  # copy our google credentials to deploy user
+sudo su - djangoer  # switch user to that new user
+```
+
+As deploy user `djangoer`
+
+```bash
+python3 -m venv venv-bpaml-event  # create virtual environment so we don't pollute system or user environments
+source venv-bpaml-event/bin/activate  # activate virtual environment
+pip install django_bpaml_event-0.13.0-py3-none-any.whl  # install app and all dependencies into venv
+mkdir -p wsgi-scripts/  # create folder for configuration and log files
+cd wsgi-scripts
+django-admin startproject bpaml_project  # creates manage.py and settings
+cp ../client_secret.json bpaml_project/  # make google client secrets available to app
+cp ../settings.py bpaml_project/bpaml_project/  # replace sample settings with our settings
+cp ../urls.py bpaml_project/bpaml_project/  # replace sample urls with our urls
+# Set up database
+cd bpaml_project
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+Update bpaml_project/settings.py for new deployment environment
 
 ```python
-from setuptools import setup
-
-setup()
+SECRET_KEY = 'give me a new secret key'
+DEBUG = False  # was True and you could leave as True until site is working
+ALLOWED_HOSTS = ["192.168.0.1"]  # set to your IP address and or fully qualified domain name (FQDN) of nginx webserver
+ROOT_URLCONF = 'bpaml_project.urls'  # was django_bpaml_site.urls
+WSGI_APPLICATION = 'bpaml_project.wsgi.application'  # was django_bpaml_site.wsgi.application
 ```
 
-Run `python setup.py sdist`
+As sudo user. 
+```bash
+# Configure systemd so can run as a service automatically
+# (gunicorn will look for application in django_bpaml_event.wsgi so can omit :application)
+cat <<EOF | sudo tee /etc/systemd/system/bpaml-event.service
+[Unit]
+Description=Gunicorn instance to serve BPAML Event
+After=network.target
+[Service]
+User=djangoer
+Group=www-data
+WorkingDirectory=/home/djangoer/wsgi-scripts/bpaml_project
+Environment="PATH=/home/djangoer/venv-bpaml-event/bin"
+ExecStart=/home/djangoer/venv-bpaml-event/bin/gunicorn --workers 2 --bind unix:bpaml_project.sock -m 007 'bpaml_project.wsgi'
+[Install]
+WantedBy=multi-user.target
+EOF
 
-- Copy dist/django_bpaml_event-1.0.0.tar.gz to deploy user
-- Activate deploy user virtual environment
-- Install with `pip install django_bpaml_event-1.0.0.tar.gz`
-- Setup gunicorn <https://realpython.com/django-nginx-gunicorn/>
-- `gunicorn -c config/gunicorn/prod.py`
+# Configure nginx webserver for unencrypted http access on port 80
+# Add extra server names or wild cards if required. Underscore _ is a catch-all server name
+#   server_name bpaml.pythonator.com 192.168.0.1 *.bpaml.pythonator.com;
+cat <<EOF | sudo tee /etc/nginx/sites-available/bpaml.pythonator.com
+server {
+    server_name bpaml.pythonator.com;
+    # log files
+    access_log /var/log/nginx/bpaml.access.log;
+    error_log /var/log/nginx/bpaml.error.log;
+    location / {
+        proxy_pass http://unix:/home/djangoer/wsgi-scripts/bpaml_project/bpaml_project.sock;
+        proxy_set_header Host \$host;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+    location /static {
+        autoindex on;
+        alias /var/www/bpaml.pythonator.com/static/;
+    }
+    listen 80;
+}
+EOF
+
+# Create links so nginx serves static content directly rather than through gunicorn
+sudo mkdir -p /var/www/bpaml.pythonator.com/static/
+sudo ln -s /home/djangoer/venv-bpaml-event/lib/python3.11/site-packages/django/contrib/admin/static/admin /var/www/bpaml.pythonator.com/static/admin
+sudo ln -s /home/djangoer/venv-bpaml-event/lib/python3.11/site-packages/django_bpaml_event/static/django_bpaml_event /var/www/bpaml.pythonator.com/static/django_bpaml_event
+
+# Enable systemd service
+sudo systemctl enable bpaml-event.service  # start automatically after reboot
+sudo systemctl start bpaml-event.service   # start now
+sudo systemctl status bpaml-event.service  # check 
+```
+
+You might need to open up the firewall
+
+```bash
+sudo ufw allow http
+sudo ufw allow https
+```
+
+See https://letsencrypt.org to see how to use certbot to get TLS certificates. You need to own the domain name and your server needs to be accessible from the Internet.
+
+Now you can view website using URLs such as http://192.168.0.1/bpaml-event or https://bpaml.pythonator.com/bpaml-event
