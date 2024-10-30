@@ -16,6 +16,14 @@ Links:
 - Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/303070278/>
 
+## Part 3 - 09 Oct 2024
+
+Links:
+
+- Youtube: <https://youtu.be/IV-dxODZa6k>
+- Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
+- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/303710369/>
+
 ## References
 
 - <https://www.jetbrains.com/pycharm/>
