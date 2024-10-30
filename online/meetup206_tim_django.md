@@ -68,7 +68,7 @@ TEMPLATES = [
 
 - Check database and timezone in `django_bpaml_site/settings.py` (default is sqlite3 and UTC)
 
-In `django_bpaml_site/urls.py` link to new urls 
+In `django_bpaml_site/urls.py` link to new urls
 
 ```python
 from django.contrib import admin
@@ -795,7 +795,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-Create `django_bpaml_site/pyproject.toml` 
+Create `django_bpaml_site/pyproject.toml`
+
 - <https://packaging.python.org/en/latest/guides/writing-pyproject-toml/>
 - <https://setuptools-scm.readthedocs.io/en/stable/usage/>
 
@@ -860,10 +861,17 @@ recursive-exclude django_bpaml_site *
 exclude manage.py requirements.txt meetup206_tim_django.md
 ```
 
-Git ignore _version.py by adding to .gitignore
+Git ignore _version.py and build artefacts by adding to .gitignore
 
 ```txt
 django_bpaml_event/_version.py
+/build/
+```
+
+Install python build system
+
+```commandline
+pip install build
 ```
 
 Create a new branch in git and commit these changes. Then create a tag 0.13.0
@@ -885,15 +893,14 @@ python -m build
 ### Deploy to debian based linux such as debian, ubuntu, or raspios
 
 Need to create a new client_secret.json file as we will be calling javascript from different host other than 127.0.0.1
-If you have a domain name, use that. In our example we could use https://bpaml.pythonator.com
+If you have a domain name, use that. In our example we could use <https://bpaml.pythonator.com>
 
 - "redirect_uris":["http://192.168.0.1/accounts/google/login/callback/"]
 - "javascript_origins":["http://192.168.0.1"]
 
-
 Copy the following files to debian server
 
-```
+```bash
 dist/django_bpaml_event-0.13.0-py3-none-any.whl
 django_bpaml_site/settings.py
 django_bpaml_site/urls.py
@@ -940,7 +947,8 @@ ROOT_URLCONF = 'bpaml_project.urls'  # was django_bpaml_site.urls
 WSGI_APPLICATION = 'bpaml_project.wsgi.application'  # was django_bpaml_site.wsgi.application
 ```
 
-As sudo user. 
+As sudo user.
+
 ```bash
 # Configure systemd so can run as a service automatically
 # (gunicorn will look for application in django_bpaml_event.wsgi so can omit :application)
@@ -998,6 +1006,6 @@ sudo ufw allow http
 sudo ufw allow https
 ```
 
-See https://letsencrypt.org to see how to use certbot to get TLS certificates. You need to own the domain name and your server needs to be accessible from the Internet.
+See <https://letsencrypt.org> to see how to use certbot to get TLS certificates. You need to own the domain name and your server needs to be accessible from the Internet.
 
-Now you can view website using URLs such as http://192.168.0.1/bpaml-event or https://bpaml.pythonator.com/bpaml-event
+Now you can view website using URLs such as <http://192.168.0.1/bpaml-event> or <https://bpaml.pythonator.com/bpaml-event>
