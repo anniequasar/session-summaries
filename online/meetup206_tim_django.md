@@ -1,6 +1,6 @@
 # MeetUp 206 - Beginners Python and Machine Learning - Wed 24 Jul 2024 - Django with PyCharm Community Edition
 
-## Part 1 - 24 Jul 2024
+## Part 1 - 24 Jul 2024 - Writing a Django Web App - Set up project and database
 
 Links:
 
@@ -8,7 +8,7 @@ Links:
 - Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/302090350/>
 
-## Part 2 - 18 Sep 2024
+## Part 2 - 18 Sep 2024 - Writing a Django Web App - Using html templates with dynamic data and Django styles
 
 Links:
 
@@ -16,13 +16,21 @@ Links:
 - Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/303070278/>
 
-## Part 3 - 09 Oct 2024
+## Part 3 - 09 Oct 2024 - Google Auth
 
 Links:
 
 - Youtube: <https://youtu.be/IV-dxODZa6k>
 - Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
 - Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/303710369/>
+
+## Part 4 - 20 Nov 2024 - Packaging with pyproject.toml
+
+Links:
+
+- Youtube: <https://youtu.be/GNWpdUfiH1M>
+- Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup206_tim_django.md>
+- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/304372657/>
 
 ## References
 
