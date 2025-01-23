@@ -1,7 +1,7 @@
-# MeetUp 211 - Beginners' Python and Machine Learning - 17 Feb 2023 - Using Python with Podman
+# MeetUp 212 - Beginners' Python and Machine Learning - 17 Feb 2023 - Using Python with Podman
 
 - Youtube: [https://youtu.be/]
-- Github: [https://github.com/timcu/session-summaries/blob/master/online/meetup211_tim_python_with_podman.md]
+- Github: [https://github.com/timcu/session-summaries/blob/master/online/meetup212_tim_python_with_podman.md]
 - Meetup ONLINE: [https://www.meetup.com/beginners-python-machine-learning/events/]
 
 To follow this tutorial you need to install Podman [https://podman.io] but you don't need to install Python.
@@ -28,6 +28,7 @@ Podman has rootless containers so don't need to use `sudo`.
 References:
 
 - [https://podman.io/]
+- [https://opensource.com/article/19/2/how-does-rootless-podman-work]
 - [https://pythonspeed.com/articles/base-image-python-docker-images/]
 - [https://testdriven.io/blog/docker-best-practices/]
 - [https://hub.docker.com/r/dockercore/docker/]  # old but best explains why to use containers rather than VMs
