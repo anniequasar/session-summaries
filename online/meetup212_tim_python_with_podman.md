@@ -214,14 +214,29 @@ cd ..
 
 Don't need to expose con-gunicorn to localhost because all access should be through nginx
 
-Test URL [http://localhost:8888] in browser
+Test URL [http://127.0.0.1:8888] in browser
 
 See which containers are running. Note that they are running in background because `-d` means detached.
 
 ```shell
 podman ps
-podman stop con-nginx
-podman stop con-gunicorn
+podman stop con-nginx con-gunicorn
 ```
 
-Can stop using container names because we defined names when running the containers
+Can use container names to stop because we defined names when running the containers
+
+When rootless, this gives warning message about not having permission to clean up network.
+
+### Using pod rather than network (podman only. not docker)
+
+```shell
+podman pod create pod-bpaml212
+podman run --rm -d --name con-gunicorn --pod pod-bpaml212 bpaml212-gunicorn
+podman run --rm -d -p 8888:80 --name con-nginx --pod pod-bpaml212 bpaml212-nginx
+podman ps  # see all running containers including pod
+podman pod ps  # list all pods and their state, running or exited
+podman pod stop pod-bpaml212  # stop all containers in pod and then pod.
+podman pod rm pod-bpaml212  # remove the pod
+```
+
+No warning messages shutting down, even when rootless. 
