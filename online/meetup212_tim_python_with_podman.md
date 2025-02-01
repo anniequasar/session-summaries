@@ -38,7 +38,13 @@ Like Docker, Podman creates lightweight portable containers. Much lighter than v
 Check that podman is installed correctly.
 
 ```shell
-podman run hello-world
+podman run quay.io/podman/hello
+```
+
+Can also run the Docker hello-world
+
+```shell
+podman run hello-world  # or explicitly `podman run docker.io/library/hello-world`
 ```
 
 Create project folder `bpaml212-podman` and inside it task folder `task-hi-from-py` and change into that directory
