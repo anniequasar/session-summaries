@@ -1,4 +1,4 @@
-# MeetUp 212 - Beginners' Python and Machine Learning - 17 Feb 2023 - Using Python with Podman
+# MeetUp 212 - Beginners' Python and Machine Learning - 19 Feb 2025 - Using Python with Podman
 
 - Youtube: [https://youtu.be/]
 - Github: [https://github.com/timcu/session-summaries/blob/master/online/meetup212_tim_python_with_podman.md]
