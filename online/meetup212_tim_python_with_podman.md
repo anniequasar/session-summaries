@@ -16,11 +16,11 @@ Podman engine and Podman Desktop are both free. Podman Desktop can manage Podman
 
 Podman is daemonless which solves a problem I was having with Docker. Docker Desktop starts a different daemon to the Docker engine and I was having compatibility problems with different daemons.
 
-Podman has rootless containers so don't need to use `sudo`.
+Podman has rootless containers so don't need to use `sudo` on Mac or Linux or `Administrator` on Windows.
 
 ## Installing podman
 
-- Windows [https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md]
+- Windows [https://github.com/containers/podman/blob/main/docs/tutorials/podman-for-windows.md] We only need podman CLI for this session.
 - Mac [https://podman.io]
 - Debian based Linux `sudo apt install podman`
 - Red Hat based Linux. Usually installed by default. If not `sudo dnf install podman`
@@ -28,17 +28,25 @@ Podman has rootless containers so don't need to use `sudo`.
 References:
 
 - [https://podman.io/]
+- [https://developers.redhat.com/cheat-sheets/podman-cheat-sheet]
 - [https://opensource.com/article/19/2/how-does-rootless-podman-work]
 - [https://pythonspeed.com/articles/base-image-python-docker-images/]
-- [https://testdriven.io/blog/docker-best-practices/]
-- [https://hub.docker.com/r/dockercore/docker/]  # old but best explains why to use containers rather than VMs
+- [https://hub.docker.com/_/python]  documentation on the python image
+- [https://hub.docker.com/r/dockercore/docker/]  old but best explains why to use containers rather than VMs
+- [https://www.redhat.com/en/blog/compose-podman-pods] Using podman pods rather than docker compose
 
 Like Docker, Podman creates lightweight portable containers. Much lighter than virtual machines. Each container should do one task and do it well. Containers can be linked through networks.
 
 Check that podman is installed correctly.
 
 ```shell
-podman run hello-world
+podman run quay.io/podman/hello
+```
+
+Can also run the Docker hello-world
+
+```shell
+podman run hello-world  # or explicitly `podman run docker.io/library/hello-world`
 ```
 
 Create project folder `bpaml212-podman` and inside it task folder `task-hi-from-py` and change into that directory
@@ -56,7 +64,7 @@ import sys
 print(f'Hi from Python {sys.version}')
 ```
 
-Create file `Dockerfile` in directory `task-hi-from-py`
+Create file `Containerfile` in directory `task-hi-from-py`. This file could also be called `Dockerfile` if you want to stay compatible with Docker.
 
 ```text
 FROM docker.io/library/python:3.11
@@ -78,7 +86,7 @@ Other instructions we can provide for building
 
 Build and run
 
-- build image using Dockerfile in current directory (.) and give it the tag name 'bpaml212-hi-from-py-image'
+- build image using `Containerfile` in current directory (.) and give it the tag name 'bpaml212-hi-from-py-image'
 - run podman container based on image with tag name 'bpaml212-hi-from-py-image'
 
 ```shell
@@ -111,7 +119,7 @@ Build container in directory task-flask for running flask app bpaml-prime-minist
 mkdir task-flask
 ```
 
-`Dockerfile` in directory `task-flask` to contain
+`Containerfile` in directory `task-flask` to contain
 
 ```text
 FROM docker.io/library/python:3.11
@@ -129,7 +137,7 @@ To run the flask app we need to use `--host=0.0.0.0` so that app is visible on t
 
 The ENV command sets an environment variable which suppresses a warning when using pip as root which is OK when in podman containers but not OK normally
 
-- build image using Dockerfile in current directory (.) and give image the tag name 'bpaml212-flask'
+- build image using `Containerfile` in current directory (.) and give image the tag name 'bpaml212-flask'
 - run the podman container using image with tag name 'bpaml212-flask'
 
 ```shell
@@ -149,7 +157,7 @@ Docker `podman run` flags
 
 Try URL [http://127.0.0.1:4000] in web browser
 
-Create a new directory `task-gunicorn` and a new `Dockerfile` based on previous image
+Create a new directory `task-gunicorn` and a new `Containerfile` based on previous image
 
 ```text
 FROM bpaml212-flask:latest
@@ -158,7 +166,7 @@ RUN pip install gunicorn
 CMD ["/usr/local/bin/gunicorn", "--bind", "0.0.0.0:8000", "prime_minister:create_app()"]
 ```
 
-- build container using Dockerfile in current directory (.) and give it the tag name 'bpaml212-gunicorn'
+- build container using `Containerfile` in current directory (.) and give it the tag name 'bpaml212-gunicorn'
 - run gunicorn in the podman container with tag name 'bpaml212-gunicorn'
 
 ```shell
@@ -172,7 +180,7 @@ Try URL [http://127.0.0.1:7000] in web browser
 
 Add a container for web server nginx to handle client requests, serve static resources, virtual hosting, security certificates, javascript clients
 
-Create a folder `task-nginx` and files nginx.conf and Dockerfile
+Create a folder `task-nginx` and files `nginx.conf` and `Containerfile`
 
 `nginx.conf` in directory `task-nginx`
 
@@ -190,7 +198,7 @@ server {
 }
 ```
 
-`Dockerfile` in directory `task-nginx`
+`Containerfile` in directory `task-nginx`
 
 ```text
 FROM docker.io/nginx:1.23
@@ -225,18 +233,18 @@ podman stop con-nginx con-gunicorn
 
 Can use container names to stop because we defined names when running the containers
 
-When rootless, this gives warning message about not having permission to clean up network.
+When rootless on Ubuntu, this gives warning message about not having permission to clean up network.
 
 ### Using pod rather than network (podman only. not docker)
 
 ```shell
-podman pod create pod-bpaml212
+podman pod create -p 8888:80 pod-bpaml212
 podman run --rm -d --name con-gunicorn --pod pod-bpaml212 bpaml212-gunicorn
-podman run --rm -d -p 8888:80 --name con-nginx --pod pod-bpaml212 bpaml212-nginx
+podman run --rm -d --name con-nginx --pod pod-bpaml212 bpaml212-nginx
 podman ps  # see all running containers including pod
 podman pod ps  # list all pods and their state, running or exited
 podman pod stop pod-bpaml212  # stop all containers in pod and then pod.
 podman pod rm pod-bpaml212  # remove the pod
 ```
 
-No warning messages shutting down, even when rootless. 
+No warning messages shutting down, even when rootless on Ubuntu. 
