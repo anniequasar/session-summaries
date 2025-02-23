@@ -1,8 +1,8 @@
 # MeetUp 212 - Beginners' Python and Machine Learning - 19 Feb 2025 - Using Python with Podman
 
-- Youtube: [https://youtu.be/]
+- Youtube: [https://youtu.be/IYhghxB_h18]
 - Github: [https://github.com/timcu/session-summaries/blob/master/online/meetup212_tim_python_with_podman.md]
-- Meetup ONLINE: [https://www.meetup.com/beginners-python-machine-learning/events/]
+- Meetup ONLINE: [https://www.meetup.com/beginners-python-machine-learning/events/305896090/]
 
 To follow this tutorial you need to install Podman [https://podman.io] but you don't need to install Python.
 
@@ -247,4 +247,4 @@ podman pod stop pod-bpaml212  # stop all containers in pod and then pod.
 podman pod rm pod-bpaml212  # remove the pod
 ```
 
-No warning messages shutting down, even when rootless on Ubuntu. 
+No warning messages shutting down, even when rootless on Ubuntu.
