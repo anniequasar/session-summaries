@@ -4,6 +4,7 @@ r"""MeetUp 199 - Beginners' Python and Machine Learning - 13 Mar 2024 - RSS XML 
 Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/299605933/
 Youtube: https://youtu.be/wOeLWXogLZc
 Colab:   https://colab.research.google.com/drive/14y4tAJHzmkNVaEvrwjgu40lhiGuHQ5eG
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Collecting data from http feeds RSS, XML, HTML using BeautifulSoup

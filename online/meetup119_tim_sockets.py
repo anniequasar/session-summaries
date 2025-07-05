@@ -3,7 +3,7 @@ r"""MeetUp 119 - Beginners' Python and Machine Learning - 12 Oct 2021 - Network 
 
 Youtube: https://youtu.be/LYDeML_x_Tc
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/281213657/
-Github:  https://github.com/timcu/bpaml-sessions.git
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Communicating between programs over the network in Python

@@ -3,7 +3,7 @@ r"""MeetUp 115 - Beginners' Python and Machine Learning - 14 Sep 2021 - Run Pyth
 
 Youtube: https://youtu.be/MBF_jxNvrps
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/280569331/
-Github:  https://github.com/timcu/bpaml-sessions.git
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Create virtual environment

@@ -3,7 +3,7 @@ r"""MeetUp 110 - Beginners' Python and Machine Learning - 10 Aug 2021 - Print to
 
 Youtube: https://youtu.be/rEf4H6_FJ94
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/279540703/
-Github:  https://github.com/timcu/bpaml-sessions.git
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Create a Print-to-xlsx virtual printer

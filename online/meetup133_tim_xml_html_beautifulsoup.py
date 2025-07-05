@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 r"""MeetUp 133 - Beginners' Python and Machine Learning - 8 Feb 2022 - RSS XML HTML
 
-Meetup: https://www.meetup.com/Beginners-Python-Machine-Learning/events/283584438/
+Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/283584438/
 Youtube: https://youtu.be/hnlFXljRaBQ
-Colab: https://colab.research.google.com/drive/1omqD-sGNnu9vq-PieZgTvNAEa1Kj6m7M
+Colab:   https://colab.research.google.com/drive/1omqD-sGNnu9vq-PieZgTvNAEa1Kj6m7M
+Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
 
 Learning objectives:
 - Collecting data from http feeds RSS, XML, HTML using BeautifulSoup
