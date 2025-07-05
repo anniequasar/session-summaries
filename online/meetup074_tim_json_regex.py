@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/4ocyF6nSyR0
 Colab:   https://colab.research.google.com/drive/1El9hOgXGbhwkOnBpv0WrFnSEBZxfTt4B
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/272608641/
 
 Learning objectives:
 - How to get data from information servers such as events data from Brisbane City Council Planetarium JSON feed

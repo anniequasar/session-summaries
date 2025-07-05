@@ -4,6 +4,7 @@ r"""MeetUp 084 - Beginners' Python and Machine Learning - 03 Nov 2020 - turtle g
 Youtube: https://youtu.be/QJKRgPodeRA
 Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup084_tim_turtle.py
 Answers: https://github.com/timcu/bpaml-sessions/raw/master/online/meetup084_tim_turtle_with_answers.py
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/274313944/
 
 Learning objectives
  - learn coding concepts using the educational turtle graphics

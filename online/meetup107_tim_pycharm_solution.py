@@ -2,7 +2,7 @@
 """MeetUp 107 - Beginners' Python and Machine Learning - 11 May 2021 - PyCharm
 
 Youtube: https://youtu.be/SF7Kq1oozbs
-Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup107_tim_pycharm.py
+Source:  https://github.com/timcu/bpaml-sessions/blob/master/online/
 Answers: https://github.com/timcu/bpaml-sessions/raw/master/online/meetup107_tim_pycharm_solution.py
 Meetup:  https://www.meetup.com/Beginners-Python-Machine-Learning/events/278075460/
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online

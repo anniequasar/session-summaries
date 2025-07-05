@@ -1,7 +1,7 @@
 r"""MeetUp 167 - Beginners' Python and Machine Learning - 30 Nov 2022 - Internet of Things
 
-Youtube: https://youtu.be/
-Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/
+Youtube: https://youtu.be/RviGbg8f-Es
+Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/289663754/
 Github:  https://github.com/timcu/session-summaries/tree/master/online
 
 Learning objectives:

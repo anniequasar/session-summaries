@@ -3,6 +3,7 @@
 
 Youtube: https://youtu.be/YNOf4YNocWc
 Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup065_tim_email.py
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/271113459/
 
 Learning objectives:
 - sending emails automatically from within Python program

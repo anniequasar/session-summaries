@@ -4,6 +4,7 @@ r"""MeetUp 075 - Beginners' Python and Machine Learning - 01 Sep 2020 - Getting 
 Youtube: https://youtu.be/IYEC6EmsUSQ
 Colab:   https://colab.research.google.com/drive/1GYRTTiBYH77M56Uy4_PYEPmA5b9F42Ck
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/272756612/
 
 Learning objectives:
 

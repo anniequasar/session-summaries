@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/FM3LEDckQFA
 Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup066_tim_pdf.py
 Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup065_tim_email.py
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/271113492/
 
 Learning objectives:
 - creating PDFs automatically with reportlab and attaching to emails

@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/5xTKbYRnvuw
 Colab:   https://colab.research.google.com/drive/1tFnyZJ5_Jj8Ol8fIlycn0Eulq1KWus2D
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/270737608/
 
 Learning objectives:
 - duck typing

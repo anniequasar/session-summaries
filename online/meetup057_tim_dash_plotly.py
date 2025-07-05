@@ -3,6 +3,7 @@
 
 Youtube: https://youtu.be/zxwSezObVkQ
 Github:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup057_tim_dash_plotly.py
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/270245454/
 
 Learning objectives:
 - python scripts (not notebooks)

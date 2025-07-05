@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/ZkulTVfpkuo
 Colab:   https://colab.research.google.com/drive/1Ct8EZCH9Prt_bFwQ5hniXUglz545zG3A
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/273223520/
 
 Databases allow you to save data when your Python program is not running. They are much faster, more powerful and more memory
 efficient than data files for retrieving and updating specific data within the data set.

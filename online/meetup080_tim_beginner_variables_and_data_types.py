@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/nPQQljirzCE
 Colab:   https://colab.research.google.com/drive/1zomyGmpSBFX_opshc_vo72EYgowKSaIN
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/273599698/
 
 Learning objectives:
 - Interactive python

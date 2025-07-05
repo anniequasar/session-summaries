@@ -4,6 +4,7 @@ r"""MeetUp 083 - Beginners' Python and Machine Learning - 27 Oct 2020 - tkinter 
 Youtube: https://youtu.be/d4m17IinfsU
 Source:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup083_tim_tkinter_keyring.py
 Answers: https://github.com/timcu/bpaml-sessions/raw/master/online/meetup083_tim_tkinter_keyring_with_answers.py
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/274120839/
 
 Learning objectives
  - Graphical User Interface

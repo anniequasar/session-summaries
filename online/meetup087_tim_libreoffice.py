@@ -3,6 +3,7 @@ r"""MeetUp 087 - Beginners' Python and Machine Learning - 24 Nov 2020 - Python m
 Youtube: https://youtu.be/841Fgt1sQsY
 Github:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup087_tim_libreoffice.py
 Sample:  https://github.com/timcu/bpaml-sessions/raw/master/online/meetup087_tim_libreoffice.ods
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/274666147/
 
 Learning objectives
  - how to write and run Python macros in LibreOffice 7 using pyuno

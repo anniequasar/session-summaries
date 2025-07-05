@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/jg32O9Qgco4
 Colab:   https://colab.research.google.com/drive/1o_bqokKbg4GUfc2NeRMru4ZUvdxmCy8c
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/268868413/
 
 Continuation from MeetUp 048 on 25th Feb 2020
 

@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 r"""MeetUp 167 - Beginners' Python and Machine Learning - 30 Nov 2022 - Internet of Things for Raspberry Pi
 
+Youtube: https://youtu.be/RviGbg8f-Es
+Meetup:  https://www.meetup.com/beginners-python-machine-learning/events/289663754/
+Github:  https://github.com/timcu/session-summaries/tree/master/online
+
 Raspberry Pi program to let LED lights be turned on and off using message queue mqtt
 
 Choose resistors for Raspberry Pi to limit current below 16 mA from 3.3V supply voltage. Below 5 mA even safer.

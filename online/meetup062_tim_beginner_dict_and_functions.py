@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/xgqF7O0so9A
 Colab:   https://colab.research.google.com/drive/1vX8TK8yNvvIcyi35ZUjFfOoZwEgDtpcl
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/270877375/
 
 Learning objectives:
 - Data types: dict

@@ -4,6 +4,7 @@
 Youtube: https://youtu.be/pXctRtdlxCM
 Colab:   https://colab.research.google.com/drive/10QrPb0ion0vCBnp1HtxtTcCD0SXaeGaQ
 Github:  https://github.com/timcu/bpaml-sessions/tree/master/online
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/269665540/
 
 Learning objectives:
 - pandas DataFrames and Series

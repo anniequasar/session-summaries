@@ -188,7 +188,7 @@ show_time()
 
 # Functions can return values
 import zoneinfo
-# zoneinfo is a new standard library which replaces third party libraries pytz and dateutil.tz
+# zoneinfo is a new standard library (Python 3.9+) which replaces third party libraries pytz and dateutil.tz
 
 def timezone_regions():
     regions = set()

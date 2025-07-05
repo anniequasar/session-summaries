@@ -2,7 +2,9 @@
 r"""MeetUp 058 - Beginners' Python and Machine Learning - Tue 05 May 2020 - pythonator
 
 Youtube: https://youtu.be/h3IwMGri428
+Github:  https://github.com/timcu/bpaml-sessions/blob/master/online/
 Answers: https://github.com/timcu/bpaml-sessions/raw/master/online/meetup058_tim_pythonator_b2.py
+MeetUp:  https://www.meetup.com/beginners-python-machine-learning/events/270245954/
 
 Learning objectives:
 - python for absolute beginners
