@@ -2,9 +2,9 @@
 
 Links:
 
-- Youtube: <https://youtu.be/>
+- Youtube: <https://youtu.be/JA4Sbgqb8aA>
 - Github:  <https://github.com/timcu/bpaml-sessions/blob/master/online/meetup219_tim_venv_vscode_pycharm.md>
-- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/>
+- Meetup:  <https://www.meetup.com/beginners-python-machine-learning/events/310203410/>
 
 References:
 
@@ -31,13 +31,37 @@ Related sessions:
 
 Install Python for local user from <https://python.org>
 
-Create and activate a Python virtual environment.
+Create and activate a Python virtual environment in Windows.
+
+Windows Command Prompt
 
 ```commandprompt
 mkdir %HOMEPATH%\bpaml219
 cd %HOMEPATH%\bpaml219
 py -m venv venv219
 venv219\Scripts\Activate.bat
+```
+
+Windows Power Shell
+
+```powershell
+mkdir $env:USERPROFILE\bpaml219
+cd $env:USERPROFILE\bpaml219
+py -m venv venv219
+Get-ExecutionPolicy -List
+# If you can't activate venv then you might need to set execution policy. Remember to set back when finished today so you don't have unintended consequences
+#Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+#Set-ExecutionPolicy -ExecutionPolicy undefined -Scope CurrentUser
+venv219\Scripts\Activate.bat
+```
+
+Linux or Mac, bash or zsh
+
+```bash
+mkdir ~/bpaml219
+cd ~/bpaml219
+python3 -m venv venv219
+venv219/bin/activate
 ```
 
 If you are using an Anaconda installation rather than Python then use `conda create` in an Anaconda shell. The 'python' at the end of the command specifies a minimal virtual environment.
@@ -58,16 +82,11 @@ Install Git from <https://git-scm.com>
 
 Install the portable version if you don't have administrator rights. I installed it in %HOMEPATH%\Apps folder and then "edit environment variables for your account" in control panel to add the "cmd" folder to `Path`
 
-## Creating a virtual environment in bash or zsh
+## Installing a third party library from pypi.org
 
-Run bash (on Windows with Git Bash, or Mac/Linux with Terminal) and type the following code as required.
+Use `pip` which is short for "Pip installs packages"
 
 ```bash
-mkdir ~/bpaml219                 # create directory with its parents
-cd ~/bpaml219                    # change into that directory
-python3 -m venv venv219          # create a virtual environment (common name would be .venv)
-source venv219/bin/activate      # activate the virtual environment  Mac/Linux
-source venv219/Scripts/activate  # activate the virtual environment  Windows
 pip list                         # see what third party libraries are installed
 pip install --upgrade pip        # upgrade pip to latest version
 pip install python-dotenv        # install a third party library from https://pypi.org
@@ -75,7 +94,7 @@ pip list                         # see list
 deactivate                       # stop using the virtual environment
 ```
 
-## Clone repository from Git Bash
+## Clone repository from Git Bash into bpaml219 directory
 
 ```bash
 git clone https://github.com/timcu/bpaml-sessions.git
@@ -106,11 +125,29 @@ The Python extension will try to activate a virtual environment if it finds the 
 
 Let's create a new virtual environment called .venv. VS Code Python doesn't give you a choice when create venv but does let you select a differently named one created by other means. It will also let you create an Anaconda virtual environment.
 
-Starting new Terminal in VS Code gives warning that the virtual environment name may not show.
+Starting new Terminal in VS Code used to give warning that the virtual environment name may not show. I think this has been fixed now.
 
-Now try opening the first `ipynb` file in the git repository. In the top right corner it asks for kernel to run the jupyter notebook. First it will suggest installing the Jupyter extension. Then install the kernel into the active virtual environment. Now try running the cells in the jupyter notebook including the ones to install anthropic libraries in virtual environment.
+Now try opening the file `online/meetup211_tim_colab_introduction.ipynb` file in the git repository. In the top right corner it asks for kernel to run the jupyter notebook. First it will suggest installing the Jupyter extension. Then install the kernel into the active virtual environment. Now try running the cells in the jupyter notebook including the ones to install libraries in virtual environment. Use `pip list` to see which libraries are installed at different stages of the process. You won't be able to run commands that require ubuntu, such as bash commands `cat`, `free`, `df`, `echo`, `whoami`, `apt`, `source`, `ls`, `head`. You can't install detectron2 which requires Mac or Linux. You can't mount google drive which requires colab. 
 
 Another way start VS Code is to navigate to the folder in the command line and then type `code .`. If you activate the virtual environment first, VS Code will use that environment
+
+Windows Powershell
+
+```powershell
+cd $env:USERPROFILE\bpaml219
+venv219\Scripts\Activate.ps1
+code .
+```
+
+Windows Command Prompt
+
+```commandprompt
+cd %USERPROFILE%\bpaml219
+venv219\Scripts\Activate.bat
+code .
+```
+
+Mac or Linux, `bash` or `zsh`
 
 ```bash
 cd ~/bpaml219
@@ -118,9 +155,9 @@ source venv219/Scripts/activate
 code .
 ```
 
-## Install PyCharm Community Edition
+## Install PyCharm Unified Edition
 
-<https://www.jetbrains.com/pycharm/download/> and scroll down to Community Edition
+<https://www.jetbrains.com/pycharm/download/> 
 
 When installing you can say No to elevating privileges and it will install for just that user.
 
@@ -140,7 +177,7 @@ pip freeze >> requirements.txt
 
 Now edit "python-dotenv==1.0.0" and downgrade python-dotenv. "Python Packages" will show that it can be upgraded.
 
-Now try opening Jupyter Notebook. PyCharm Community Edition gives a read-only view of the notebook. You need PyCharm Professional to do more with the notebook.
+Now try opening Jupyter Notebook. PyCharm without the pro upgrade gives a read-only view of the notebook. You need PyCharm Pro to do more with the notebook.
 
 ## Building applications to install in virtual environments
 
