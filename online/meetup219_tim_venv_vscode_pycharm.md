@@ -166,7 +166,7 @@ When installing you can say No to elevating privileges and it will install for j
 PyCharm comes with virtual environment support out of the box.
 
 - Open bpaml219 as a project.
-- Check virtual environment in File > Settings > Project > Python Interpreter.
+- Check virtual environment in File > Settings > Python > Interpreter.
 - Also check "Python Packages" view which tells you which packages can be upgraded.
 - Create a file called "requirements.txt" which lists which packages are required.
 - Version numbers can be specified in "requirements.txt"
