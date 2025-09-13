@@ -1,4 +1,4 @@
-r"""MeetUp 222 - Beginners Python and Machine Learning - 17 Sep 2023 - Introduction to charting with plotly
+r"""MeetUp 222 - Beginners Python and Machine Learning - 17 Sep 2025 - Introduction to charting with plotly
 
 Learning objectives:
 - pandas DataFrames and Series
